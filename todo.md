@@ -18,3 +18,8 @@
 - [x] Show all required search values directly below their labels in the desktop hero.
 - [x] Display the requested dd/mm/yyyy example format for both date fields before selection.
 - [x] Verify the revised first-page search section on desktop and mobile.
+- [x] Define realistic demo rates, seasonal availability windows, and branch locations.
+- [x] Make selected dates update fleet availability and clear unavailable states.
+- [x] Add the expanded branch list to the pick-up selector.
+- [x] Package and validate a reusable car-rental frontend workflow skill.
+- [x] Verify the enhanced website and deliver the updated project plus skill.
