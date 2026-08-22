@@ -5,10 +5,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { BadgeCheck, CalendarDays, Check, ChevronLeft, ChevronRight, CircleAlert, Fuel, MapPin, Navigation, Plus, Settings2, ShieldCheck, UsersRound, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import type { FleetCar } from "@/data/fleet";
+import type { TripRecord } from "@/lib/velocityStore";
 
 type BookingModalProps = {
   car: FleetCar | null;
   onClose: () => void;
+  onBookingComplete: (booking: TripRecord) => void;
 };
 
 type CustomerDetails = {
@@ -28,7 +30,7 @@ function calculateDays(pickupDate: string, returnDate: string) {
   return Number.isFinite(difference) && difference > 0 ? difference : 1;
 }
 
-export default function BookingModal({ car, onClose }: BookingModalProps) {
+export default function BookingModal({ car, onClose, onBookingComplete }: BookingModalProps) {
   const [step, setStep] = useState(1);
   const [customer, setCustomer] = useState<CustomerDetails>(initialCustomer);
   const [pickupDate, setPickupDate] = useState("");
@@ -82,7 +84,9 @@ export default function BookingModal({ car, onClose }: BookingModalProps) {
 
   const confirmBooking = () => {
     if (!validateTrip()) return;
-    setConfirmationId(`VD-${Math.random().toString(36).slice(2, 8).toUpperCase()}`);
+    const reference = `VD-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
+    setConfirmationId(reference);
+    onBookingComplete({ id: reference, carName: car?.name ?? "Vehicle", carImage: car?.image ?? "", pickupDate, returnDate, total, status: "Request received" });
   };
 
   if (!car) return null;
