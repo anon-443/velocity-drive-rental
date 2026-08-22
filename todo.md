@@ -11,3 +11,7 @@
 - [x] Provide the current preview address and source-code download route.
 - [x] Correct hero search-bar icon alignment and date-input affordances.
 - [x] Validate the corrected search bar on laptop and mobile screens.
+- [x] Check whether the reported badge comes from project code or the hosting display layer.
+- [x] Analyze the provided automotive reference site’s desktop spacing and proportions.
+- [x] Expand the desktop layout and typography without weakening the mobile design.
+- [x] Validate the revised scale and branding display before publishing the update.
