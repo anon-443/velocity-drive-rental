@@ -27,3 +27,5 @@
 - [x] Replace the date interaction with an explicit, dependable control pattern.
 - [x] Audit and repair key user-facing buttons and links.
 - [x] Test all repaired controls on desktop and mobile.
+- [x] Define and apply a more refined automotive brand symbol.
+- [x] Verify the replacement logo at desktop and mobile header sizes.
