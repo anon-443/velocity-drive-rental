@@ -1,0 +1,57 @@
+/**
+ * Velocity Drive visual system: Modern Motor Journal — one lead vehicle staged as an editorial spread, then compact comparison entries with technical spec rails.
+ */
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight, Search, SlidersHorizontal } from "lucide-react";
+import type { CarType, FleetCar } from "@/data/fleet";
+import { fleetCategories } from "@/data/fleet";
+
+type SortBy = "featured" | "low" | "high";
+type CarGridProps = { cars: FleetCar[]; searchTerm: string; selectedCategory: "All" | CarType; sortBy: SortBy; onSearchChange: (value: string) => void; onCategoryChange: (value: "All" | CarType) => void; onSortChange: (value: SortBy) => void; onBook: (car: FleetCar) => void; };
+
+export default function CarGrid({ cars, searchTerm, selectedCategory, sortBy, onSearchChange, onCategoryChange, onSortChange, onBook }: CarGridProps) {
+  const [leadCar, ...comparisonCars] = cars;
+
+  return (
+    <section id="fleet" className="scroll-mt-24 bg-[#f7f8f6] py-24 sm:py-28">
+      <div className="container">
+        <div className="grid items-end gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <div className="flex items-center gap-3"><p className="eyebrow"><span /> The fleet</p><span className="h-px w-8 bg-slate-300" /><span className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-slate-400">01 / vehicle journal</span></div>
+            <h2 className="mt-5 max-w-xl font-editorial text-4xl leading-[0.98] tracking-[-0.055em] text-[#0f1e2e] sm:text-5xl">Find the car that fits the way you move.</h2>
+          </div>
+          <p className="max-w-2xl justify-self-end text-sm leading-7 text-slate-600 sm:text-[15px]">Search by model, narrow your selection by vehicle class, then reserve with a clear view of the details and daily rate.</p>
+        </div>
+        <div className="route-rule mt-10" />
+
+        <div className="mt-7 flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
+          <div className="relative w-full xl:max-w-sm"><Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" /><input value={searchTerm} onChange={(event) => onSearchChange(event.target.value)} placeholder="Search a model or class" className="h-12 w-full rounded-xl border border-slate-200 bg-white pl-11 pr-4 text-sm font-semibold text-[#0f1e2e] outline-none transition placeholder:text-slate-400 focus:border-[#0f1e2e] focus:ring-4 focus:ring-slate-200" aria-label="Search the fleet" /></div>
+          <div className="flex flex-wrap items-center gap-2">{fleetCategories.map((category) => { const active = category === selectedCategory; return <button key={category} onClick={() => onCategoryChange(category)} className={`rounded-full border px-4 py-2.5 text-xs font-extrabold transition ${active ? "border-[#0f1e2e] bg-[#0f1e2e] text-white shadow-sm" : "border-slate-200 bg-white text-slate-600 hover:border-[#0f1e2e] hover:text-[#0f1e2e]"}`}>{category}</button>; })}</div>
+          <label className="relative flex h-12 items-center gap-2 rounded-xl border border-slate-200 bg-white px-3.5 text-xs font-bold text-slate-500"><SlidersHorizontal className="h-4 w-4 text-slate-500" /><select aria-label="Sort the fleet" className="appearance-none bg-transparent pr-5 text-xs font-extrabold text-[#0f1e2e] outline-none" value={sortBy} onChange={(event) => onSortChange(event.target.value as SortBy)}><option value="featured">Featured first</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></label>
+        </div>
+
+        <AnimatePresence mode="popLayout">
+          {leadCar && <LeadVehicle key={leadCar.id} car={leadCar} onBook={onBook} />}
+        </AnimatePresence>
+        {comparisonCars.length > 0 && <div className="mt-5 grid gap-5 md:grid-cols-3"><AnimatePresence mode="popLayout">{comparisonCars.map((car, index) => <ComparisonVehicle key={car.id} car={car} index={index} onBook={onBook} />)}</AnimatePresence></div>}
+
+        {cars.length === 0 && <div className="mt-9 flex min-h-52 flex-col items-center justify-center rounded-[20px] border border-dashed border-slate-300 bg-white px-6 text-center"><span className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-[#0f1e2e]"><Search className="h-5 w-5" /></span><h3 className="mt-4 font-editorial text-2xl text-[#0f1e2e]">No close match yet.</h3><p className="mt-2 max-w-sm text-sm text-slate-500">Try a different model name or clear the selected vehicle class to see the full fleet.</p></div>}
+      </div>
+    </section>
+  );
+}
+
+function LeadVehicle({ car, onBook }: { car: FleetCar; onBook: (car: FleetCar) => void }) {
+  return <motion.article layout initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 12 }} transition={{ duration: 0.26, ease: [0.23, 1, 0.32, 1] }} className="mt-9 overflow-hidden rounded-[24px] border border-slate-200 bg-white shadow-[0_18px_42px_rgba(15,30,46,0.07)] lg:grid lg:grid-cols-[1.1fr_0.9fr]">
+    <div className="relative min-h-[290px] overflow-hidden bg-[#eaf0f3] lg:min-h-[420px]"><img src={car.image} alt={`${car.name} ${car.modelYear}`} className="absolute inset-0 h-full w-full object-cover transition duration-700 hover:scale-[1.04]" /><div className="absolute inset-0 bg-gradient-to-t from-[#0f1e2e]/55 via-transparent to-transparent" /><div className="absolute bottom-5 left-5 flex items-end gap-4 text-white"><span className="font-editorial text-5xl tracking-[-0.07em]">01</span><span className="mb-1.5 text-[10px] font-extrabold uppercase tracking-[0.16em] text-white/75">Lead selection / {car.type}</span></div></div>
+    <div className="flex flex-col p-6 sm:p-8 lg:p-10"><div className="flex items-start justify-between gap-4"><div><p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-slate-400">Featured for today</p><h3 className="mt-3 font-editorial text-5xl tracking-[-0.065em] text-[#0f1e2e]">{car.name}</h3><p className="mt-2 text-sm font-bold text-slate-500">{car.modelYear} · {car.accent}</p></div><span className={`shrink-0 rounded-full px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.12em] ${car.available ? "bg-orange-50 text-[#b45309]" : "bg-slate-100 text-slate-500"}`}>{car.available ? "Available" : "Reserved"}</span></div><p className="mt-6 max-w-md border-l-2 border-[#d97706] pl-4 text-sm leading-6 text-slate-600">{car.note}</p><div className="my-7 grid grid-cols-3 border-y border-slate-200"><SpecRail label="Energy" value={car.fuel} /><SpecRail label="Transmission" value={car.transmission} /><SpecRail label="Capacity" value={`${car.seats} seats`} /></div><div className="mt-auto flex flex-wrap items-end justify-between gap-5"><div><p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-slate-400">Daily rate</p><p className="mt-1 font-editorial text-5xl tracking-[-0.065em] text-[#d97706]">${car.rate}<span className="ml-1 font-sans text-sm font-bold tracking-normal text-slate-400">/ day</span></p></div><button disabled={!car.available} onClick={() => onBook(car)} className="flex items-center gap-2 rounded-xl bg-[#d97706] px-5 py-3.5 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[#b45309] disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-500">{car.available ? "Reserve this vehicle" : "Check another date"}<ArrowUpRight className="h-4 w-4" /></button></div></div>
+  </motion.article>;
+}
+
+function ComparisonVehicle({ car, index, onBook }: { car: FleetCar; index: number; onBook: (car: FleetCar) => void }) {
+  return <motion.article layout initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 12 }} transition={{ duration: 0.24, delay: index * 0.05, ease: [0.23, 1, 0.32, 1] }} className="group overflow-hidden rounded-[20px] border border-slate-200 bg-white shadow-[0_5px_16px_rgba(15,30,46,0.035)] transition duration-200 hover:-translate-y-1 hover:border-slate-400 hover:shadow-[0_18px_36px_rgba(15,30,46,0.09)]"><div className="relative aspect-[4/3] overflow-hidden bg-[#eaf0f3]"><img src={car.image} alt={`${car.name} ${car.modelYear}`} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" /><span className="absolute bottom-3 left-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.12em] text-[#0f1e2e]">0{index + 2} / {car.type}</span></div><div className="p-5"><div className="flex items-start justify-between gap-3"><div><h3 className="font-editorial text-3xl tracking-[-0.055em] text-[#0f1e2e]">{car.name}</h3><p className="mt-1 text-xs font-bold text-slate-500">{car.modelYear}</p></div><p className="font-editorial text-3xl tracking-[-0.055em] text-[#0f1e2e]">${car.rate}<span className="font-sans text-[10px] font-bold tracking-normal text-slate-400">/d</span></p></div><p className="mt-4 text-xs leading-5 text-slate-500">{car.accent}</p><div className="mt-4 grid grid-cols-3 border-y border-slate-100"><SpecRail label="Energy" value={car.fuel} compact /><SpecRail label="Drive" value={car.transmission} compact /><SpecRail label="Cabin" value={`${car.seats} seats`} compact /></div><div className="mt-4 flex items-center justify-between gap-3"><span className={`text-[10px] font-extrabold uppercase tracking-[0.12em] ${car.available ? "text-[#b45309]" : "text-slate-400"}`}>{car.available ? "Available" : "Reserved today"}</span><button disabled={!car.available} onClick={() => onBook(car)} className="flex items-center gap-1.5 text-xs font-extrabold text-[#0f1e2e] transition hover:text-[#d97706] disabled:text-slate-400">View & reserve <ArrowUpRight className="h-3.5 w-3.5" /></button></div></div></motion.article>;
+}
+
+function SpecRail({ label, value, compact = false }: { label: string; value: string; compact?: boolean }) {
+  return <div className={`min-w-0 border-r border-slate-200 last:border-r-0 ${compact ? "py-3 px-2 first:pl-0 last:pr-0" : "py-4 px-3 first:pl-0 last:pr-0"}`}><p className="truncate text-[8px] font-extrabold uppercase tracking-[0.14em] text-slate-400">{label}</p><p className={`mt-1 truncate font-bold text-[#0f1e2e] ${compact ? "text-[10px]" : "text-xs"}`}>{value}</p></div>;
+}
