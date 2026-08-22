@@ -23,3 +23,7 @@
 - [x] Add the expanded branch list to the pick-up selector.
 - [x] Package and validate a reusable car-rental frontend workflow skill.
 - [x] Verify the enhanced website and deliver the updated project plus skill.
+- [x] Diagnose why the hero date controls do not open reliably.
+- [x] Replace the date interaction with an explicit, dependable control pattern.
+- [x] Audit and repair key user-facing buttons and links.
+- [x] Test all repaired controls on desktop and mobile.
