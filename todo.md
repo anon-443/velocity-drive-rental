@@ -15,3 +15,6 @@
 - [x] Analyze the provided automotive reference site’s desktop spacing and proportions.
 - [x] Expand the desktop layout and typography without weakening the mobile design.
 - [x] Validate the revised scale and branding display before publishing the update.
+- [x] Show all required search values directly below their labels in the desktop hero.
+- [x] Display the requested dd/mm/yyyy example format for both date fields before selection.
+- [x] Verify the revised first-page search section on desktop and mobile.
