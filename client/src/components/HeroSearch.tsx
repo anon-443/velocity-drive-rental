@@ -1,5 +1,5 @@
 /**
- * Velocity Drive visual system: Modern Motor Journal — an operational search desk bridging editorial hero and fleet selection.
+ * Velocity Drive visual system: Modern Motor Journal — a structured operational search desk with fixed icon lanes and deliberate date-picker affordances.
  */
 import { ArrowRight, CalendarDays, CarFront, ChevronDown, MapPin } from "lucide-react";
 import { FormEvent, useState } from "react";
@@ -7,16 +7,48 @@ import type { CarType } from "@/data/fleet";
 
 export type QuickSearchCriteria = { location: string; pickupDate: string; returnDate: string; carType: "All" | CarType; };
 type HeroSearchProps = { onSearch: (criteria: QuickSearchCriteria) => void; };
-const fieldClass = "h-12 w-full appearance-none bg-transparent pr-8 text-sm font-bold text-[#0f1e2e] outline-none";
+
+const labelClass = "text-[10px] font-extrabold uppercase tracking-[0.16em] text-slate-400";
+
+function formatDate(value: string, emptyLabel: string) {
+  if (!value) return emptyLabel;
+  const parsed = new Date(`${value}T12:00:00`);
+  return Number.isNaN(parsed.getTime()) ? emptyLabel : new Intl.DateTimeFormat("en", { day: "2-digit", month: "short", year: "numeric" }).format(parsed);
+}
 
 export default function HeroSearch({ onSearch }: HeroSearchProps) {
   const [criteria, setCriteria] = useState<QuickSearchCriteria>({ location: "Downtown Hub", pickupDate: "", returnDate: "", carType: "All" });
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); onSearch(criteria); };
-  return <form onSubmit={handleSubmit} className="rounded-[22px] border border-slate-200 bg-white p-3 shadow-[0_20px_60px_rgba(15,30,46,0.12)]"><div className="grid gap-1 lg:grid-cols-[1.1fr_1fr_1fr_1fr_auto]">
-    <label className="relative flex min-w-0 items-center gap-3 rounded-[15px] px-3 py-2 transition focus-within:bg-slate-50"><MapPin className="h-5 w-5 shrink-0 text-slate-500" /><span className="min-w-0 flex-1"><span className="block text-[10px] font-extrabold uppercase tracking-[0.16em] text-slate-400">Pick-up point</span><select aria-label="Pick-up location" className={fieldClass} value={criteria.location} onChange={(event) => setCriteria({ ...criteria, location: event.target.value })}><option>Downtown Hub</option><option>Airport Terminal</option><option>Harbor District</option></select></span><ChevronDown className="pointer-events-none absolute right-3 h-4 w-4 text-slate-400" /></label>
-    <label className="relative flex min-w-0 items-center gap-3 rounded-[15px] px-3 py-2 transition focus-within:bg-slate-50"><CalendarDays className="h-5 w-5 shrink-0 text-slate-500" /><span className="min-w-0 flex-1"><span className="block text-[10px] font-extrabold uppercase tracking-[0.16em] text-slate-400">Pick-up date</span><input aria-label="Pick-up date" className={fieldClass} type="date" value={criteria.pickupDate} onChange={(event) => setCriteria({ ...criteria, pickupDate: event.target.value })} /></span></label>
-    <label className="relative flex min-w-0 items-center gap-3 rounded-[15px] px-3 py-2 transition focus-within:bg-slate-50"><CalendarDays className="h-5 w-5 shrink-0 text-slate-500" /><span className="min-w-0 flex-1"><span className="block text-[10px] font-extrabold uppercase tracking-[0.16em] text-slate-400">Return date</span><input aria-label="Return date" className={fieldClass} type="date" value={criteria.returnDate} onChange={(event) => setCriteria({ ...criteria, returnDate: event.target.value })} /></span></label>
-    <label className="relative flex min-w-0 items-center gap-3 rounded-[15px] px-3 py-2 transition focus-within:bg-slate-50"><CarFront className="h-5 w-5 shrink-0 text-slate-500" /><span className="min-w-0 flex-1"><span className="block text-[10px] font-extrabold uppercase tracking-[0.16em] text-slate-400">Vehicle class</span><select aria-label="Vehicle class" className={fieldClass} value={criteria.carType} onChange={(event) => setCriteria({ ...criteria, carType: event.target.value as QuickSearchCriteria["carType"] })}><option value="All">All vehicles</option><option value="SUV">SUV</option><option value="Sedan">Sedan</option><option value="Electric">Electric</option><option value="Luxury">Luxury</option></select></span><ChevronDown className="pointer-events-none absolute right-3 h-4 w-4 text-slate-400" /></label>
-    <button className="flex min-h-14 items-center justify-center gap-2 rounded-[15px] bg-[#0f1e2e] px-6 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[#24374c] active:scale-[0.97]" type="submit">Find vehicles <ArrowRight className="h-4 w-4" /></button>
-  </div></form>;
+
+  return (
+    <form onSubmit={handleSubmit} className="rounded-[22px] border border-slate-200 bg-white p-2 shadow-[0_20px_60px_rgba(15,30,46,0.12)] sm:p-3">
+      <div className="grid gap-2 lg:grid-cols-[1.15fr_1fr_1fr_1fr_184px] lg:gap-0 lg:overflow-hidden lg:rounded-[15px] lg:bg-slate-50 lg:divide-x lg:divide-slate-200">
+        <SelectField icon={<MapPin className="h-5 w-5" />} label="Pick-up point" value={criteria.location} onChange={(value) => setCriteria({ ...criteria, location: value })} options={["Downtown Hub", "Airport Terminal", "Harbor District"]} />
+        <DateField label="Pick-up date" value={criteria.pickupDate} onChange={(value) => setCriteria({ ...criteria, pickupDate: value })} />
+        <DateField label="Return date" value={criteria.returnDate} onChange={(value) => setCriteria({ ...criteria, returnDate: value })} />
+        <SelectField icon={<CarFront className="h-5 w-5" />} label="Vehicle class" value={criteria.carType} onChange={(value) => setCriteria({ ...criteria, carType: value as QuickSearchCriteria["carType"] })} options={["All vehicles", "SUV", "Sedan", "Electric", "Luxury"]} values={["All", "SUV", "Sedan", "Electric", "Luxury"]} />
+        <button className="flex min-h-14 items-center justify-center gap-2 rounded-[14px] bg-[#0f1e2e] px-6 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[#24374c] active:scale-[0.97] lg:m-1 lg:min-h-0" type="submit">Find vehicles <ArrowRight className="h-4 w-4" /></button>
+      </div>
+    </form>
+  );
+}
+
+function SelectField({ icon, label, value, onChange, options, values }: { icon: React.ReactNode; label: string; value: string; onChange: (value: string) => void; options: string[]; values?: string[] }) {
+  return (
+    <label className="group relative flex min-h-[72px] items-center gap-3 rounded-[14px] border border-slate-200 bg-white px-4 transition focus-within:border-[#0f1e2e] focus-within:ring-4 focus-within:ring-slate-100 lg:rounded-none lg:border-0 lg:bg-transparent lg:px-5 lg:focus-within:ring-0">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#eaf0f3] text-[#0f1e2e] lg:h-auto lg:w-auto lg:bg-transparent">{icon}</span>
+      <span className="min-w-0 flex-1"><span className={labelClass}>{label}</span><select aria-label={label} className="mt-1 block w-full appearance-none bg-transparent pr-6 text-sm font-extrabold text-[#0f1e2e] outline-none" value={value} onChange={(event) => onChange(event.target.value)}>{options.map((option, index) => <option key={option} value={values?.[index] ?? option}>{option}</option>)}</select></span>
+      <ChevronDown className="pointer-events-none h-4 w-4 shrink-0 text-slate-400 transition group-focus-within:rotate-180 group-focus-within:text-[#0f1e2e]" />
+    </label>
+  );
+}
+
+function DateField({ label, value, onChange }: { label: string; value: string; onChange: (value: string) => void }) {
+  return (
+    <label className="group relative flex min-h-[72px] items-center gap-3 rounded-[14px] border border-slate-200 bg-white px-4 transition focus-within:border-[#0f1e2e] focus-within:ring-4 focus-within:ring-slate-100 lg:rounded-none lg:border-0 lg:bg-transparent lg:px-5 lg:focus-within:ring-0">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#eaf0f3] text-[#0f1e2e] lg:h-auto lg:w-auto lg:bg-transparent"><CalendarDays className="h-5 w-5" /></span>
+      <span className="min-w-0 flex-1"><span className={labelClass}>{label}</span><span className="mt-1 block truncate text-sm font-extrabold text-[#0f1e2e]">{formatDate(value, "Select date")}</span></span>
+      <input aria-label={label} className="absolute inset-0 h-full w-full cursor-pointer opacity-0" type="date" value={value} onChange={(event) => onChange(event.target.value)} />
+    </label>
+  );
 }

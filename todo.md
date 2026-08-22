@@ -5,3 +5,9 @@
 - [x] Add a booking-history panel using browser storage after reservation confirmation.
 - [x] Add a polished user account entry point suitable for the frontend demonstration.
 - [x] Validate the improved website at desktop and mobile sizes, then save a refreshed checkpoint.
+- [x] Confirm the implementation against every internship submission requirement.
+- [x] Provide the user with custom-domain publishing steps for the completed project.
+- [x] Reconfirm the current laptop and mobile layouts after the latest changes.
+- [x] Provide the current preview address and source-code download route.
+- [x] Correct hero search-bar icon alignment and date-input affordances.
+- [x] Validate the corrected search bar on laptop and mobile screens.
