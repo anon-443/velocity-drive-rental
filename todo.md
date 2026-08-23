@@ -82,7 +82,14 @@
 - [x] Provide the verified GitHub repository link to the user.
 - [x] Clarify the hosting and DNS connection steps for velodrive-rentals.me.
 - [x] Provide the corrected GitHub Pages deployment steps for the static internship demonstration.
-- [ ] Inspect current build routes and image paths for GitHub Pages compatibility.
-- [ ] Create a static internship-demo build and GitHub Pages Actions workflow.
-- [ ] Validate the static build, Pages fallback routes, and generated output.
-- [ ] Push the Pages workflow to GitHub and provide exact velodrive-rentals.me DNS steps.
+- [x] Inspect current build routes and image paths for GitHub Pages compatibility.
+- [x] Create a static internship-demo build and GitHub Pages Actions workflow.
+- [ ] Validate the static build, Pages fallback routes, and generated output on the deployed custom domain.
+- [x] Push the Pages workflow to GitHub and provide exact velodrive-rentals.me DNS steps.
+- [x] Inspect the current velodrive-rentals.me DNS and certificate mismatch.
+- [x] Provide a safe remediation sequence for GitHub Pages DNS and HTTPS activation.
+- [ ] Verify the corrected Find vehicles control on the deployed GitHub Pages site.
+- [ ] Run an end-to-end test of primary internship flows across the redeployed static Pages site.
+- [ ] Record validation evidence and push the latest fixes and deliverables to GitHub.
+- [ ] Push the Find vehicles and direct-route fixes, then confirm a successful GitHub Pages redeployment.
+- [ ] Re-test the live home, Booking Terms, comparison, and vehicle-detail routes after redeployment.

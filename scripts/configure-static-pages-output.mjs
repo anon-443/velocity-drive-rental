@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 const outputDir = resolve(process.cwd(), process.env.STATIC_OUTPUT_DIR || "dist/pages");
@@ -11,4 +11,14 @@ html = html
   .replace('href="/manus-storage/velocity-drive-new-mark_c1ed0e2a.png"', 'href="./assets/velocity-drive-new-mark.png"');
 
 await writeFile(indexFile, html);
-console.log("Configured static Pages metadata and favicon.");
+
+for (const route of ["booking-terms", "compare"]) {
+  const routeDirectory = resolve(outputDir, route);
+  const routeIndex = resolve(routeDirectory, "index.html");
+  const routeHtml = html.replaceAll("./assets/", "../assets/");
+
+  await mkdir(routeDirectory, { recursive: true });
+  await writeFile(routeIndex, routeHtml);
+}
+
+console.log("Configured static Pages metadata, favicon, and direct route shells.");
