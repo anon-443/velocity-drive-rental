@@ -77,3 +77,6 @@
 - [x] Complete feasible authentication validation before final publication.
 - [x] Create a fresh GitHub-ready source archive without dependencies, build output, or workspace logs.
 - [x] Document the no-cost hosting and velodrive-rentals.me custom-domain connection steps.
+- [ ] Confirm the available GitHub connection and remote repository settings.
+- [ ] Create a Velocity Drive repository and push the sanitized project source.
+- [ ] Verify the remote source contents and provide the repository link.
