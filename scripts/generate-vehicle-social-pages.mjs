@@ -6,7 +6,7 @@ const publicRoot = resolve(root, "dist/public");
 const fleetFile = await readFile(resolve(root, "client/src/data/fleet.ts"), "utf8");
 const recordMatcher = /\{ id: "([^"]+)", name: "([^"]+)", modelYear: "([^"]+)", type: "([^"]+)", image: "([^"]+)"[\s\S]*?rate: (\d+),[\s\S]*?description: "([^"]+)"/g;
 const vehicles = [...fleetFile.matchAll(recordMatcher)].map((match) => ({ id: match[1], name: match[2], year: match[3], type: match[4], image: match[5], rate: match[6], description: match[7] }));
-const siteUrl = (process.env.PUBLIC_SITE_URL || "https://velodrive-nsztcadp.manus.space").replace(/\/$/, "");
+const siteUrl = (process.env.PUBLIC_SITE_URL || "https://velodrive-rentals.me").replace(/\/$/, "");
 
 for (const vehicle of vehicles) {
   const title = `${vehicle.year} ${vehicle.name} | Velocity Drive`;

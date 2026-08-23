@@ -63,3 +63,16 @@
 - [x] Add insurance and GPS estimates to the vehicle comparison view.
 - [x] Show a clear toast whenever Favorites are added or removed.
 - [x] Validate crawler pages, price estimates, notifications, and responsive layouts.
+- [x] Inspect current social metadata, footer routes, and Favorites storage boundaries.
+- [x] Enable authenticated storage for cross-device Favorites.
+- [x] Set velodrive-rentals.me as the production social metadata base URL.
+- [x] Add a dedicated Booking Terms and Conditions page with footer navigation.
+- [x] Implement account-aware Favorites sync and account controls.
+- [x] Validate protected Favorites operations and legal navigation.
+- [ ] Verify the signed-in Favorites flow: save or remove a vehicle, refresh, and confirm account-backed state.
+- [ ] Confirm the same signed-in Favorites appear in a separate browser session.
+- [ ] Click-check footer legal and social destinations.
+- [x] Audit the latest full-stack project for GitHub packaging and public deployment needs.
+- [x] Complete feasible authentication validation before final publication.
+- [x] Create a fresh GitHub-ready source archive without dependencies, build output, or workspace logs.
+- [x] Document the no-cost hosting and velodrive-rentals.me custom-domain connection steps.

@@ -14,9 +14,10 @@ type TripDeskProps = {
   onBook: (car: FleetCar) => void;
   onRemoveSaved: (carId: string) => void;
   onClearBookings: () => void;
+  areFavoritesSynced?: boolean;
 };
 
-export default function TripDesk({ savedCars, bookings, onBook, onRemoveSaved, onClearBookings }: TripDeskProps) {
+export default function TripDesk({ savedCars, bookings, onBook, onRemoveSaved, onClearBookings, areFavoritesSynced = false }: TripDeskProps) {
   const [tab, setTab] = useState<"saved" | "bookings">("saved");
   const activeCount = useMemo(() => tab === "saved" ? savedCars.length : bookings.length, [tab, savedCars.length, bookings.length]);
 
@@ -25,7 +26,7 @@ export default function TripDesk({ savedCars, bookings, onBook, onRemoveSaved, o
       <div className="container">
         <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
           <div><p className="eyebrow"><span /> 02 / Your drive desk</p><h2 className="mt-5 max-w-sm font-editorial text-4xl leading-[0.98] tracking-[-0.055em] text-[#0f1e2e] sm:text-5xl">Your Favorites and reservation notes, in one place.</h2></div>
-          <p className="max-w-2xl justify-self-end text-sm leading-7 text-slate-600">This client-side demo keeps Favorites and submitted reservation references in your browser so your selection remains available between visits.</p>
+          <p className="max-w-2xl justify-self-end text-sm leading-7 text-slate-600">{areFavoritesSynced ? "Your Favorites are securely connected to your account, so they are ready on your other devices." : "Sign in to keep Favorites with your account and make them available on your other devices."}</p>
         </div>
         <div className="route-rule mt-10" />
         <div className="mt-7 flex flex-wrap items-center justify-between gap-4">
@@ -33,7 +34,7 @@ export default function TripDesk({ savedCars, bookings, onBook, onRemoveSaved, o
             <button onClick={() => setTab("saved")} className={`flex items-center gap-2 rounded-lg px-3.5 py-2.5 text-xs font-extrabold transition ${tab === "saved" ? "bg-[#0f1e2e] text-white shadow-sm" : "text-slate-500 hover:text-[#0f1e2e]"}`}><Heart className="h-3.5 w-3.5" /> Favorites <span className={`rounded-full px-1.5 py-0.5 text-[9px] ${tab === "saved" ? "bg-white/15 text-white" : "bg-slate-200 text-slate-600"}`}>{savedCars.length}</span></button>
             <button onClick={() => setTab("bookings")} className={`flex items-center gap-2 rounded-lg px-3.5 py-2.5 text-xs font-extrabold transition ${tab === "bookings" ? "bg-[#0f1e2e] text-white shadow-sm" : "text-slate-500 hover:text-[#0f1e2e]"}`}><Bookmark className="h-3.5 w-3.5" /> Reservations <span className={`rounded-full px-1.5 py-0.5 text-[9px] ${tab === "bookings" ? "bg-white/15 text-white" : "bg-slate-200 text-slate-600"}`}>{bookings.length}</span></button>
           </div>
-          <div className="flex flex-wrap items-center gap-3"><span className="text-[10px] font-extrabold uppercase tracking-[0.15em] text-slate-400">{activeCount ? `${activeCount} item${activeCount === 1 ? "" : "s"} stored locally` : "Ready when you are"}</span>{savedCars.length >= 2 && <Link href="/compare" className="flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-2 text-[10px] font-extrabold uppercase tracking-[0.12em] text-[#0f1e2e] transition hover:border-[#d97706] hover:text-[#d97706]"><Scale className="h-3.5 w-3.5" /> Compare 2–3 Favorites</Link>}</div>
+          <div className="flex flex-wrap items-center gap-3"><span className="text-[10px] font-extrabold uppercase tracking-[0.15em] text-slate-400">{activeCount ? `${activeCount} item${activeCount === 1 ? "" : "s"} ${areFavoritesSynced && tab === "saved" ? "synced" : "ready"}` : "Ready when you are"}</span>{savedCars.length >= 2 && <Link href="/compare" className="flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-2 text-[10px] font-extrabold uppercase tracking-[0.12em] text-[#0f1e2e] transition hover:border-[#d97706] hover:text-[#d97706]"><Scale className="h-3.5 w-3.5" /> Compare 2–3 Favorites</Link>}</div>
         </div>
         <AnimatePresence mode="wait">
           {tab === "saved" ? <SavedVehicles key="saved" cars={savedCars} onBook={onBook} onRemove={onRemoveSaved} /> : <BookingHistory key="bookings" bookings={bookings} onClear={onClearBookings} />}

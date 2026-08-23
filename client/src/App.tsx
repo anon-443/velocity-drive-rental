@@ -8,11 +8,13 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import CompareVehicles from "./pages/CompareVehicles";
 import Home from "./pages/Home";
+import BookingTerms from "./pages/BookingTerms";
 import VehicleDetails from "./pages/VehicleDetails";
 
 /** Velocity Drive visual system: Modern Motor Journal — a stable light theme with a query bridge for crawler-friendly vehicle pages. */
 function Router() {
-  return <Switch><Route path="/" component={Home} /><Route path="/fleet/:id" component={VehicleDetails} /><Route path="/compare" component={CompareVehicles} /><Route path="/404" component={NotFound} /><Route component={NotFound} /></Switch>;
+  // make sure to consider if you need authentication for certain routes
+  return <Switch><Route path="/" component={Home} /><Route path="/fleet/:id" component={VehicleDetails} /><Route path="/compare" component={CompareVehicles} /><Route path="/booking-terms" component={BookingTerms} /><Route path="/404" component={NotFound} /><Route component={NotFound} /></Switch>;
 }
 
 function VehicleQueryBridge() {
