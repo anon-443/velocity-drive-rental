@@ -49,3 +49,8 @@
 - [x] Extend Favorites across listing cards and vehicle-detail pages.
 - [x] Update and validate the reusable car-rental workflow skill.
 - [x] Verify detail-page browsing and Favorites on desktop and mobile.
+- [ ] Inspect current detail, Favorites, and route-transition components.
+- [x] Add browser-native sharing with a clipboard fallback on vehicle details.
+- [x] Add fleet-to-detail transition feedback that does not block interaction.
+- [x] Build a two-Favorites comparison view with key specification differences.
+- [x] Verify sharing, transitions, and comparison on desktop and mobile.
