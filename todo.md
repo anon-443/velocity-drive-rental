@@ -159,3 +159,8 @@
 - [x] Replace the current hero display font with a cleaner, more suitable editorial style based on user feedback.
 - [x] Raise the hero vehicle image slightly on desktop while retaining its responsive composition.
 - [x] Validate the revised hero font and image placement at desktop and mobile widths before publishing.
+- [x] Apply the Dribbble reference’s warm natural color palette across Velocity Drive while retaining readable rental states.
+- [x] Refine display typography, spacing, and visual hierarchy toward a calm editorial gallery aesthetic.
+- [x] Recompose hero and vehicle imagery with spacious framing inspired by the reference while keeping booking controls prominent.
+- [x] Restyle key fleet, journey, and contact surfaces so the new design feels cohesive beyond the hero.
+- [x] Validate the redesigned homepage at desktop and mobile widths, including contrast, legibility, and rental-control visibility.

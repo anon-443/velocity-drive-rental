@@ -68,6 +68,50 @@
   .wide-shell { width: 100%; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
   .font-editorial { font-family: "DM Serif Display", Georgia, serif; }
   .font-hero-display { font-family: "DM Serif Display", Georgia, serif; font-weight: 400; }
+  /* Warm gallery system inspired by the supplied interior-design reference. */
+  .interior-nav { border-color: rgba(203, 179, 149, 0.72) !important; background: rgba(251, 251, 251, 0.94) !important; box-shadow: none !important; }
+  .interior-nav .nav-link { color: #705d4c; font-size: 0.74rem; letter-spacing: 0.01em; }
+  .interior-nav .nav-link:hover { color: #1f1108; }
+  .interior-nav .nav-link::after { background: #946a4b; }
+  .interior-nav button[class*="border-slate"], .interior-nav button[class*="bg-white"] { border-color: #e4d5c3 !important; background-color: #fbfbfb !important; color: #4e3422 !important; }
+  .interior-nav button[class*="bg-[#d97706]"] { border: 1px solid #4e3422 !important; background: #4e3422 !important; box-shadow: 0 12px 26px rgba(78, 52, 34, 0.16) !important; color: #fbfbfb !important; }
+  .velocity-interior { background: #fbfbfb !important; color: #1f1108 !important; }
+  .velocity-interior .hero-atmosphere { background: radial-gradient(circle at 74% 28%, rgba(203, 179, 149, 0.3), transparent 21rem), linear-gradient(125deg, #f7f2ec 0%, #f6f0e9 58%, #eadfd1 58%, #eadfd1 100%) !important; }
+  .velocity-interior .hero-atmosphere::before { opacity: 0.6; background-image: linear-gradient(90deg, rgba(78, 52, 34, 0.045) 1px, transparent 1px), linear-gradient(rgba(78, 52, 34, 0.035) 1px, transparent 1px); mask-image: linear-gradient(90deg, black 0%, transparent 78%); }
+  .velocity-interior .interior-hero-copy { padding-top: 0.75rem; }
+  .velocity-interior .eyebrow, .velocity-interior .fleet-kicker { color: #705d4c; letter-spacing: 0.14em; }
+  .velocity-interior .eyebrow span { background: #946a4b; }
+  .velocity-interior .interior-display, .velocity-interior h1, .velocity-interior h2, .velocity-interior h3 { color: #1f1108 !important; }
+  .velocity-interior .interior-display { letter-spacing: -0.06em; }
+  .velocity-interior .interior-display em { color: #946a4b !important; }
+  .velocity-interior [class*="text-slate-600"], .velocity-interior [class*="text-slate-500"] { color: #705d4c !important; }
+  .velocity-interior [class*="text-[#0f1e2e]"] { color: #1f1108 !important; }
+  .velocity-interior .interior-hero-frame { border: 1px solid rgba(78, 52, 34, 0.16); background: #1f1108; box-shadow: 0 32px 76px rgba(78, 52, 34, 0.18); }
+  .velocity-interior .interior-hero-frame img { filter: saturate(0.82) sepia(0.06) contrast(0.98); object-position: center 56%; }
+  .velocity-interior .interior-hero-frame > div:first-of-type { background: linear-gradient(to top, rgba(31, 17, 8, 0.7), transparent 58%); }
+  .velocity-interior .interior-hero-media > div:last-child { background: #4e3422; box-shadow: 0 20px 38px rgba(78, 52, 34, 0.24); }
+  .velocity-interior .interior-search form { border: 1px solid #e0d0be; border-radius: 1.5rem; background: rgba(251, 251, 251, 0.96); box-shadow: 0 24px 54px rgba(78, 52, 34, 0.12); }
+  .velocity-interior .interior-search [class*="bg-[#0f1e2e]"], .velocity-interior button[class*="bg-[#d97706]"] { background: #4e3422 !important; box-shadow: 0 12px 26px rgba(78, 52, 34, 0.18) !important; color: #fbfbfb !important; }
+  .velocity-interior button[class*="bg-[#d97706]"]:hover, .velocity-interior .interior-search [class*="bg-[#0f1e2e]"]:hover { background: #1f1108 !important; }
+  .velocity-interior .interior-operational-bar, .velocity-interior .interior-fleet-banner { border-color: #674933 !important; background: #1f1108 !important; }
+  .velocity-interior .interior-operational-bar .font-editorial, .velocity-interior .interior-fleet-banner h2 { color: #cbb395 !important; }
+  .velocity-interior .interior-fleet-banner .eyebrow, .velocity-interior .interior-fleet-banner [class*="text-[#f6b256]"] { color: #cbb395 !important; }
+  .velocity-interior .interior-fleet-banner button[class*="bg-white"] { border-color: rgba(203, 179, 149, 0.28); background: rgba(203, 179, 149, 0.08) !important; }
+  .velocity-interior #fleet, .velocity-interior #why-velocity, .velocity-interior #contact { background: #fbfbfb !important; }
+  .velocity-interior #how-it-works { border-color: #e7d8c8 !important; background: #f5eee6 !important; }
+  .velocity-interior .route-rule { background: linear-gradient(90deg, #946a4b 0 56px, #dfcdb9 56px 100%); }
+  .velocity-interior #fleet aside, .velocity-interior #fleet .fleet-card, .velocity-interior #fleet input, .velocity-interior #fleet label, .velocity-interior #fleet .rounded-xl.border, .velocity-interior #fleet .rounded-2xl.border { border-color: #e5d5c3 !important; background-color: #fffdfb !important; box-shadow: 0 18px 42px rgba(78, 52, 34, 0.07); }
+  .velocity-interior #fleet .fleet-card { border-radius: 1.5rem; }
+  .velocity-interior #fleet .fleet-card:hover { border-color: #cbb395 !important; box-shadow: 0 26px 56px rgba(78, 52, 34, 0.14); }
+  .velocity-interior #fleet .fleet-card > a:first-child img { filter: saturate(0.82) sepia(0.05); }
+  .velocity-interior #fleet [class*="bg-[#eaf0f3]"], .velocity-interior #fleet [class*="bg-slate-50"] { background-color: #f5eee6 !important; }
+  .velocity-interior #fleet [class*="text-[#d97706]"], .velocity-interior #fleet [class*="text-[#b45309]"] { color: #946a4b !important; }
+  .velocity-interior #fleet [class*="border-[#d97706]"] { border-color: #946a4b !important; }
+  .velocity-interior #my-drive, .velocity-interior #why-velocity, .velocity-interior #contact { background: #f7f2ec !important; }
+  .velocity-interior #why-velocity [class*="bg-[#0f1e2e]"] { background: #4e3422 !important; }
+  .velocity-interior #why-velocity [class*="bg-white"], .velocity-interior #contact [class*="bg-white"] { border-color: #e5d5c3 !important; background: #fffdfb !important; }
+  .velocity-interior #why-velocity [class*="bg-[#eaf0f3]"] { background: #eadfd1 !important; color: #4e3422 !important; }
+  #site-footer { border-color: #674933 !important; background: #1f1108 !important; }
   .eyebrow, .fleet-kicker { display: flex; align-items: center; gap: 0.55rem; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; line-height: 1; text-transform: uppercase; color: #64748b; }
   .eyebrow span { display: inline-block; height: 0.55rem; width: 0.55rem; background: #d97706; }
   .route-rule { height: 1px; width: 100%; background: linear-gradient(90deg, #d97706 0 56px, #dce3e8 56px 100%); }

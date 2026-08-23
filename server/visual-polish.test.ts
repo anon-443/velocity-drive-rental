@@ -150,15 +150,22 @@ describe("visual polish system", () => {
   });
 
   it("keeps the requested hero, booking confirmation, and review-ready refinements honest and motion-safe", async () => {
-    const [home, booking, vehicleDetails] = await Promise.all([
+    const [home, booking, vehicleDetails, styles] = await Promise.all([
       readFile(new URL("../client/src/pages/Home.tsx", import.meta.url), "utf8"),
       readFile(new URL("../client/src/pages/BookingPage.tsx", import.meta.url), "utf8"),
       readFile(new URL("../client/src/pages/VehicleDetails.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/index.css", import.meta.url), "utf8"),
     ]);
 
     expect(home).toContain("lg:pt-4 xl:pt-5");
     expect(home).toContain("font-hero-display");
     expect(home).toContain("md:-translate-y-4");
+    expect(home).toContain("velocity-interior");
+    expect(home).toContain("interior-hero-frame");
+    expect(home).toContain("interior-search");
+    expect(styles).toContain("Warm gallery system inspired by the supplied interior-design reference");
+    expect(styles).toContain("#4e3422");
+    expect(styles).toContain("#cbb395");
     expect(booking).toContain("AnimatePresence mode=\"wait\"");
     expect(booking).toContain("ConfirmationModal");
     expect(booking).toContain("aria-modal=\"true\"");
