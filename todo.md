@@ -81,3 +81,8 @@
 - [x] Create a Velocity Drive repository and push the sanitized project source.
 - [x] Provide the verified GitHub repository link to the user.
 - [x] Clarify the hosting and DNS connection steps for velodrive-rentals.me.
+- [x] Provide the corrected GitHub Pages deployment steps for the static internship demonstration.
+- [ ] Inspect current build routes and image paths for GitHub Pages compatibility.
+- [ ] Create a static internship-demo build and GitHub Pages Actions workflow.
+- [ ] Validate the static build, Pages fallback routes, and generated output.
+- [ ] Push the Pages workflow to GitHub and provide exact velodrive-rentals.me DNS steps.

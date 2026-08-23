@@ -150,9 +150,11 @@ function vitePluginManusDebugCollector(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector()];
+export default defineConfig(({ mode }) => {
+  const isStaticPagesBuild = mode === "pages";
+  const plugins = [react(), tailwindcss(), jsxLocPlugin(), ...(isStaticPagesBuild ? [] : [vitePluginManusRuntime(), vitePluginManusDebugCollector()])];
 
-export default defineConfig({
+  return {
   plugins,
   resolve: {
     alias: {
@@ -165,9 +167,10 @@ export default defineConfig({
   root: path.resolve(import.meta.dirname, "client"),
   publicDir: path.resolve(import.meta.dirname, "client", "public"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    outDir: path.resolve(import.meta.dirname, isStaticPagesBuild ? "dist/pages" : "dist/public"),
     emptyOutDir: true,
   },
+  base: isStaticPagesBuild ? "./" : "/",
   server: {
     host: true,
     allowedHosts: [
@@ -184,4 +187,5 @@ export default defineConfig({
       deny: ["**/.*"],
     },
   },
+};
 });

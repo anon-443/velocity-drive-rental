@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "NODE_ENV=development tsx watch server/_core/index.ts",
     "build": "vite build && node scripts/generate-vehicle-social-pages.mjs && esbuild server/_core/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "build:pages": "VITE_STATIC_DEMO=true VITE_PAGES_REPO=velocity-drive-rental STATIC_OUTPUT_DIR=dist/pages vite build --mode pages && STATIC_OUTPUT_DIR=dist/pages node scripts/stage-static-demo-assets.mjs && STATIC_OUTPUT_DIR=dist/pages node scripts/configure-static-pages-output.mjs && STATIC_OUTPUT_DIR=dist/pages node scripts/generate-vehicle-social-pages.mjs",
     "start": "NODE_ENV=production node dist/index.js",
     "check": "tsc --noEmit",
     "format": "prettier --write .",

@@ -2,6 +2,7 @@ import { startLogin } from "@/const";
 import { trpc } from "@/lib/trpc";
 import { TRPCClientError } from "@trpc/client";
 import { useCallback, useEffect, useMemo } from "react";
+import { isStaticDemo } from "@/lib/staticDemo";
 
 type UseAuthOptions = {
   redirectOnUnauthenticated?: boolean;
@@ -17,6 +18,7 @@ export function useAuth(options?: UseAuthOptions) {
   const utils = trpc.useUtils();
 
   const meQuery = trpc.auth.me.useQuery(undefined, {
+    enabled: !isStaticDemo,
     retry: false,
     refetchOnWindowFocus: false,
   });
@@ -28,6 +30,7 @@ export function useAuth(options?: UseAuthOptions) {
   });
 
   const logout = useCallback(async () => {
+    if (isStaticDemo) return;
     try {
       await logoutMutation.mutateAsync();
     } catch (error: unknown) {
@@ -57,9 +60,9 @@ export function useAuth(options?: UseAuthOptions) {
     );
     return {
       user: meQuery.data ?? null,
-      loading: meQuery.isLoading || logoutMutation.isPending,
-      error: meQuery.error ?? logoutMutation.error ?? null,
-      isAuthenticated: Boolean(meQuery.data),
+      loading: !isStaticDemo && (meQuery.isLoading || logoutMutation.isPending),
+      error: isStaticDemo ? null : meQuery.error ?? logoutMutation.error ?? null,
+      isAuthenticated: !isStaticDemo && Boolean(meQuery.data),
     };
   }, [
     meQuery.data,
@@ -70,7 +73,7 @@ export function useAuth(options?: UseAuthOptions) {
   ]);
 
   useEffect(() => {
-    if (!redirectOnUnauthenticated) return;
+    if (isStaticDemo || !redirectOnUnauthenticated) return;
     if (meQuery.isLoading || logoutMutation.isPending) return;
     if (state.user) return;
     if (typeof window === "undefined") return;

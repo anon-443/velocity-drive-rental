@@ -2,10 +2,17 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 
 const root = process.cwd();
-const publicRoot = resolve(root, "dist/public");
+const publicRoot = resolve(root, process.env.STATIC_OUTPUT_DIR || "dist/public");
 const fleetFile = await readFile(resolve(root, "client/src/data/fleet.ts"), "utf8");
-const recordMatcher = /\{ id: "([^"]+)", name: "([^"]+)", modelYear: "([^"]+)", type: "([^"]+)", image: "([^"]+)"[\s\S]*?rate: (\d+),[\s\S]*?description: "([^"]+)"/g;
-const vehicles = [...fleetFile.matchAll(recordMatcher)].map((match) => ({ id: match[1], name: match[2], year: match[3], type: match[4], image: match[5], rate: match[6], description: match[7] }));
+const recordMatcher = /\{ id: "([^"]+)", name: "([^"]+)", modelYear: "([^"]+)", type: "([^"]+)", image: staticAssetPath\("([^"]+)"\)[\s\S]*?rate: (\d+),[\s\S]*?description: "([^"]+)"/g;
+const staticImageNames = {
+  "/manus-storage/velocity-suv_f11b8d82.jpg": "/assets/velocity-suv.jpg",
+  "/manus-storage/velocity-electric_62363ef1.jpg": "/assets/velocity-electric.jpg",
+  "/manus-storage/velocity-luxury_3afef11e.jpg": "/assets/velocity-luxury.jpg",
+  "/manus-storage/velocity-crossover_4ab45789.jpg": "/assets/velocity-crossover.jpg",
+};
+const isStaticPages = Boolean(process.env.STATIC_OUTPUT_DIR);
+const vehicles = [...fleetFile.matchAll(recordMatcher)].map((match) => ({ id: match[1], name: match[2], year: match[3], type: match[4], image: isStaticPages ? staticImageNames[match[5]] || match[5] : match[5], rate: match[6], description: match[7] }));
 const siteUrl = (process.env.PUBLIC_SITE_URL || "https://velodrive-rentals.me").replace(/\/$/, "");
 
 for (const vehicle of vehicles) {
@@ -29,7 +36,7 @@ for (const vehicle of vehicles) {
     <meta name="twitter:title" content="${title}" />
     <meta name="twitter:description" content="${description}" />
     <meta name="twitter:image" content="${siteUrl}${vehicle.image}" />
-    <script>window.location.replace('/?vehicle=${vehicle.id}')</script>
+    <script>window.location.replace(new URL('../../?vehicle=${vehicle.id}', window.location.href).href)</script>
   </head>
   <body><p>Opening ${vehicle.name}…</p></body>
 </html>`;
