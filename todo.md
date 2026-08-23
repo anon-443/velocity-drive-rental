@@ -80,3 +80,4 @@
 - [x] Confirm the available GitHub connection and remote repository settings.
 - [x] Create a Velocity Drive repository and push the sanitized project source.
 - [x] Provide the verified GitHub repository link to the user.
+- [x] Clarify the hosting and DNS connection steps for velodrive-rentals.me.
