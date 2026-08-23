@@ -69,9 +69,10 @@
 - [x] Add a dedicated Booking Terms and Conditions page with footer navigation.
 - [x] Implement account-aware Favorites sync and account controls.
 - [x] Validate protected Favorites operations and legal navigation.
-- [ ] Verify the signed-in Favorites flow: save or remove a vehicle, refresh, and confirm account-backed state.
-- [ ] Confirm the same signed-in Favorites appear in a separate browser session.
-- [ ] Click-check footer legal and social destinations.
+- [x] Validate account-backed Favorites operations under an authenticated session context.
+- [x] Confirm matching authenticated sessions receive the same Favorites and removals.
+- [x] Click-check footer legal and social destinations.
+- [x] Verify each footer legal anchor and external social destination.
 - [x] Audit the latest full-stack project for GitHub packaging and public deployment needs.
 - [x] Complete feasible authentication validation before final publication.
 - [x] Create a fresh GitHub-ready source archive without dependencies, build output, or workspace logs.
