@@ -17,4 +17,25 @@ describe("visual polish system", () => {
     expect(source).toContain('mode="wait"');
     expect(source).toContain("route-progress");
   });
+
+  it("extends the roadbook visual treatment from the hero into fleet cards and vehicle journals", async () => {
+    const source = await readFile(new URL("../client/src/index.css", import.meta.url), "utf8");
+
+    expect(source).toContain("#fleet article:hover::before");
+    expect(source).toContain('main:has([aria-label^="Show gallery"])');
+    expect(source).toContain("filter: saturate(1.04) contrast(1.05)");
+  });
+
+  it("carries the visual system into comparison and terms pages instead of styling only the homepage", async () => {
+    const [comparison, terms, styles] = await Promise.all([
+      readFile(new URL("../client/src/pages/CompareVehicles.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/pages/BookingTerms.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/index.css", import.meta.url), "utf8"),
+    ]);
+
+    expect(comparison).toContain("comparison-matrix");
+    expect(terms).toContain("terms-card");
+    expect(styles).toContain(".comparison-journal");
+    expect(styles).toContain(".terms-rail");
+  });
 });

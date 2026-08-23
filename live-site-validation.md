@@ -26,3 +26,9 @@ With two browser-local Favorites, the live **Compare** page rendered the Kia Sor
 The live inquiry form accepted non-personal test values, reset its fields after submission, and displayed the success toast: “Your inquiry is ready for the Velocity Drive team.” The static form provides client-side confirmation only; it does not send an email or create a backend inquiry record.
 
 The complete live booking request flow was exercised with non-personal test values. It accepted contact details, a September 15–17, 2026 rental window, and the GPS add-on; recalculated the two-day estimate from $156 to $172; then showed reservation confirmation **VD-1XCCTB** together with the dates, price, and a client-side success toast. The reservation was added only to the browser-local demo drive desk.
+
+## 2026-08-23 — Responsive hero and navigation refinement
+
+GitHub Actions workflow **32645731391** completed successfully for commit `dad9a41`. The refreshed custom-domain homepage was then checked after JavaScript completed loading. It renders the corrected three-line hero headline, with “well-planned” kept intact, balanced copy/image columns, more deliberate surrounding whitespace, and a fully contained **Find vehicles** action.
+
+The responsive static build was also checked at **375 × 812** and **1440 × 900** before release. The phone layout retains readable three-line typography, header spacing, and clear hero-image framing; the wider layout presents an intentional editorial two-column composition. The new transition layer uses brief opacity/translate movement plus a non-blocking top progress cue, while automatically suppressing motion for visitors who request reduced motion.

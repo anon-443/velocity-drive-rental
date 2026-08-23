@@ -99,10 +99,13 @@
 - [x] Audit the hero headline wrapping, current page hierarchy, and motion quality.
 - [x] Fix the oversized hero headline across desktop and mobile breakpoints.
 - [x] Rebalance hero column widths, image framing, and whitespace on desktop and mobile.
-- [ ] Strengthen the editorial automotive visual system across the primary pages and cards.
+- [x] Strengthen the editorial automotive visual system across the primary pages and cards.
 - [x] Add accessible page transitions and route-level loading feedback.
 - [ ] Validate the refreshed hero, visual system, and transitions across desktop and mobile, then publish to GitHub Pages.
 - [x] Audit the current visual hierarchy, page composition, and motion quality.
-- [ ] Strengthen the editorial automotive visual system across primary pages and cards.
+- [x] Strengthen the editorial automotive visual system across primary pages and cards.
+- [x] Refine the fleet card hierarchy and vehicle detail specification surface with roadbook accents and clearer visual rhythm.
+- [x] Apply coordinated editorial visual refinements to the comparison and Booking Terms pages.
+- [ ] Publish and validate the expanded cross-page visual system on the live Pages site.
 - [x] Add an accessible page-transition layer and route-level loading feedback.
 - [ ] Validate the refreshed design and transitions across desktop and mobile, then publish to GitHub Pages.
