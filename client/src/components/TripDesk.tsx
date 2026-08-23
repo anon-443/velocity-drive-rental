@@ -23,7 +23,7 @@ export default function TripDesk({ savedCars, bookings, onBook, onRemoveSaved, o
     <section id="my-drive" className="scroll-mt-24 border-y border-slate-200 bg-white py-20 sm:py-24">
       <div className="container">
         <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
-          <div><p className="eyebrow"><span /> Your drive desk</p><h2 className="mt-5 max-w-sm font-editorial text-4xl leading-[0.98] tracking-[-0.055em] text-[#0f1e2e] sm:text-5xl">Your saved fleet and reservation notes, in one place.</h2></div>
+          <div><p className="eyebrow"><span /> 02 / Your drive desk</p><h2 className="mt-5 max-w-sm font-editorial text-4xl leading-[0.98] tracking-[-0.055em] text-[#0f1e2e] sm:text-5xl">Your saved fleet and reservation notes, in one place.</h2></div>
           <p className="max-w-2xl justify-self-end text-sm leading-7 text-slate-600">This client-side demo keeps saved vehicles and submitted reservation references in your browser so your selection remains available between visits.</p>
         </div>
         <div className="route-rule mt-10" />

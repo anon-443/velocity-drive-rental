@@ -37,3 +37,9 @@
 - [x] Build a self-contained Vercel-ready source copy with bundled visual assets.
 - [x] Validate date pickers, key buttons, icon placement, and the production build.
 - [x] Package the external-hosting ZIP and provide velodrive-rentals.me DNS steps.
+- [x] Inspect the listing and contact components before extending their interaction model.
+- [x] Add price, type, and passenger-capacity filtering with a clear sidebar state.
+- [x] Add loading motion and enhanced hover behavior to the vehicle listing.
+- [x] Add a functional inquiry form and accessible rental FAQ accordion.
+- [x] Create and validate an advanced car-rental frontend workflow skill.
+- [x] Verify the expanded experience on desktop and mobile.

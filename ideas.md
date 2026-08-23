@@ -85,3 +85,6 @@ The mark is a **forward-leaning, open loop** that implies both a steering turn a
 - Amber is now reserved for booking actions, active/status states, key numerals, and short editorial entry marks; it is not a general-purpose icon or headline color.
 - Fleet content follows a journal structure: one lead vehicle forms a generous editorial spread while supporting vehicles use tighter comparison cards with uppercase technical spec rails.
 - Header and footer share the same generated open-loop mark, navy stamp, amber base stroke, and split custom Velocity / Drive wordmark treatment.
+- Every major content section will carry at least one roadbook device: a numbered label, route rule, amber entry mark, or compact technical rail.
+- The logo lockup will give the graphic mark greater visual weight than the wordmark at header and footer scale, preserving the brand as a graphic-first automotive stamp.
+- Process, saved-fleet, and benefit content will use route language, numbered references, and technical framing rather than generic productivity-card copy.

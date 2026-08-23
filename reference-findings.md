@@ -9,3 +9,13 @@ The correction will retain accessible date input behavior while exposing one int
 The published page contains no project-source copy for the reported badge. The **“Made with Manus”** element is appended outside the Velocity Drive application root, so it is a hosting-level display element rather than website content and cannot be removed through the site’s React/CSS source.
 
 The automotive reference uses a substantially wider desktop content region with a broad edge-to-edge visual rhythm and larger primary imagery. The Velocity Drive update should use a larger desktop container, a taller hero media stage, a more generous section width, and an enlarged desktop display scale while retaining the current mobile layout and brand system.
+
+## Advanced Fleet and Contact Findings
+
+The fleet uses one page-level source of truth for search term, type, price range, passenger capacity, sort order, and selected rental dates. Filters remain client-side demo behavior and retain the selected date window when discovery filters are reset. The filter rail uses a short state transition without claiming a live inventory search.
+
+The dedicated contact destination owns the `#contact` anchor; the footer uses a distinct identifier. Contact form success is a local frontend acknowledgement until an actual message service is connected. The FAQ uses the existing accessible accordion primitive.
+
+## Visual Review Refinements
+
+Every major section carries a roadbook device—editorial numbering, a route rule, an amber entry mark, or technical spec framing. The identity remains graphic-first, with the mark given stronger visual weight than the supporting wordmark. Velocity Amber stays reserved for action, active state, availability, and intentional editorial entry marks.
