@@ -43,3 +43,9 @@
 - [x] Add a functional inquiry form and accessible rental FAQ accordion.
 - [x] Create and validate an advanced car-rental frontend workflow skill.
 - [x] Verify the expanded experience on desktop and mobile.
+- [x] Inspect existing routes, inventory fields, and Favorites persistence before expansion.
+- [x] Create dedicated vehicle-detail routes with image galleries and expanded specifications.
+- [x] Replace basic vehicle copy with coherent, realistic model descriptions and features.
+- [x] Extend Favorites across listing cards and vehicle-detail pages.
+- [x] Update and validate the reusable car-rental workflow skill.
+- [x] Verify detail-page browsing and Favorites on desktop and mobile.

@@ -19,3 +19,11 @@ The dedicated contact destination owns the `#contact` anchor; the footer uses a 
 ## Visual Review Refinements
 
 Every major section carries a roadbook device—editorial numbering, a route rule, an amber entry mark, or technical spec framing. The identity remains graphic-first, with the mark given stronger visual weight than the supporting wordmark. Velocity Amber stays reserved for action, active state, availability, and intentional editorial entry marks.
+
+## Vehicle Detail Expansion Findings
+
+The application currently routes only the homepage and fallback page, while fleet data contains a single hero image and compact discovery-level specifications. Detail routes require a stable slug or ID route, a `getCarById` lookup, a multi-image gallery, richer model-specific fields, and a return path to the fleet. Favorites already use local persistence in the homepage state, so detail pages need a shared Favorites provider or a small storage-backed helper that updates both the listing and detail route consistently.
+
+The homepage currently owns saved-car state, while vehicle cards only expose separate reserve and heart actions. Detail navigation should be an explicit card action rather than stealing existing save or reserve controls. A shared storage-backed Favorites hook can keep the browser-persistent heart state synchronized across the listing, saved desk, and vehicle route.
+
+The responsive vehicle journal layout works as a staged desktop spread and compresses cleanly to a mobile gallery, specification rail, and stacked actions. Keep the gallery selection, Favorites heart, reservation entry action, return-to-fleet path, and technical data visible without depending on hover at narrow widths.

@@ -13,6 +13,7 @@ import Navbar from "@/components/Navbar";
 import TripDesk from "@/components/TripDesk";
 import { fleet, isCarAvailableForDates, type CarType, type FleetCar } from "@/data/fleet";
 import { readStoredValue, type TripRecord, writeStoredValue } from "@/lib/velocityStore";
+import { useFavorites } from "@/lib/useFavorites";
 
 type SortBy = "featured" | "low" | "high";
 const pageReveal = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
@@ -26,9 +27,8 @@ export default function Home() {
   const [isFiltering, setIsFiltering] = useState(false);
   const [selectedCar, setSelectedCar] = useState<FleetCar | null>(null);
   const [rentalCriteria, setRentalCriteria] = useState<QuickSearchCriteria>({ location: "Bishkek Downtown Hub", pickupDate: "", returnDate: "", carType: "All" });
-  const [savedCarIds, setSavedCarIds] = useState<string[]>(() => readStoredValue("velocity-drive-saved", []));
+  const { savedCarIds, toggleFavorite } = useFavorites();
   const [bookings, setBookings] = useState<TripRecord[]>(() => readStoredValue("velocity-drive-bookings", []));
-  useEffect(() => { writeStoredValue("velocity-drive-saved", savedCarIds); }, [savedCarIds]);
   useEffect(() => { writeStoredValue("velocity-drive-bookings", bookings); }, [bookings]);
   useEffect(() => { setIsFiltering(true); const timer = window.setTimeout(() => setIsFiltering(false), 280); return () => window.clearTimeout(timer); }, [searchTerm, selectedCategory, sortBy, priceBand, passengerBand, rentalCriteria]);
   const filteredFleet = useMemo(() => {
@@ -37,7 +37,7 @@ export default function Home() {
     return [...visible].sort((a, b) => sortBy === "low" ? a.rate - b.rate : sortBy === "high" ? b.rate - a.rate : 0);
   }, [searchTerm, selectedCategory, sortBy, priceBand, passengerBand, rentalCriteria]);
   const handleQuickSearch = (criteria: QuickSearchCriteria) => { setRentalCriteria(criteria); setSelectedCategory(criteria.carType); document.querySelector("#fleet")?.scrollIntoView({ behavior: "smooth", block: "start" }); };
-  const handleToggleSaved = (carId: string) => setSavedCarIds((current) => current.includes(carId) ? current.filter((id) => id !== carId) : [...current, carId]);
+  const handleToggleSaved = (carId: string) => toggleFavorite(carId);
   const handleBookingComplete = (booking: TripRecord) => setBookings((current) => [booking, ...current.filter((item) => item.id !== booking.id)].slice(0, 6));
   const savedCars = fleet.filter((car) => savedCarIds.includes(car.id));
   const clearFleetFilters = () => { setSearchTerm(""); setSelectedCategory("All"); setSortBy("featured"); setPriceBand("all"); setPassengerBand("all"); };
