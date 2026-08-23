@@ -124,3 +124,9 @@
 - [x] Verify persisted dark mode on mobile Home, Vehicle Details, and Compare after reload or navigation.
 - [x] Verify the populated Compare matrix in night mode on desktop and mobile using saved Favorites.
 - [x] Record final cross-route night-mode evidence before publishing.
+- [x] Tighten featured Kia Sorento typography, specification grid, panel padding, and equal-height actions.
+- [x] Resize supporting fleet-card imagery, typography, price rows, specifications, controls, spacing, and shadows.
+- [x] Normalize section spacing and eyebrow typography across the rental experience.
+- [x] Add refined accessible fleet-card and section-reveal animations.
+- [x] Apply the 72–80px section rhythm and shared eyebrow system across Vehicle Details, Compare, Booking Terms, and empty states.
+- [x] Add reduced-motion-aware reveal choreography to major page sections and validate it at desktop and mobile widths.

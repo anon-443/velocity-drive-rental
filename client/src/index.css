@@ -67,7 +67,7 @@
   .container { width: 100%; max-width: none !important; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
   .wide-shell { width: 100%; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
   .font-editorial { font-family: "DM Serif Display", Georgia, serif; }
-  .eyebrow { display: flex; align-items: center; gap: 0.6rem; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.18em; line-height: 1; text-transform: uppercase; color: #64748b; }
+  .eyebrow, .fleet-kicker { display: flex; align-items: center; gap: 0.55rem; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; line-height: 1; text-transform: uppercase; color: #64748b; }
   .eyebrow span { display: inline-block; height: 0.55rem; width: 0.55rem; background: #d97706; }
   .route-rule { height: 1px; width: 100%; background: linear-gradient(90deg, #d97706 0 56px, #dce3e8 56px 100%); }
   .route-stage { min-height: 100vh; }
@@ -83,6 +83,19 @@
   #fleet article:hover::before { width: 100%; }
   #fleet article > a:first-child img { filter: saturate(0.92) contrast(1.03); }
   #fleet article:hover > a:first-child img { filter: saturate(1.04) contrast(1.05); }
+  .fleet-card .fleet-spec, .fleet-card .fleet-action { transition: transform 0.22s cubic-bezier(0.23, 1, 0.32, 1), color 0.2s ease, border-color 0.2s ease; }
+  .fleet-card:hover .fleet-spec { transform: translateY(-2px); }
+  .fleet-card:hover .fleet-action:first-child svg { transform: translateX(2px); }
+  .fleet-card .fleet-action svg { transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1); }
+  #my-drive, #how-it-works, #why-velocity, #contact { padding-top: 4.5rem !important; padding-bottom: 5rem !important; }
+  .fleet-card-description { color: #666; }
+  .comparison-selector > span:first-child, .comparison-row > div:first-child, .comparison-feature-row > div:first-child, .comparison-vehicle-header p:first-child, .terms-card > p:first-child, main:has([aria-label^="Show gallery"]) aside p[class*="uppercase"] { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; line-height: 1; text-transform: uppercase; }
+  .comparison-journal > section:nth-child(2), main:has([aria-label^="Show gallery"]) > section:nth-child(3) { padding-top: 4.5rem; padding-bottom: 5rem; }
+  .terms-journal { padding-bottom: 5rem; }
+  @media (prefers-reduced-motion: no-preference) {
+    main > section, .terms-journal > section { animation: section-reveal 0.52s cubic-bezier(0.23, 1, 0.32, 1) both; animation-timeline: view(); animation-range: entry 8% cover 30%; }
+  }
+  @keyframes section-reveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
   main:has([aria-label^="Show gallery"]) > section:first-child { position: relative; overflow: hidden; background: linear-gradient(112deg, #eaf0f3 0%, #eaf0f3 62%, #f7f8f6 62%); }
   main:has([aria-label^="Show gallery"]) > section:first-child::after { position: absolute; right: 8%; bottom: 0; height: 4.5rem; width: 1px; content: ""; background: #d97706; box-shadow: 12px 0 0 rgba(217, 119, 6, 0.18), 24px 0 0 rgba(217, 119, 6, 0.08); }
   main:has([aria-label^="Show gallery"]) > section:nth-child(2) { background: linear-gradient(180deg, #f7f8f6 0%, #fff 100%); }
@@ -138,6 +151,7 @@
   html.dark header .brand-emblem { background: #f8fafc !important; }
   html.dark .nav-link { color: #c6d2dc; }
   html.dark .fleet-banner { background: #07101a; border-color: #243a4e; }
+  html.dark .fleet-card-description { color: #afbdca !important; }
   @media (min-width: 640px) { .container { padding-left: 1.5rem; padding-right: 1.5rem; } }
   @media (min-width: 640px) { .wide-shell { padding-left: 1.5rem; padding-right: 1.5rem; } }
   @media (min-width: 1024px) { .container { max-width: none !important; padding-left: 2rem !important; padding-right: 2rem !important; } }

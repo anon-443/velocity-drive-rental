@@ -47,6 +47,27 @@ describe("visual polish system", () => {
     expect(styles).toContain("html.dark header .brand-ink");
   });
 
+  it("keeps the tighter featured and supporting fleet-card system with motion-safe refinements", async () => {
+    const [fleetGrid, home, styles] = await Promise.all([
+      readFile(new URL("../client/src/components/CarGrid.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/pages/Home.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/index.css", import.meta.url), "utf8"),
+    ]);
+
+    expect(fleetGrid).toContain('text-[44px]');
+    expect(fleetGrid).toContain('grid-cols-[1fr_1.35fr_1fr]');
+    expect(fleetGrid).toContain('h-[250px]');
+    expect(fleetGrid).toContain('text-[23px]');
+    expect(fleetGrid).toContain('text-[22px]');
+    expect(fleetGrid).toContain("useReducedMotion");
+    expect(home).toContain('py-[4.5rem] sm:py-20');
+    expect(styles).toContain('.eyebrow, .fleet-kicker');
+    expect(styles).toContain('.fleet-card:hover .fleet-spec');
+    expect(styles).toContain('animation-timeline: view()');
+    expect(styles).toContain('@media (prefers-reduced-motion: no-preference)');
+    expect(fleetGrid).toContain('py-[4.5rem] sm:py-20');
+  });
+
   it("extends the roadbook visual treatment from the hero into fleet cards and vehicle journals", async () => {
     const source = await readFile(new URL("../client/src/index.css", import.meta.url), "utf8");
 
@@ -66,5 +87,20 @@ describe("visual polish system", () => {
     expect(terms).toContain("terms-card");
     expect(styles).toContain(".comparison-journal");
     expect(styles).toContain(".terms-rail");
+  });
+
+  it("uses the shared 72–80px section rhythm and shared eyebrow system across remaining primary routes", async () => {
+    const [vehicleDetails, tripDesk, contact] = await Promise.all([
+      readFile(new URL("../client/src/pages/VehicleDetails.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/components/TripDesk.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/components/ContactSection.tsx", import.meta.url), "utf8"),
+    ]);
+
+    expect(vehicleDetails).toContain('py-[4.5rem] sm:py-20');
+    expect(vehicleDetails).toContain('fleet-kicker text-slate-400');
+    expect(tripDesk).toContain('py-[4.5rem] sm:py-20');
+    expect(tripDesk).toContain('fleet-kicker text-slate-400');
+    expect(contact).toContain('py-[4.5rem] sm:py-20');
+    expect(contact).toContain('fleet-kicker text-[#f6b256]');
   });
 });
