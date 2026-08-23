@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { getCarById, type FleetCar } from "@/data/fleet";
 import { useFavorites } from "@/lib/useFavorites";
+import { useVehicleMeta } from "@/lib/useVehicleMeta";
 import type { TripRecord } from "@/lib/velocityStore";
 import { toast } from "sonner";
 
@@ -20,6 +21,7 @@ export default function VehicleDetails() {
   const { savedCarIds, toggleFavorite } = useFavorites();
   const [selectedImage, setSelectedImage] = useState(0);
   const [bookingCar, setBookingCar] = useState<FleetCar | null>(null);
+  useVehicleMeta(car);
   if (!car) return <div className="min-h-screen bg-[#f7f8f6]"><Navbar /><main className="container py-32"><p className="eyebrow"><span /> Vehicle journal</p><h1 className="mt-5 font-editorial text-6xl tracking-[-0.06em] text-[#0f1e2e]">This vehicle is no longer in the fleet.</h1><button onClick={() => setLocation("/#fleet")} className="mt-8 flex items-center gap-2 rounded-xl bg-[#0f1e2e] px-5 py-3 text-sm font-extrabold text-white"><ArrowLeft className="h-4 w-4" /> Return to fleet</button></main><Footer /></div>;
   const isFavorite = savedCarIds.includes(car.id);
   const handleFavorite = () => { toggleFavorite(car.id); toast.success(isFavorite ? `${car.name} removed from Favorites.` : `${car.name} saved to Favorites.`); };

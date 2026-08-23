@@ -54,3 +54,7 @@
 - [x] Add fleet-to-detail transition feedback that does not block interaction.
 - [x] Build a two-Favorites comparison view with key specification differences.
 - [x] Verify sharing, transitions, and comparison on desktop and mobile.
+- [ ] Inspect current share metadata, comparison selectors, and local Favorites storage.
+- [x] Add route-aware Open Graph metadata for vehicle details.
+- [x] Expand the comparison experience to select up to three Favorites.
+- [x] Verify Favorites remain after a refresh and validate responsive comparison behavior.
