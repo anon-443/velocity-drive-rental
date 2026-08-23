@@ -148,4 +148,26 @@ describe("visual polish system", () => {
     expect(admin).toContain("immediately affect the public fleet and banner");
     expect(visibility).toContain("velocity-drive-visible-fleet");
   });
+
+  it("keeps the requested hero, booking confirmation, and review-ready refinements honest and motion-safe", async () => {
+    const [home, booking, vehicleDetails] = await Promise.all([
+      readFile(new URL("../client/src/pages/Home.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/pages/BookingPage.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/pages/VehicleDetails.tsx", import.meta.url), "utf8"),
+    ]);
+
+    expect(home).toContain("lg:pt-8 xl:pt-10");
+    expect(booking).toContain("AnimatePresence mode=\"wait\"");
+    expect(booking).toContain("ConfirmationModal");
+    expect(booking).toContain("aria-modal=\"true\"");
+    expect(booking).toContain("useReducedMotion");
+    expect(vehicleDetails).toContain("Reviews should come from real trips.");
+    expect(vehicleDetails).toContain("No invented score");
+    expect(vehicleDetails).toContain("verified booking records");
+    expect(home).toContain("pt-12 sm:pt-16 lg:min-h");
+    expect(vehicleDetails).toContain('sm:grid-cols-3');
+    expect(booking).toContain('fixed inset-0 z-50 flex items-center justify-center');
+    expect(booking).toContain('w-full max-w-2xl');
+    expect(booking).toContain('flex flex-wrap gap-3');
+  });
 });

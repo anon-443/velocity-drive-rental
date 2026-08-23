@@ -15,5 +15,8 @@ export default defineConfig({
   test: {
     environment: "node",
     include: ["server/**/*.test.ts", "server/**/*.spec.ts"],
+    env: {
+      PUBLIC_SITE_URL: "https://velodrive-rentals.me",
+    },
   },
 });

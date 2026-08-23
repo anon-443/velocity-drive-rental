@@ -146,3 +146,10 @@
 - [x] Add an in-journal date, duration, availability, and live estimate widget to Vehicle Details.
 - [x] Persist demo admin fleet-visibility toggles and apply them to the public fleet rendering with an explicit browser-local label.
 - [x] Gate the looping hero fleet badge and other new non-essential motion behind reduced-motion preferences.
+- [x] Reduce the excess desktop whitespace above the hero eyebrow while preserving the tested mobile composition.
+- [x] Add reduced-motion-safe animated transitions between booking steps and a polished final confirmation modal.
+- [x] Add an honest review-ready section to vehicle details without fabricated ratings, testimonials, or customer claims.
+- [x] Add regression coverage and responsive validation for the hero, booking transition, confirmation modal, and review-ready vehicle-detail section.
+- [x] Validate the tightened hero spacing at mobile width without regressing the phone composition.
+- [x] Validate the review-ready vehicle-detail section at mobile width without fabricated ratings or testimonials.
+- [x] Validate the final booking confirmation modal at a mobile or alternate responsive breakpoint.
