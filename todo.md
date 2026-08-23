@@ -113,3 +113,4 @@
 - [x] Observe the live route-progress cue during a mobile-viewport route change.
 - [x] Revalidate final live home, fleet-card, and vehicle-detail visual surfaces after the cross-page deployment.
 - [x] Fix truncated hero search labels and values at wide laptop and desktop widths.
+- [x] Reduce excessive outer whitespace around the header and hero at laptop and desktop widths.

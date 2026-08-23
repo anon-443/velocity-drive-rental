@@ -64,7 +64,8 @@
 }
 
 @layer components {
-  .container { width: 100%; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+  .container { width: 100%; max-width: none !important; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+  .wide-shell { width: 100%; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
   .font-editorial { font-family: "DM Serif Display", Georgia, serif; }
   .eyebrow { display: flex; align-items: center; gap: 0.6rem; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.18em; line-height: 1; text-transform: uppercase; color: #64748b; }
   .eyebrow span { display: inline-block; height: 0.55rem; width: 0.55rem; background: #d97706; }
@@ -113,8 +114,11 @@
   .nav-link:hover { color: #0f1e2e; }
   .nav-link:hover::after { width: 100%; }
   @media (min-width: 640px) { .container { padding-left: 1.5rem; padding-right: 1.5rem; } }
-  @media (min-width: 1024px) { .container { max-width: 1440px; padding-left: 2.5rem; padding-right: 2.5rem; } }
-  @media (min-width: 1536px) { .container { max-width: 1600px; padding-left: 3rem; padding-right: 3rem; } }
+  @media (min-width: 640px) { .wide-shell { padding-left: 1.5rem; padding-right: 1.5rem; } }
+  @media (min-width: 1024px) { .container { max-width: none !important; padding-left: 2rem !important; padding-right: 2rem !important; } }
+  @media (min-width: 1024px) { .wide-shell { padding-left: 2rem; padding-right: 2rem; } }
+  @media (min-width: 1536px) { .container { padding-left: 2.5rem !important; padding-right: 2.5rem !important; } }
+  @media (min-width: 1536px) { .wide-shell { padding-left: 2.5rem; padding-right: 2.5rem; } }
 }
 
 @media (prefers-reduced-motion: reduce) {
