@@ -56,3 +56,7 @@ GitHub Actions workflow **32647327446** completed successfully for commit `51b85
 ## 2026-08-23 — Wider header and hero composition
 
 GitHub Actions workflow **32648242375** completed successfully for commit `cee508c`. The header and hero now use a dedicated full-width shell rather than a capped framework container. On the deployed custom domain, the shell measured **1265 px** within a **1280 px** browser viewport, with only the scrollbar outside it and 32 px of safe internal padding. The laptop and phone checks preserve readable content and controls while removing the excessive desktop side bands.
+
+## 2026-08-23 — Fleet presentation, compact header, and night mode
+
+GitHub Actions workflow **32649409440** completed successfully for commit `2c2eaf4`. The live homepage exposes the available-vehicles banner directly below the booking controls, including the four live inventory previews and its fleet-scroll action. It also presents the accessible **Use night mode** control in the global header. Local desktop, ultra-wide, and controlled phone checks confirmed the compact scroll header, stored preference, readable dark surfaces, and populated comparison matrix before the release.
