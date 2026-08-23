@@ -32,3 +32,19 @@ The complete live booking request flow was exercised with non-personal test valu
 GitHub Actions workflow **32645731391** completed successfully for commit `dad9a41`. The refreshed custom-domain homepage was then checked after JavaScript completed loading. It renders the corrected three-line hero headline, with “well-planned” kept intact, balanced copy/image columns, more deliberate surrounding whitespace, and a fully contained **Find vehicles** action.
 
 The responsive static build was also checked at **375 × 812** and **1440 × 900** before release. The phone layout retains readable three-line typography, header spacing, and clear hero-image framing; the wider layout presents an intentional editorial two-column composition. The new transition layer uses brief opacity/translate movement plus a non-blocking top progress cue, while automatically suppressing motion for visitors who request reduced motion.
+
+## 2026-08-23 — Cross-page editorial refinement
+
+GitHub Actions workflow **32646121984** completed successfully for commit `07cc540`. The live custom-domain **Compare** route was checked with two retained browser-local Favorites. It rendered the revised vehicle selectors, image-led comparison headers, specification rail, warm add-on estimate row, and the full side-by-side feature set for the Kia Sorento Hybrid and Hyundai IONIQ 5.
+
+The live **Booking Terms** route was checked at desktop width and at **375 × 812**. The reading rail, numbered terms cards, and booking-information panel remain legible and properly spaced on both layouts. Together with the live homepage check, this confirms the refreshed editorial system is present across the primary rental experience while navigation transitions remain concise and respect reduced-motion preferences.
+
+After the final cross-page deployment, the live homepage was rechecked with the hero, the complete fleet surface, retained Favorites, and the unclipped search action all present. A client-side return from Booking Terms reached the homepage successfully; the transition implementation remains covered by the reduced-motion-aware source regression test, while the rapid visual cue is intentionally brief and non-blocking.
+
+The final live vehicle-detail URL for the Kia Sorento Hybrid returned the expected static crawler page with its journal label, model details, daily rate, hero image, and cabin-feature content. The equivalent rendered vehicle journal was visually checked from the current static build with its gallery, specification panel, and request action intact; the detail-surface styles are shared by the final deployed CSS bundle.
+
+A final settled homepage capture confirmed that the hero image loads normally after the initial paint. The corrected headline, deliberate desktop spacing, and visible Find vehicles control remain intact in the final Pages release.
+
+The live rendered vehicle journal was then opened through the query bridge, confirming the current production bundle presents the gallery, favorite state, specification surface, and request action. A monitored client-side return from that journal to the fleet observed the `.route-progress` cue being added and reached `/` successfully. The shared route wrapper uses `useReducedMotion`, `mode="wait"`, and a short transform/opacity transition; the same responsive component is used by the mobile layout, which was separately checked at phone width on the live terms route.
+
+For the phone viewport, the live query-bridge route change was run at **375 × 812** with a short virtual-time capture. The resulting production DOM included the `route-progress` cue while navigation was in progress, confirming that the same non-blocking feedback is present in the mobile render as well as desktop.
