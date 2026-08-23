@@ -48,3 +48,7 @@ A final settled homepage capture confirmed that the hero image loads normally af
 The live rendered vehicle journal was then opened through the query bridge, confirming the current production bundle presents the gallery, favorite state, specification surface, and request action. A monitored client-side return from that journal to the fleet observed the `.route-progress` cue being added and reached `/` successfully. The shared route wrapper uses `useReducedMotion`, `mode="wait"`, and a short transform/opacity transition; the same responsive component is used by the mobile layout, which was separately checked at phone width on the live terms route.
 
 For the phone viewport, the live query-bridge route change was run at **375 × 812** with a short virtual-time capture. The resulting production DOM included the `route-progress` cue while navigation was in progress, confirming that the same non-blocking feedback is present in the mobile render as well as desktop.
+
+## 2026-08-23 — Hero-search text visibility repair
+
+GitHub Actions workflow **32647327446** completed successfully for commit `51b85c5`. The wide custom-domain homepage was captured at **1548 × 1120** after deployment. The pick-up branch, both date values and hints, vehicle class, and **Find vehicles** action are now fully readable in the five-column layout. At the intermediate laptop breakpoint the controls intentionally switch to two roomy columns, while the phone layout remains stacked and readable.
