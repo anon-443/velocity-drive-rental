@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import BookingTerms from "./pages/BookingTerms";
 import VehicleDetails from "./pages/VehicleDetails";
 import { isStaticDemo, pagesBasePath } from "./lib/staticDemo";
+import RouteTransition from "./components/RouteTransition";
 
 /** Velocity Drive visual system: Modern Motor Journal — a stable light theme with a query bridge for crawler-friendly vehicle pages. */
 function AppRoutes() {
@@ -26,7 +27,7 @@ function VehicleQueryBridge() {
 
 function App() {
   const base = isStaticDemo ? pagesBasePath() : "";
-  return <ErrorBoundary><ThemeProvider defaultTheme="light"><TooltipProvider><Toaster position="top-right" richColors /><WouterRouter base={base}><VehicleQueryBridge /><AppRoutes /></WouterRouter></TooltipProvider></ThemeProvider></ErrorBoundary>;
+  return <ErrorBoundary><ThemeProvider defaultTheme="light"><TooltipProvider><Toaster position="top-right" richColors /><WouterRouter base={base}><VehicleQueryBridge /><RouteTransition><AppRoutes /></RouteTransition></WouterRouter></TooltipProvider></ThemeProvider></ErrorBoundary>;
 }
 
 export default App;

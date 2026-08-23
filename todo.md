@@ -96,3 +96,13 @@
 - [x] Validate the live side-by-side comparison view with at least two saved Favorites.
 - [x] Validate a successful live inquiry-form submission and its client-side feedback.
 - [x] Validate a successful live booking request through final confirmation.
+- [x] Audit the hero headline wrapping, current page hierarchy, and motion quality.
+- [x] Fix the oversized hero headline across desktop and mobile breakpoints.
+- [x] Rebalance hero column widths, image framing, and whitespace on desktop and mobile.
+- [ ] Strengthen the editorial automotive visual system across the primary pages and cards.
+- [x] Add accessible page transitions and route-level loading feedback.
+- [ ] Validate the refreshed hero, visual system, and transitions across desktop and mobile, then publish to GitHub Pages.
+- [x] Audit the current visual hierarchy, page composition, and motion quality.
+- [ ] Strengthen the editorial automotive visual system across primary pages and cards.
+- [x] Add an accessible page-transition layer and route-level loading feedback.
+- [ ] Validate the refreshed design and transitions across desktop and mobile, then publish to GitHub Pages.
