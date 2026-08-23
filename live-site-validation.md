@@ -66,3 +66,9 @@ GitHub Actions workflow **32649409440** completed successfully for commit `2c2ea
 GitHub Actions workflow **32651280697** completed successfully for commit `86c30cf`. After its JavaScript bundle settled, the live homepage rendered the complete search surface, four-vehicle fleet banner, filter rail, featured Kia Sorento Hybrid card, three supporting cards, Favorites desk, contact form, FAQ, and footer. The live DOM exposed the expected detail, save, and reserve controls for every vehicle.
 
 The live Kia Sorento Hybrid journal loaded directly with the gallery, share and Favorite controls, reservation action, six-specification panel, and cabin-and-technology section. Its route labels and specification labels render with the shared compact eyebrow treatment, while the page retains the updated section spacing and the persisted night-mode control.
+
+## 2026-08-23 — Expanded interactive rental demonstration
+
+GitHub Actions workflow **32653148638** completed successfully for commit `5ca5dc9`. The deployed homepage renders the new full-height editorial hero, twelve-vehicle fleet indicator and banner, filter rail, search and sort controls, all twelve client-side demo vehicles, and the clearly labeled local-demo reservation language. No fabricated ratings or customer testimonials were added.
+
+The live direct Kia Sorento Hybrid route loaded through its generated static crawler shell and rendered the gallery, specification panel, availability-window disclosure, live planning-estimate date controls, and similar-vehicle rail. The final static artifact was also used to verify the in-journal calculation for a valid two-day window, browser-local My Drive persistence, and the clearly labeled admin visibility controls that update the public demo fleet state in the same browser.
