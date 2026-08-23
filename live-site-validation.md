@@ -52,3 +52,7 @@ For the phone viewport, the live query-bridge route change was run at **375 × 8
 ## 2026-08-23 — Hero-search text visibility repair
 
 GitHub Actions workflow **32647327446** completed successfully for commit `51b85c5`. The wide custom-domain homepage was captured at **1548 × 1120** after deployment. The pick-up branch, both date values and hints, vehicle class, and **Find vehicles** action are now fully readable in the five-column layout. At the intermediate laptop breakpoint the controls intentionally switch to two roomy columns, while the phone layout remains stacked and readable.
+
+## 2026-08-23 — Wider header and hero composition
+
+GitHub Actions workflow **32648242375** completed successfully for commit `cee508c`. The header and hero now use a dedicated full-width shell rather than a capped framework container. On the deployed custom domain, the shell measured **1265 px** within a **1280 px** browser viewport, with only the scrollbar outside it and 32 px of safe internal padding. The laptop and phone checks preserve readable content and controls while removing the excessive desktop side bands.
