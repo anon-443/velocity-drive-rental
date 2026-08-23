@@ -114,3 +114,13 @@
 - [x] Revalidate final live home, fleet-card, and vehicle-detail visual surfaces after the cross-page deployment.
 - [x] Fix truncated hero search labels and values at wide laptop and desktop widths.
 - [x] Reduce excessive outer whitespace around the header and hero at laptop and desktop widths.
+- [x] Enlarge the hero vehicle image for ultra-wide desktop displays.
+- [x] Add a full-width available-vehicles fleet banner below the hero.
+- [x] Add an optional compact header state when the visitor scrolls down.
+- [x] Add a persistent accessible night-mode control.
+- [x] Extend night-mode styling to vehicle detail, comparison, Booking Terms, footer, and shared content surfaces.
+- [x] Validate persisted night mode and readable contrast across primary routes on desktop and mobile.
+- [x] Fix the header brand-lockup contrast in mobile night mode.
+- [x] Verify persisted dark mode on mobile Home, Vehicle Details, and Compare after reload or navigation.
+- [x] Verify the populated Compare matrix in night mode on desktop and mobile using saved Favorites.
+- [x] Record final cross-route night-mode evidence before publishing.

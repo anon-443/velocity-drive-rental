@@ -113,6 +113,31 @@
   .nav-link::after { position: absolute; bottom: -0.5rem; left: 0; height: 2px; width: 0; content: ""; background: #d97706; transition: width 0.2s cubic-bezier(0.23, 1, 0.32, 1); }
   .nav-link:hover { color: #0f1e2e; }
   .nav-link:hover::after { width: 100%; }
+  .fleet-banner .eyebrow { color: #cbd5e1; }
+  html.dark { color-scheme: dark; }
+  html.dark body { background: #0b1420; color: #e6edf5; }
+  html.dark #home { background: #0b1420 !important; color: #e6edf5; }
+  html.dark #home .hero-atmosphere { background: linear-gradient(118deg, #122234 0%, #0f1e2e 64%, #101b27 64%) !important; }
+  html.dark #home h1, html.dark #home h2, html.dark #home h3, html.dark #home [class*="text-[#0f1e2e]"] { color: #edf3f8 !important; }
+  html.dark #home [class*="text-slate-600"], html.dark #home [class*="text-slate-500"], html.dark #home [class*="text-slate-400"] { color: #afbdca !important; }
+  html.dark #home [class*="bg-white"], html.dark #home [class*="bg-[#f7f8f6]"] { background-color: #142436 !important; }
+  html.dark #home [class*="border-slate-200"] { border-color: #2a4055 !important; }
+  html.dark main { background: #0b1420; color: #e6edf5; }
+  html.dark main [class*="bg-[#f7f8f6]"], html.dark main [class*="bg-[#eaf0f3]"], html.dark main [class*="bg-white"] { background-color: #142436 !important; }
+  html.dark main [class*="text-[#0f1e2e]"] { color: #edf3f8 !important; }
+  html.dark main [class*="text-slate-600"], html.dark main [class*="text-slate-500"], html.dark main [class*="text-slate-400"] { color: #afbdca !important; }
+  html.dark main [class*="border-slate-200"] { border-color: #2a4055 !important; }
+  html.dark main [class*="bg-orange-50"] { background-color: rgba(217, 119, 6, 0.16) !important; }
+  html.dark .comparison-journal > section:first-child, html.dark .terms-hero, html.dark main:has([aria-label^="Show gallery"]) > section:first-child { background: linear-gradient(118deg, #122234 0%, #0f1e2e 66%, #101b27 66%) !important; }
+  html.dark .comparison-matrix, html.dark .terms-rail, html.dark main:has([aria-label^="Show gallery"]) aside { box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28); }
+  html.dark #site-footer { border-top: 1px solid #243a4e; background: #07101a; }
+  html.dark header { border-color: #2a4055 !important; background: rgba(11, 20, 32, 0.95) !important; }
+  html.dark header button:not(.bg-\[\#d97706\]) { border-color: #2a4055 !important; background-color: #142436 !important; color: #edf3f8 !important; }
+  html.dark header .brand-ink { color: #edf3f8 !important; }
+  html.dark header .brand-detail { color: #aebdca !important; }
+  html.dark header .brand-emblem { background: #f8fafc !important; }
+  html.dark .nav-link { color: #c6d2dc; }
+  html.dark .fleet-banner { background: #07101a; border-color: #243a4e; }
   @media (min-width: 640px) { .container { padding-left: 1.5rem; padding-right: 1.5rem; } }
   @media (min-width: 640px) { .wide-shell { padding-left: 1.5rem; padding-right: 1.5rem; } }
   @media (min-width: 1024px) { .container { max-width: none !important; padding-left: 2rem !important; padding-right: 2rem !important; } }

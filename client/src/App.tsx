@@ -27,7 +27,7 @@ function VehicleQueryBridge() {
 
 function App() {
   const base = isStaticDemo ? pagesBasePath() : "";
-  return <ErrorBoundary><ThemeProvider defaultTheme="light"><TooltipProvider><Toaster position="top-right" richColors /><WouterRouter base={base}><VehicleQueryBridge /><RouteTransition><AppRoutes /></RouteTransition></WouterRouter></TooltipProvider></ThemeProvider></ErrorBoundary>;
+  return <ErrorBoundary><ThemeProvider defaultTheme="light" switchable><TooltipProvider><Toaster position="top-right" richColors /><WouterRouter base={base}><VehicleQueryBridge /><RouteTransition><AppRoutes /></RouteTransition></WouterRouter></TooltipProvider></ThemeProvider></ErrorBoundary>;
 }
 
 export default App;

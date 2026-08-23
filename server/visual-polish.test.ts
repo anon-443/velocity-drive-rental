@@ -27,6 +27,26 @@ describe("visual polish system", () => {
     expect(source).toContain("route-progress");
   });
 
+  it("keeps the requested wide hero media, fleet banner, compact header, and persistent theme control in the source", async () => {
+    const [home, header, app, styles] = await Promise.all([
+      readFile(new URL("../client/src/pages/Home.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/components/Navbar.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/App.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/index.css", import.meta.url), "utf8"),
+    ]);
+
+    expect(home).toContain("2xl:grid-cols-[minmax(0,0.78fr)_minmax(720px,1.22fr)]");
+    expect(home).toContain("FleetBanner cars={fleet}");
+    expect(header).toContain("window.scrollY > 32");
+    expect(header).toContain("Use night mode");
+    expect(app).toContain('ThemeProvider defaultTheme="light" switchable');
+    expect(styles).toContain("html.dark #home");
+    expect(styles).toContain("html.dark main [class*=\"bg-[#f7f8f6]\"]");
+    expect(styles).toContain("html.dark .comparison-journal");
+    expect(styles).toContain("html.dark #site-footer");
+    expect(styles).toContain("html.dark header .brand-ink");
+  });
+
   it("extends the roadbook visual treatment from the hero into fleet cards and vehicle journals", async () => {
     const source = await readFile(new URL("../client/src/index.css", import.meta.url), "utf8");
 
