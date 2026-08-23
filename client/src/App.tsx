@@ -9,6 +9,9 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import CompareVehicles from "./pages/CompareVehicles";
 import Home from "./pages/Home";
 import BookingTerms from "./pages/BookingTerms";
+import BookingPage from "./pages/BookingPage";
+import MyDrivePage from "./pages/MyDrivePage";
+import AdminPage from "./pages/AdminPage";
 import VehicleDetails from "./pages/VehicleDetails";
 import { isStaticDemo, pagesBasePath } from "./lib/staticDemo";
 import RouteTransition from "./components/RouteTransition";
@@ -16,7 +19,7 @@ import RouteTransition from "./components/RouteTransition";
 /** Velocity Drive visual system: Modern Motor Journal — a stable light theme with a query bridge for crawler-friendly vehicle pages. */
 function AppRoutes() {
   // make sure to consider if you need authentication for certain routes
-  return <Switch><Route path="/" component={Home} /><Route path="/fleet/:id" component={VehicleDetails} /><Route path="/compare" component={CompareVehicles} /><Route path="/booking-terms" component={BookingTerms} /><Route path="/404" component={NotFound} /><Route component={NotFound} /></Switch>;
+  return <Switch><Route path="/" component={Home} /><Route path="/fleet/:id" component={VehicleDetails} /><Route path="/book" component={BookingPage} /><Route path="/my-drive" component={MyDrivePage} /><Route path="/admin" component={AdminPage} /><Route path="/compare" component={CompareVehicles} /><Route path="/booking-terms" component={BookingTerms} /><Route path="/404" component={NotFound} /><Route component={NotFound} /></Switch>;
 }
 
 function VehicleQueryBridge() {

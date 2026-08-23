@@ -9,9 +9,10 @@ import type { CarType, FleetCar } from "@/data/fleet";
 import { fleetCategories } from "@/data/fleet";
 import { Link, useLocation } from "wouter";
 
-type SortBy = "featured" | "low" | "high";
+type SortBy = "featured" | "low" | "high" | "newest" | "popular";
 export type PriceBand = "all" | "under-70" | "70-100" | "over-100";
 export type PassengerBand = "all" | "five" | "six-plus";
+export type FuelFilter = "all" | "petrol" | "hybrid" | "electric";
 type CarGridProps = {
   cars: FleetCar[];
   searchTerm: string;
@@ -19,14 +20,17 @@ type CarGridProps = {
   sortBy: SortBy;
   priceBand: PriceBand;
   passengerBand: PassengerBand;
+  fuelFilter: FuelFilter;
   savedCarIds: string[];
   availabilityLabel: string;
+  totalCars: number;
   isFiltering: boolean;
   onSearchChange: (value: string) => void;
   onCategoryChange: (value: "All" | CarType) => void;
   onSortChange: (value: SortBy) => void;
   onPriceBandChange: (value: PriceBand) => void;
   onPassengerBandChange: (value: PassengerBand) => void;
+  onFuelFilterChange: (value: FuelFilter) => void;
   onClearFilters: () => void;
   onBook: (car: FleetCar) => void;
   onToggleSaved: (carId: string) => void;
@@ -51,14 +55,17 @@ export default function CarGrid({
   sortBy,
   priceBand,
   passengerBand,
+  fuelFilter,
   savedCarIds,
   availabilityLabel,
+  totalCars,
   isFiltering,
   onSearchChange,
   onCategoryChange,
   onSortChange,
   onPriceBandChange,
   onPassengerBandChange,
+  onFuelFilterChange,
   onClearFilters,
   onBook,
   onToggleSaved,
@@ -67,7 +74,8 @@ export default function CarGrid({
   const [, setLocation] = useLocation();
   const [openingCarId, setOpeningCarId] = useState<string | null>(null);
   const reduceMotion = Boolean(useReducedMotion());
-  const hasActiveFilters = Boolean(searchTerm || selectedCategory !== "All" || sortBy !== "featured" || priceBand !== "all" || passengerBand !== "all");
+  const hasActiveFilters = Boolean(searchTerm || selectedCategory !== "All" || sortBy !== "featured" || priceBand !== "all" || passengerBand !== "all" || fuelFilter !== "all");
+  const filterChips = [searchTerm && `Search: ${searchTerm}`, selectedCategory !== "All" && selectedCategory, fuelFilter !== "all" && `${fuelFilter} fuel`, priceBand !== "all" && priceFilters.find((filter) => filter.value === priceBand)?.label, passengerBand !== "all" && passengerFilters.find((filter) => filter.value === passengerBand)?.label].filter(Boolean) as string[];
 
   const openVehicle = (event: React.MouseEvent<HTMLAnchorElement>, carId: string) => {
     event.preventDefault();
@@ -98,7 +106,7 @@ export default function CarGrid({
         </div>
 
         <div className="mt-7 grid gap-6 xl:grid-cols-[252px_minmax(0,1fr)]">
-          <FilterSidebar selectedCategory={selectedCategory} priceBand={priceBand} passengerBand={passengerBand} hasActiveFilters={hasActiveFilters} onCategoryChange={onCategoryChange} onPriceBandChange={onPriceBandChange} onPassengerBandChange={onPassengerBandChange} onClear={onClearFilters} />
+          <FilterSidebar selectedCategory={selectedCategory} priceBand={priceBand} passengerBand={passengerBand} fuelFilter={fuelFilter} hasActiveFilters={hasActiveFilters} onCategoryChange={onCategoryChange} onPriceBandChange={onPriceBandChange} onPassengerBandChange={onPassengerBandChange} onFuelFilterChange={onFuelFilterChange} onClear={onClearFilters} />
           <div className="min-w-0">
             <div className="flex flex-col gap-4 2xl:flex-row 2xl:items-center 2xl:justify-between">
               <div className="relative w-full 2xl:max-w-sm">
@@ -112,17 +120,21 @@ export default function CarGrid({
                   <option value="featured">Featured first</option>
                   <option value="low">Price: low to high</option>
                   <option value="high">Price: high to low</option>
+                  <option value="newest">Newest model year</option>
+                  <option value="popular">Most popular</option>
                 </select>
               </label>
             </div>
 
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3"><p className="text-xs font-bold text-slate-500">Showing <strong className="text-[#0f1e2e]">{cars.length}</strong> of {totalCars} demo vehicles</p>{filterChips.length > 0 && <div className="flex flex-wrap items-center gap-2">{filterChips.map((chip) => <span key={chip} className="rounded-full bg-[#eaf0f3] px-3 py-1.5 text-[11px] font-extrabold text-slate-600">{chip}</span>)}<button onClick={onClearFilters} className="text-[11px] font-extrabold text-[#b45309] transition hover:text-[#0f1e2e]">Clear all</button></div>}</div>
+
             <div className="relative mt-5 min-h-[360px]">
-              <AnimatePresence>{(isFiltering || openingCarId) && <FleetLoadingOverlay openingVehicle={Boolean(openingCarId)} />}</AnimatePresence>
+              <AnimatePresence>{isFiltering && !openingCarId && <FleetSkeleton />}{openingCarId && <FleetLoadingOverlay openingVehicle />}</AnimatePresence>
               <AnimatePresence mode="popLayout">
                 {leadCar && <LeadVehicle key={leadCar.id} car={leadCar} saved={savedCarIds.includes(leadCar.id)} onBook={onBook} onToggleSaved={onToggleSaved} onOpenDetails={openVehicle} reduceMotion={reduceMotion} />}
               </AnimatePresence>
               {comparisonCars.length > 0 && (
-                <div className="mt-5 grid gap-4 md:grid-cols-2 2xl:grid-cols-3">
+                <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                   <AnimatePresence mode="popLayout">
                     {comparisonCars.map((car, index) => <ComparisonVehicle key={car.id} car={car} index={index} saved={savedCarIds.includes(car.id)} onBook={onBook} onToggleSaved={onToggleSaved} onOpenDetails={openVehicle} reduceMotion={reduceMotion} />)}
                   </AnimatePresence>
@@ -137,13 +149,14 @@ export default function CarGrid({
   );
 }
 
-function FilterSidebar({ selectedCategory, priceBand, passengerBand, hasActiveFilters, onCategoryChange, onPriceBandChange, onPassengerBandChange, onClear }: { selectedCategory: "All" | CarType; priceBand: PriceBand; passengerBand: PassengerBand; hasActiveFilters: boolean; onCategoryChange: (value: "All" | CarType) => void; onPriceBandChange: (value: PriceBand) => void; onPassengerBandChange: (value: PassengerBand) => void; onClear: () => void }) {
-  return <aside className="h-fit rounded-[20px] border border-slate-200 bg-white p-5 xl:sticky xl:top-24"><div className="flex items-start justify-between gap-3"><div><p className="eyebrow"><span /> Filter rail</p><h3 className="mt-3 font-editorial text-3xl tracking-[-0.055em] text-[#0f1e2e]">Narrow the route.</h3></div><span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#eaf0f3] text-[#0f1e2e]"><SlidersHorizontal className="h-4 w-4" /></span></div><FilterGroup title="Vehicle type">{fleetCategories.map((category) => <FilterChoice key={category} checked={selectedCategory === category} label={category === "All" ? "All vehicle types" : category} onClick={() => onCategoryChange(category)} />)}</FilterGroup><FilterGroup title="Daily rate">{priceFilters.map((filter) => <FilterChoice key={filter.value} checked={priceBand === filter.value} label={filter.label} onClick={() => onPriceBandChange(filter.value)} />)}</FilterGroup><FilterGroup title="Passenger capacity">{passengerFilters.map((filter) => <FilterChoice key={filter.value} checked={passengerBand === filter.value} label={filter.label} onClick={() => onPassengerBandChange(filter.value)} />)}</FilterGroup><button disabled={!hasActiveFilters} onClick={onClear} className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 py-3 text-xs font-extrabold text-slate-600 transition hover:border-[#0f1e2e] hover:text-[#0f1e2e] disabled:cursor-not-allowed disabled:opacity-40"><RotateCcw className="h-3.5 w-3.5" /> Reset filters</button></aside>;
+function FilterSidebar({ selectedCategory, priceBand, passengerBand, fuelFilter, hasActiveFilters, onCategoryChange, onPriceBandChange, onPassengerBandChange, onFuelFilterChange, onClear }: { selectedCategory: "All" | CarType; priceBand: PriceBand; passengerBand: PassengerBand; fuelFilter: FuelFilter; hasActiveFilters: boolean; onCategoryChange: (value: "All" | CarType) => void; onPriceBandChange: (value: PriceBand) => void; onPassengerBandChange: (value: PassengerBand) => void; onFuelFilterChange: (value: FuelFilter) => void; onClear: () => void }) {
+  return <aside className="h-fit rounded-[20px] border border-slate-200 bg-white p-5 xl:sticky xl:top-24"><div className="flex items-start justify-between gap-3"><div><p className="eyebrow"><span /> Filter rail</p><h3 className="mt-3 font-editorial text-3xl tracking-[-0.055em] text-[#0f1e2e]">Narrow the route.</h3></div><span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#eaf0f3] text-[#0f1e2e]"><SlidersHorizontal className="h-4 w-4" /></span></div><FilterGroup title="Vehicle type">{fleetCategories.map((category) => <FilterChoice key={category} checked={selectedCategory === category} label={category === "All" ? "All vehicle types" : category} onClick={() => onCategoryChange(category)} />)}</FilterGroup><FilterGroup title="Fuel type">{(["all", "petrol", "hybrid", "electric"] as FuelFilter[]).map((fuel) => <FilterChoice key={fuel} checked={fuelFilter === fuel} label={fuel === "all" ? "Any fuel" : `${fuel[0].toUpperCase()}${fuel.slice(1)}`} onClick={() => onFuelFilterChange(fuel)} />)}</FilterGroup><FilterGroup title="Daily rate">{priceFilters.map((filter) => <FilterChoice key={filter.value} checked={priceBand === filter.value} label={filter.label} onClick={() => onPriceBandChange(filter.value)} />)}</FilterGroup><FilterGroup title="Passenger capacity">{passengerFilters.map((filter) => <FilterChoice key={filter.value} checked={passengerBand === filter.value} label={filter.label} onClick={() => onPassengerBandChange(filter.value)} />)}</FilterGroup><button disabled={!hasActiveFilters} onClick={onClear} className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 py-3 text-xs font-extrabold text-slate-600 transition hover:border-[#0f1e2e] hover:text-[#0f1e2e] disabled:cursor-not-allowed disabled:opacity-40"><RotateCcw className="h-3.5 w-3.5" /> Reset filters</button></aside>;
 }
 
 function FilterGroup({ title, children }: { title: string; children: React.ReactNode }) { return <div className="mt-6 border-t border-slate-100 pt-5"><p className="fleet-kicker text-slate-400">{title}</p><div className="mt-3 space-y-1">{children}</div></div>; }
 function FilterChoice({ checked, label, onClick }: { checked: boolean; label: string; onClick: () => void }) { return <button onClick={onClick} aria-pressed={checked} className={`flex w-full items-center gap-3 rounded-lg px-2.5 py-2.5 text-left text-xs font-bold transition ${checked ? "bg-[#eaf0f3] text-[#0f1e2e]" : "text-slate-500 hover:bg-slate-50 hover:text-[#0f1e2e]"}`}><span className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border ${checked ? "border-[#0f1e2e] bg-[#0f1e2e] text-white" : "border-slate-300 bg-white"}`}>{checked && <Check className="h-3 w-3" />}</span>{label}</button>; }
 function FleetLoadingOverlay({ openingVehicle = false }: { openingVehicle?: boolean }) { return <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.14 }} className="absolute inset-0 z-20 flex items-center justify-center rounded-[20px] bg-[#f7f8f6]/82 backdrop-blur-[2px]" aria-live="polite"><motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 6 }} className="rounded-2xl border border-slate-200 bg-white px-5 py-4 text-center shadow-lg"><span className="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-[#eaf0f3] text-[#d97706]"><CircleDollarSign className="h-4 w-4 animate-pulse" /></span><p className="mt-2 text-xs font-extrabold text-[#0f1e2e]">{openingVehicle ? "Opening vehicle journal" : "Refining the fleet"}</p><p className="mt-1 text-[10px] font-bold text-slate-400">{openingVehicle ? "Preparing the full specification view" : "Matching your route and filters"}</p></motion.div></motion.div>; }
+function FleetSkeleton() { return <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.14 }} className="absolute inset-0 z-20 grid gap-4 rounded-[20px] bg-[#f7f8f6]/94 p-1 md:grid-cols-2 xl:grid-cols-3" aria-live="polite" aria-label="Updating vehicle results"><div className="rounded-[24px] border border-slate-200 bg-white p-5 md:col-span-2 xl:col-span-3"><div className="h-48 rounded-2xl bg-slate-200 motion-safe:animate-pulse sm:h-56" /><div className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto]"><div className="space-y-3"><div className="h-7 w-48 rounded bg-slate-200 motion-safe:animate-pulse" /><div className="h-4 w-32 rounded bg-slate-100 motion-safe:animate-pulse" /></div><div className="h-9 w-20 rounded bg-slate-200 motion-safe:animate-pulse" /></div></div>{Array.from({ length: 3 }, (_, index) => <div key={index} className="rounded-2xl border border-slate-200 bg-white p-4"><div className="h-28 rounded-xl bg-slate-200 motion-safe:animate-pulse" /><div className="mt-4 h-5 w-2/3 rounded bg-slate-200 motion-safe:animate-pulse" /><div className="mt-3 h-3 w-full rounded bg-slate-100 motion-safe:animate-pulse" /></div>)}</motion.div>; }
 function SaveButton({ saved, carId, onToggleSaved }: { saved: boolean; carId: string; onToggleSaved: (carId: string) => void }) { return <button onClick={() => onToggleSaved(carId)} aria-label={saved ? "Remove from saved vehicles" : "Save vehicle"} className={`flex h-10 w-10 items-center justify-center rounded-full border transition ${saved ? "border-[#d97706] bg-orange-50 text-[#d97706]" : "border-slate-200 bg-white text-slate-500 hover:border-[#0f1e2e] hover:text-[#0f1e2e]"}`}><Heart className={`h-4 w-4 ${saved ? "fill-current" : ""}`} /></button>; }
 
 function LeadVehicle({ car, saved, onBook, onToggleSaved, onOpenDetails, reduceMotion }: { car: FleetCar; saved: boolean; onBook: (car: FleetCar) => void; onToggleSaved: (carId: string) => void; onOpenDetails: (event: React.MouseEvent<HTMLAnchorElement>, carId: string) => void; reduceMotion: boolean }) {
@@ -155,7 +168,7 @@ function LeadVehicle({ car, saved, onBook, onToggleSaved, onOpenDetails, reduceM
 
 function ComparisonVehicle({ car, index, saved, onBook, onToggleSaved, onOpenDetails, reduceMotion }: { car: FleetCar; index: number; saved: boolean; onBook: (car: FleetCar) => void; onToggleSaved: (carId: string) => void; onOpenDetails: (event: React.MouseEvent<HTMLAnchorElement>, carId: string) => void; reduceMotion: boolean }) {
   return <motion.article layout initial={{ opacity: 0, y: reduceMotion ? 0 : 14 }} whileInView={{ opacity: 1, y: 0 }} whileHover={reduceMotion ? undefined : { y: -5 }} viewport={{ once: true, amount: 0.12 }} exit={{ opacity: 0, y: reduceMotion ? 0 : 12 }} transition={{ duration: 0.26, delay: reduceMotion ? 0 : index * 0.06, ease: [0.23, 1, 0.32, 1] }} className="fleet-card group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition duration-300 hover:border-slate-400 hover:shadow-[0_22px_42px_rgba(15,30,46,0.12)]">
-    <Link href={`/fleet/${car.id}`} onClick={(event) => onOpenDetails(event, car.id)} className="relative block h-[250px] overflow-hidden bg-[#eaf0f3] sm:h-[270px]" aria-label={`View full details for ${car.name}`}><img src={car.image} alt={`${car.name} ${car.modelYear}`} className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.07]" /><div className="absolute inset-0 bg-gradient-to-t from-[#0f1e2e]/25 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" /><span className="fleet-kicker absolute bottom-3 left-3 rounded-full bg-white/95 px-2.5 py-1 text-[#0f1e2e]">0{index + 2} / {car.type}</span></Link>
+    <Link href={`/fleet/${car.id}`} onClick={(event) => onOpenDetails(event, car.id)} className="relative block h-[250px] overflow-hidden bg-[#eaf0f3] sm:h-[270px]" aria-label={`View full details for ${car.name}`}><img src={car.image} alt={`${car.name} ${car.modelYear}`} className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.07]" /><div className="absolute inset-0 bg-gradient-to-t from-[#0f1e2e]/25 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" /><span className="fleet-kicker absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[#0f1e2e]"><span className="h-1.5 w-1.5 rounded-full bg-[#16a34a]" /> {car.type}</span><span className="absolute inset-0 flex items-center justify-center"><span className="translate-y-2 rounded-xl bg-white px-4 py-2 text-xs font-extrabold text-[#0f1e2e] opacity-0 shadow-lg transition duration-200 group-hover:translate-y-0 group-hover:opacity-100">Quick view</span></span><span className="fleet-kicker absolute bottom-3 left-3 rounded-full bg-white/95 px-2.5 py-1 text-[#0f1e2e]">0{index + 2} / {car.badge}</span></Link>
     <span className="absolute right-3 top-3"><SaveButton saved={saved} carId={car.id} onToggleSaved={onToggleSaved} /></span>
     <div className="p-5 sm:p-6"><div className="flex items-start justify-between gap-3"><div className="min-w-0"><Link href={`/fleet/${car.id}`} onClick={(event) => onOpenDetails(event, car.id)} className="block font-editorial text-[23px] font-semibold leading-[1.05] tracking-[-0.04em] text-[#0f1e2e] transition hover:text-[#d97706]">{car.name}</Link><p className="mt-1 text-xs font-bold text-slate-500">{car.modelYear}</p></div><p className="flex shrink-0 items-baseline font-editorial text-[22px] font-bold tracking-[-0.045em] text-[#0f1e2e]">${car.rate}<span className="ml-0.5 font-sans text-sm font-bold tracking-normal text-[#0f1e2e]">/d</span></p></div><p className="fleet-card-description mt-3 text-sm leading-[1.5] text-[#666]">{car.accent}</p><div className="mt-4 grid grid-cols-3 border-y border-slate-100"><SpecRail label="Energy" value={car.fuel} compact /><SpecRail label="Drive" value={car.transmission} compact /><SpecRail label="Cabin" value={`${car.seats} seats`} compact /></div><div className="mt-4 flex items-center justify-between gap-3"><Link href={`/fleet/${car.id}`} onClick={(event) => onOpenDetails(event, car.id)} className="fleet-action flex items-center gap-1.5 text-[13px] font-extrabold text-[#0f1e2e] transition hover:text-[#d97706]">Vehicle profile <ChevronRight className="h-3.5 w-3.5" /></Link><button onClick={() => onBook(car)} className="fleet-action text-[13px] font-extrabold uppercase tracking-[0.08em] text-[#b45309]">Reserve</button></div></div>
   </motion.article>;

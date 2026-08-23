@@ -130,3 +130,19 @@
 - [x] Add refined accessible fleet-card and section-reveal animations.
 - [x] Apply the 72–80px section rhythm and shared eyebrow system across Vehicle Details, Compare, Booking Terms, and empty states.
 - [x] Add reduced-motion-aware reveal choreography to major page sections and validate it at desktop and mobile widths.
+- [x] Audit the current client-side fleet, booking, Favorites, and route architecture against the requested expanded rental product scope.
+- [x] Expand the typed JSON-style fleet data to at least 12 clearly labeled demo vehicles with realistic class, pricing, availability-window, and specification fields.
+- [x] Upgrade the home experience with an editorial full-viewport hero, compliant operational highlights, animated fleet storytelling, and enhanced feature/process sections.
+- [x] Enhance fleet discovery with live date availability, refined search/filter/sort controls, active chips, result counts, skeleton feedback, and responsive card presentation.
+- [x] Extend the vehicle journal with live date-cost calculation, unavailable-date guidance, weekly-rate context, and a similar-vehicles carousel.
+- [x] Create a dedicated multi-step booking route with progress, detailed validation, transparent demo pricing, local persistence, and an honest request-reference success state.
+- [x] Extend My Drive with sorted local booking history and a local cancel-request status action.
+- [x] Create a clearly labeled front-end admin dashboard route for demo bookings, fleet visibility, and summary metrics.
+- [x] Add refined Framer Motion interactions, count-up-style operational indicators, and mobile navigation behavior while respecting reduced-motion preferences.
+- [x] Replace prohibited fabricated ratings and customer testimonials with truthful product principles or clearly non-user-generated editorial content.
+- [x] Add focused unit tests and desktop/mobile validation for the expanded booking, fleet, My Drive, and dashboard flows.
+- [x] Make the primary desktop hero fill the viewport while preserving its tested mobile composition.
+- [x] Replace filter-overlay-only feedback with reduced-motion-safe fleet-card skeleton placeholders.
+- [x] Add an in-journal date, duration, availability, and live estimate widget to Vehicle Details.
+- [x] Persist demo admin fleet-visibility toggles and apply them to the public fleet rendering with an explicit browser-local label.
+- [x] Gate the looping hero fleet badge and other new non-essential motion behind reduced-motion preferences.

@@ -1,20 +1,48 @@
-/**
- * Velocity Drive visual system: Modern Motor Journal — reference-informed model details, transparent demo rates, named branches, and deterministic availability windows.
- */
+/** Typed adapter around the demo JSON inventory used throughout Velocity Drive. */
+import inventory from "./cars.json";
 import { staticAssetPath } from "@/lib/staticDemo";
 
 export type CarType = "SUV" | "Sedan" | "Electric" | "Luxury";
-export type UnavailableWindow = { start: string; end: string; };
-export type FleetCar = { id: string; name: string; modelYear: string; type: CarType; image: string; gallery: string[]; rate: number; addOns: { insurance: number; gps: number }; fuel: string; transmission: string; seats: number; available: boolean; unavailableWindows: UnavailableWindow[]; accent: string; note: string; description: string; drive: string; power: string; efficiency: string; cargo: string; exterior: string; features: string[]; };
+export type UnavailableWindow = { start: string; end: string };
+export type FleetCar = {
+  id: string; name: string; modelYear: string; type: CarType; image: string; gallery: string[]; rate: number; weeklyRate: number;
+  addOns: { insurance: number; gps: number }; fuel: string; transmission: string; seats: number; available: boolean; unavailableWindows: UnavailableWindow[];
+  accent: string; note: string; description: string; drive: string; power: string; efficiency: string; cargo: string; exterior: string; colorOptions: string[]; engine: string; badge: string; popularity: number; features: string[];
+};
+
+const imageAssets = {
+  suv: staticAssetPath("/manus-storage/velocity-suv_f11b8d82.jpg"),
+  electric: staticAssetPath("/manus-storage/velocity-electric_62363ef1.jpg"),
+  luxury: staticAssetPath("/manus-storage/velocity-luxury_3afef11e.jpg"),
+  crossover: staticAssetPath("/manus-storage/velocity-crossover_4ab45789.jpg"),
+  hero: staticAssetPath("/manus-storage/velocity-hero_0ffdea12.jpg"),
+};
+
+const specs: Record<CarType, Pick<FleetCar, "drive" | "power" | "efficiency" | "cargo">> = {
+  SUV: { drive: "All-wheel drive", power: "187 hp", efficiency: "Up to 31 mpg", cargo: "Up to 75 cu ft" },
+  Sedan: { drive: "Front-wheel drive", power: "169 hp", efficiency: "Up to 35 mpg", cargo: "13.5 cu ft trunk" },
+  Electric: { drive: "Rear-wheel drive", power: "225 hp", efficiency: "Up to 303 mi range", cargo: "27 cu ft rear cargo" },
+  Luxury: { drive: "All-wheel drive", power: "255 hp", efficiency: "Turbo efficiency", cargo: "13 cu ft trunk" },
+};
+
+function unavailableWindows(index: number): UnavailableWindow[] {
+  const startDay = 3 + index * 2;
+  return [{ start: `2026-09-${String(startDay).padStart(2, "0")}`, end: `2026-09-${String(startDay + 2).padStart(2, "0")}` }];
+}
 
 export const branchLocations = ["Bishkek Downtown Hub", "Manas International Airport (FRU)", "Bishkek Railway Station", "Asia Mall — South Gate", "Almaty Road — East Service Hub"];
 
-export const fleet: FleetCar[] = [
-  { id: "kia-sorento-hybrid", name: "Kia Sorento Hybrid", modelYear: "2024", type: "SUV", image: staticAssetPath("/manus-storage/velocity-suv_f11b8d82.jpg"), gallery: [staticAssetPath("/manus-storage/velocity-suv_f11b8d82.jpg"), staticAssetPath("/manus-storage/velocity-hero_0ffdea12.jpg"), staticAssetPath("/manus-storage/velocity-crossover_4ab45789.jpg")], rate: 78, addOns: { insurance: 17, gps: 6 }, fuel: "Hybrid petrol", transmission: "6-speed automatic", seats: 6, available: true, unavailableWindows: [{ start: "2026-08-25", end: "2026-08-27" }, { start: "2026-09-05", end: "2026-09-08" }], accent: "Three-row space for a well-planned departure.", note: "Quiet confidence with room for people and practical luggage.", description: "A composed three-row hybrid SUV for airport collection, family road trips, and work groups that need a calm, adaptable cabin.", drive: "Available AWD", power: "227 hp combined", efficiency: "Up to 37 mpg combined", cargo: "Up to 75.5 cu ft", exterior: "Deep Ocean Blue", features: ["Three-row seating", "Apple CarPlay and Android Auto", "Rear parking sensors", "Dual-zone climate control", "Adaptive cruise support"] },
-  { id: "hyundai-ioniq-5", name: "Hyundai IONIQ 5", modelYear: "2024", type: "Electric", image: staticAssetPath("/manus-storage/velocity-electric_62363ef1.jpg"), gallery: [staticAssetPath("/manus-storage/velocity-electric_62363ef1.jpg"), staticAssetPath("/manus-storage/velocity-hero_0ffdea12.jpg"), staticAssetPath("/manus-storage/velocity-suv_f11b8d82.jpg")], rate: 89, addOns: { insurance: 19, gps: 6 }, fuel: "Battery electric", transmission: "Single-speed", seats: 5, available: true, unavailableWindows: [{ start: "2026-08-29", end: "2026-08-31" }, { start: "2026-09-14", end: "2026-09-16" }], accent: "Charge-ready calm for city and distance.", note: "An airy EV cabin with rapid-charge capability for considered travel.", description: "A quiet electric crossover for design-minded drivers. Its long-wheelbase cabin and easy urban footprint make it an effortless companion for workday routes and weekend plans.", drive: "Rear-wheel drive", power: "225 hp", efficiency: "Up to 303 mi range", cargo: "27.2 cu ft rear cargo", exterior: "Digital Teal", features: ["Fast-charge capable battery", "Heated front seats", "Wireless phone charging", "Blind-spot warning", "Vehicle-to-load outlet"] },
-  { id: "mercedes-e300", name: "Mercedes-Benz E 300", modelYear: "2024", type: "Luxury", image: staticAssetPath("/manus-storage/velocity-luxury_3afef11e.jpg"), gallery: [staticAssetPath("/manus-storage/velocity-luxury_3afef11e.jpg"), staticAssetPath("/manus-storage/velocity-hero_0ffdea12.jpg"), staticAssetPath("/manus-storage/velocity-electric_62363ef1.jpg")], rate: 139, addOns: { insurance: 28, gps: 7 }, fuel: "Turbo petrol", transmission: "9-speed automatic", seats: 5, available: true, unavailableWindows: [{ start: "2026-09-01", end: "2026-09-04" }, { start: "2026-09-20", end: "2026-09-23" }], accent: "A composed arrival with a polished cabin.", note: "Executive comfort, discreet technology, and an unhurried ride.", description: "An executive sedan for formal arrivals, client travel, and occasions where a quiet, confident cabin matters as much as the destination.", drive: "4MATIC available", power: "255 hp", efficiency: "Turbo mild-hybrid", cargo: "13 cu ft trunk", exterior: "Graphite Grey", features: ["Burmester surround sound", "Ambient cabin lighting", "360° parking camera", "Memory front seats", "Driver assistance package"] },
-  { id: "toyota-corolla", name: "Toyota Corolla", modelYear: "2024", type: "Sedan", image: staticAssetPath("/manus-storage/velocity-crossover_4ab45789.jpg"), gallery: [staticAssetPath("/manus-storage/velocity-crossover_4ab45789.jpg"), staticAssetPath("/manus-storage/velocity-hero_0ffdea12.jpg"), staticAssetPath("/manus-storage/velocity-luxury_3afef11e.jpg")], rate: 54, addOns: { insurance: 14, gps: 5 }, fuel: "Petrol", transmission: "CVT automatic", seats: 5, available: true, unavailableWindows: [{ start: "2026-08-23", end: "2026-08-26" }, { start: "2026-09-10", end: "2026-09-12" }], accent: "Efficient simplicity for the everyday route.", note: "A dependable sedan with clear controls and easy city manners.", description: "A practical, efficient sedan for quick city errands, business appointments, and straightforward travel where value and ease come first.", drive: "Front-wheel drive", power: "169 hp", efficiency: "Up to 35 mpg combined", cargo: "13.1 cu ft trunk", exterior: "Solar Bronze", features: ["Wireless smartphone connection", "Lane departure alert", "Rear-view camera", "Automatic climate control", "USB-C charging"] },
-];
+export const fleet: FleetCar[] = inventory.map((item, index) => {
+  const type = item.category as CarType;
+  const image = imageAssets[item.imageKey as keyof typeof imageAssets];
+  const typeSpecs = specs[type];
+  return {
+    id: item.id, name: item.name, modelYear: String(item.year), type, image, gallery: [image, imageAssets.hero, imageAssets[index % 2 ? "suv" : "crossover"]],
+    rate: item.pricePerDay, weeklyRate: Math.round(item.pricePerDay * 6.2), addOns: { insurance: Math.max(14, Math.round(item.pricePerDay * 0.2)), gps: 6 }, fuel: item.fuel, transmission: item.transmission, seats: item.seats,
+    available: item.available, unavailableWindows: unavailableWindows(index), accent: item.tagline, note: `${item.badge} demo vehicle with clear daily pricing and practical trip details.`, description: `${item.tagline} This is a client-side demonstration vehicle listing; availability and rates are planning estimates pending a rental team response.`,
+    ...typeSpecs, exterior: item.colorOptions[0], colorOptions: item.colorOptions, engine: item.engine, badge: item.badge, popularity: 12 - index, features: item.features,
+  };
+});
 
 export const fleetCategories: Array<"All" | CarType> = ["All", "SUV", "Sedan", "Electric", "Luxury"];
 export function getCarById(id: string) { return fleet.find((car) => car.id === id); }

@@ -86,7 +86,7 @@ export default function BookingModal({ car, onClose, onBookingComplete }: Bookin
     if (!validateTrip()) return;
     const reference = `VD-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
     setConfirmationId(reference);
-    onBookingComplete({ id: reference, carName: car?.name ?? "Vehicle", carImage: car?.image ?? "", pickupDate, returnDate, total, status: "Request received" });
+    onBookingComplete({ id: reference, carId: car?.id, carName: car?.name ?? "Vehicle", carImage: car?.image ?? "", pickupDate, returnDate, total, status: "Request received", createdAt: new Date().toISOString(), extras: [addGps ? "GPS navigation" : "", addChildSeat ? "Child seat" : ""].filter(Boolean) });
   };
 
   if (!car) return null;

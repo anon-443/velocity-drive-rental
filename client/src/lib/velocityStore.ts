@@ -3,12 +3,17 @@
  */
 export type TripRecord = {
   id: string;
+  carId?: string;
   carName: string;
   carImage: string;
   pickupDate: string;
   returnDate: string;
   total: number;
-  status: "Request received";
+  status: "Request received" | "Cancelled";
+  customerName?: string;
+  pickupLocation?: string;
+  createdAt?: string;
+  extras?: string[];
 };
 
 export function readStoredValue<T>(key: string, fallback: T): T {

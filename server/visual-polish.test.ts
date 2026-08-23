@@ -36,7 +36,7 @@ describe("visual polish system", () => {
     ]);
 
     expect(home).toContain("2xl:grid-cols-[minmax(0,0.78fr)_minmax(720px,1.22fr)]");
-    expect(home).toContain("FleetBanner cars={fleet}");
+    expect(home).toContain("FleetBanner cars={fleet.filter((car) => visibleCarIds.includes(car.id))}");
     expect(header).toContain("window.scrollY > 32");
     expect(header).toContain("Use night mode");
     expect(app).toContain('ThemeProvider defaultTheme="light" switchable');
@@ -102,5 +102,50 @@ describe("visual polish system", () => {
     expect(tripDesk).toContain('fleet-kicker text-slate-400');
     expect(contact).toContain('py-[4.5rem] sm:py-20');
     expect(contact).toContain('fleet-kicker text-[#f6b256]');
+  });
+
+  it("keeps the expanded local rental workflow data-driven and routed through booking, My Drive, and demo administration", async () => {
+    const [inventory, fleetSource, app, booking, myDrive, admin] = await Promise.all([
+      readFile(new URL("../client/src/data/cars.json", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/data/fleet.ts", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/App.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/pages/BookingPage.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/pages/MyDrivePage.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/pages/AdminPage.tsx", import.meta.url), "utf8"),
+    ]);
+
+    expect((inventory.match(/"id"/g) ?? []).length).toBeGreaterThanOrEqual(12);
+    expect(fleetSource).toContain("weeklyRate");
+    expect(fleetSource).toContain("unavailableWindows");
+    expect(app).toContain('path="/book"');
+    expect(app).toContain('path="/my-drive"');
+    expect(app).toContain('path="/admin"');
+    expect(booking).toContain("useForm<BookingFormValues>");
+    expect(booking).toContain("canvas-confetti");
+    expect(booking).toContain("browser-local request reference");
+    expect(myDrive).toContain("Cancel request");
+    expect(admin).toContain("Admin demonstration");
+  });
+
+  it("keeps the final accessibility and interaction closures connected to the visible rental experience", async () => {
+    const [home, grid, vehicleDetails, admin, visibility] = await Promise.all([
+      readFile(new URL("../client/src/pages/Home.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/components/CarGrid.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/pages/VehicleDetails.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/pages/AdminPage.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/lib/useFleetVisibility.ts", import.meta.url), "utf8"),
+    ]);
+
+    expect(home).toContain('lg:min-h-[calc(100svh-76px)]');
+    expect(home).toContain("const reduceMotion = Boolean(useReducedMotion())");
+    expect(home).toContain("visibleCarIds.includes(car.id)");
+    expect(grid).toContain("FleetSkeleton");
+    expect(grid).toContain("motion-safe:animate-pulse");
+    expect(vehicleDetails).toContain("Live planning estimate");
+    expect(vehicleDetails).toContain("isCarAvailableForDates");
+    expect(vehicleDetails).toContain("Continue with these dates");
+    expect(admin).toContain("resetVisibility");
+    expect(admin).toContain("immediately affect the public fleet and banner");
+    expect(visibility).toContain("velocity-drive-visible-fleet");
   });
 });
