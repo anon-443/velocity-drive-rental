@@ -29,3 +29,11 @@
 - [x] Test all repaired controls on desktop and mobile.
 - [x] Define and apply a more refined automotive brand symbol.
 - [x] Verify the replacement logo at desktop and mobile header sizes.
+- [x] Create a clean source archive without dependencies, build output, logs, or temporary files.
+- [x] Inspect the archive contents before delivering it for GitHub upload.
+- [x] Provide GitHub Pages and Vercel deployment steps with custom-domain DNS guidance.
+- [x] Confirm a no-cost hosting path and custom-domain configuration for velodrive-rentals.me.
+- [x] Audit all hosted image references and current date-picker and icon implementations.
+- [x] Build a self-contained Vercel-ready source copy with bundled visual assets.
+- [x] Validate date pickers, key buttons, icon placement, and the production build.
+- [x] Package the external-hosting ZIP and provide velodrive-rentals.me DNS steps.
