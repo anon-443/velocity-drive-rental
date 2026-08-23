@@ -60,3 +60,9 @@ GitHub Actions workflow **32648242375** completed successfully for commit `cee50
 ## 2026-08-23 — Fleet presentation, compact header, and night mode
 
 GitHub Actions workflow **32649409440** completed successfully for commit `2c2eaf4`. The live homepage exposes the available-vehicles banner directly below the booking controls, including the four live inventory previews and its fleet-scroll action. It also presents the accessible **Use night mode** control in the global header. Local desktop, ultra-wide, and controlled phone checks confirmed the compact scroll header, stored preference, readable dark surfaces, and populated comparison matrix before the release.
+
+## 2026-08-23 — Fleet-card and section-rhythm refinement
+
+GitHub Actions workflow **32651280697** completed successfully for commit `86c30cf`. After its JavaScript bundle settled, the live homepage rendered the complete search surface, four-vehicle fleet banner, filter rail, featured Kia Sorento Hybrid card, three supporting cards, Favorites desk, contact form, FAQ, and footer. The live DOM exposed the expected detail, save, and reserve controls for every vehicle.
+
+The live Kia Sorento Hybrid journal loaded directly with the gallery, share and Favorite controls, reservation action, six-specification panel, and cabin-and-technology section. Its route labels and specification labels render with the shared compact eyebrow treatment, while the page retains the updated section spacing and the persisted night-mode control.
