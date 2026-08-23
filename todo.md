@@ -153,3 +153,6 @@
 - [x] Validate the tightened hero spacing at mobile width without regressing the phone composition.
 - [x] Validate the review-ready vehicle-detail section at mobile width without fabricated ratings or testimonials.
 - [x] Validate the final booking confirmation modal at a mobile or alternate responsive breakpoint.
+- [x] Refine the hero headline font treatment to a more distinctive editorial display style while preserving readability.
+- [x] Lift the hero eyebrow and headline higher on desktop to remove the remaining visible top gap beneath the header.
+- [x] Validate the refreshed hero typography and placement at desktop and mobile widths before publishing.

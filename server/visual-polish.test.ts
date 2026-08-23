@@ -7,7 +7,7 @@ describe("visual polish system", () => {
 
     expect(source).toContain('wide-shell relative z-10');
     expect(source).toContain('lg:grid-cols-[minmax(0,1.1fr)_minmax(500px,0.9fr)]');
-    expect(source).toContain('lg:text-[clamp(4.5rem,4.7vw,5.6rem)]');
+    expect(source).toContain('lg:text-[clamp(5.2rem,5.35vw,6.4rem)]');
     expect(source).toContain('sm:whitespace-nowrap');
   });
 
@@ -156,7 +156,8 @@ describe("visual polish system", () => {
       readFile(new URL("../client/src/pages/VehicleDetails.tsx", import.meta.url), "utf8"),
     ]);
 
-    expect(home).toContain("lg:pt-8 xl:pt-10");
+    expect(home).toContain("lg:pt-4 xl:pt-5");
+    expect(home).toContain("font-hero-display");
     expect(booking).toContain("AnimatePresence mode=\"wait\"");
     expect(booking).toContain("ConfirmationModal");
     expect(booking).toContain("aria-modal=\"true\"");
