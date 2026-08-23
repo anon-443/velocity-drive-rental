@@ -49,12 +49,17 @@
 - [x] Extend Favorites across listing cards and vehicle-detail pages.
 - [x] Update and validate the reusable car-rental workflow skill.
 - [x] Verify detail-page browsing and Favorites on desktop and mobile.
-- [ ] Inspect current detail, Favorites, and route-transition components.
+- [x] Inspect current detail, Favorites, and route-transition components.
 - [x] Add browser-native sharing with a clipboard fallback on vehicle details.
 - [x] Add fleet-to-detail transition feedback that does not block interaction.
 - [x] Build a two-Favorites comparison view with key specification differences.
 - [x] Verify sharing, transitions, and comparison on desktop and mobile.
-- [ ] Inspect current share metadata, comparison selectors, and local Favorites storage.
+- [x] Inspect current share metadata, comparison selectors, and local Favorites storage.
 - [x] Add route-aware Open Graph metadata for vehicle details.
 - [x] Expand the comparison experience to select up to three Favorites.
 - [x] Verify Favorites remain after a refresh and validate responsive comparison behavior.
+- [x] Inspect build hooks, fleet cost data, comparison rows, and current Favorites feedback.
+- [x] Generate crawler-readable static vehicle detail pages with individual social metadata.
+- [x] Add insurance and GPS estimates to the vehicle comparison view.
+- [x] Show a clear toast whenever Favorites are added or removed.
+- [x] Validate crawler pages, price estimates, notifications, and responsive layouts.

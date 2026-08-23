@@ -14,6 +14,7 @@ import TripDesk from "@/components/TripDesk";
 import { fleet, isCarAvailableForDates, type CarType, type FleetCar } from "@/data/fleet";
 import { readStoredValue, type TripRecord, writeStoredValue } from "@/lib/velocityStore";
 import { useFavorites } from "@/lib/useFavorites";
+import { toast } from "sonner";
 
 type SortBy = "featured" | "low" | "high";
 const pageReveal = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } };
@@ -37,7 +38,7 @@ export default function Home() {
     return [...visible].sort((a, b) => sortBy === "low" ? a.rate - b.rate : sortBy === "high" ? b.rate - a.rate : 0);
   }, [searchTerm, selectedCategory, sortBy, priceBand, passengerBand, rentalCriteria]);
   const handleQuickSearch = (criteria: QuickSearchCriteria) => { setRentalCriteria(criteria); setSelectedCategory(criteria.carType); document.querySelector("#fleet")?.scrollIntoView({ behavior: "smooth", block: "start" }); };
-  const handleToggleSaved = (carId: string) => toggleFavorite(carId);
+  const handleToggleSaved = (carId: string) => { const car = fleet.find((entry) => entry.id === carId); const removing = savedCarIds.includes(carId); toggleFavorite(carId); if (car) toast.success(removing ? `${car.name} removed from Favorites.` : `${car.name} added to Favorites.`); };
   const handleBookingComplete = (booking: TripRecord) => setBookings((current) => [booking, ...current.filter((item) => item.id !== booking.id)].slice(0, 6));
   const savedCars = fleet.filter((car) => savedCarIds.includes(car.id));
   const clearFleetFilters = () => { setSearchTerm(""); setSelectedCategory("All"); setSortBy("featured"); setPriceBand("all"); setPassengerBand("all"); };
