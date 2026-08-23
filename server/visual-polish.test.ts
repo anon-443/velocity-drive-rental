@@ -7,7 +7,7 @@ describe("visual polish system", () => {
 
     expect(source).toContain('wide-shell relative z-10');
     expect(source).toContain('lg:grid-cols-[minmax(0,1.1fr)_minmax(500px,0.9fr)]');
-    expect(source).toContain('lg:text-[clamp(5.2rem,5.35vw,6.4rem)]');
+    expect(source).toContain('lg:text-[clamp(4.7rem,4.85vw,5.8rem)]');
     expect(source).toContain('sm:whitespace-nowrap');
   });
 
@@ -158,6 +158,7 @@ describe("visual polish system", () => {
 
     expect(home).toContain("lg:pt-4 xl:pt-5");
     expect(home).toContain("font-hero-display");
+    expect(home).toContain("md:-translate-y-4");
     expect(booking).toContain("AnimatePresence mode=\"wait\"");
     expect(booking).toContain("ConfirmationModal");
     expect(booking).toContain("aria-modal=\"true\"");

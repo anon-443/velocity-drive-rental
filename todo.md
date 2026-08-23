@@ -156,3 +156,6 @@
 - [x] Refine the hero headline font treatment to a more distinctive editorial display style while preserving readability.
 - [x] Lift the hero eyebrow and headline higher on desktop to remove the remaining visible top gap beneath the header.
 - [x] Validate the refreshed hero typography and placement at desktop and mobile widths before publishing.
+- [x] Replace the current hero display font with a cleaner, more suitable editorial style based on user feedback.
+- [x] Raise the hero vehicle image slightly on desktop while retaining its responsive composition.
+- [x] Validate the revised hero font and image placement at desktop and mobile widths before publishing.
