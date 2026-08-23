@@ -112,3 +112,4 @@
 - [x] Verify live route-transition feedback on desktop and mobile, including reduced-motion safeguards in the source.
 - [x] Observe the live route-progress cue during a mobile-viewport route change.
 - [x] Revalidate final live home, fleet-card, and vehicle-detail visual surfaces after the cross-page deployment.
+- [x] Fix truncated hero search labels and values at wide laptop and desktop widths.
