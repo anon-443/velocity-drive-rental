@@ -1,7 +1,5 @@
-# Live Hero Font Release Verification
+# Live Hero Type and Media Release Verification
 
-- **Commit:** `62f46b9` — `Refine hero display typography and spacing`
-- **Deployment:** GitHub Pages workflow `32657095430` completed successfully.
-- **Public URL:** `https://velodrive-rentals.me/?font=refinement`
+Commit `5dff85e` (**Refine hero typeface and vehicle framing**) was published through successful GitHub Pages workflow `32658097492`. The release is available at `https://velodrive-rentals.me/?hero=final-type-media`.
 
-The live homepage renders the refined Cormorant Garamond hero display treatment and the eyebrow now begins closer to the header, removing the excessive desktop top gap. The deployed page loaded successfully from the custom domain with its interactive booking controls present.
+The live homepage renders the restored **DM Serif Display** hero headline and the raised vehicle frame. Browser verification confirmed the hero and booking controls render together, with the vehicle frame beginning at 81px and the booking panel at 727px in the desktop viewport; the two surfaces retain clear separation.
