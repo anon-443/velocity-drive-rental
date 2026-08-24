@@ -181,3 +181,7 @@
 - [x] Compact the contact information panel, remove excess empty space, and correct its text contrast.
 - [x] Improve the dark fleet-section typography color contrast for clear reading.
 - [x] Verify the requested text, icon, panel, and color corrections at desktop and mobile widths before publishing.
+- [x] Compact the inquiry form height, textarea, and surrounding whitespace without weakening usability.
+- [x] Keep the dark contact-panel heading on one desktop line where space permits.
+- [x] Tighten the contact and journey supporting descriptions to one or two clean desktop lines with mobile-safe wrapping.
+- [x] Validate the compact inquiry form and refined text wrapping at desktop and mobile widths before publishing.

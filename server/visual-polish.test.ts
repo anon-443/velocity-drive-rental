@@ -184,4 +184,15 @@ describe("visual polish system", () => {
     expect(booking).toContain('w-full max-w-2xl');
     expect(booking).toContain('flex flex-wrap gap-3');
   });
+
+  it("keeps the inquiry surface compact and the requested desktop editorial lines concise", async () => {
+    const styles = await readFile(new URL("../client/src/index.css", import.meta.url), "utf8");
+
+    expect(styles).toContain("Compact inquiry treatment");
+    expect(styles).toContain("#contact .mt-8.grid > form");
+    expect(styles).toContain("max-width: 52rem");
+    expect(styles).toContain("textarea { min-height: 6.5rem");
+    expect(styles).toContain("#contact .mt-8.grid > div:first-child h3 { white-space: nowrap");
+    expect(styles).toContain("#how-it-works .container > div:first-child > p { max-width: 68rem");
+  });
 });
