@@ -192,3 +192,6 @@
 - [x] Reduce filter-rail heading, group, row, and reset-control spacing for a substantially more compact presentation.
 - [x] Preserve readable checkbox labels and mobile-friendly filter controls after compacting the rail.
 - [x] Validate the compact filter rail on desktop and mobile before publishing.
+- [x] Replace the still oversized full-width filter rail with a denser grouped filter interface on desktop.
+- [x] Preserve clear, reachable, and overflow-free mobile filtering controls in the redesigned compact interface.
+- [x] Validate the revised compact filter interface on desktop and mobile, then publish it.

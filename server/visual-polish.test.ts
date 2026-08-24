@@ -203,8 +203,9 @@ describe("visual polish system", () => {
     expect(home).toContain('max-w-[72rem] text-sm leading-7 text-slate-600');
     expect(grid).toContain('max-w-[72rem] text-sm leading-7 text-slate-600');
     expect(tripDesk).toContain('max-w-[72rem] text-sm leading-7 text-slate-600');
-    expect(grid).toContain('xl:grid-cols-[300px_minmax(0,1fr)]');
-    expect(grid).toContain('filter-rail-compact');
-    expect(grid).toContain('filter-options-compact');
+    expect(grid).toContain('filter-bar-dense');
+    expect(grid).toContain('filter-groups-dense');
+    expect(grid).toContain('xl:grid-cols-4');
+    expect(styles).toContain('Dense filter bar');
   });
 });
