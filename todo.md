@@ -198,3 +198,7 @@
 - [x] Remove the unnecessary availability notice shown above the compact fleet filters.
 - [x] Tighten the resulting fleet-header spacing without affecting the filter controls.
 - [x] Validate and publish the streamlined fleet header on desktop and mobile.
+- [x] Rebuild the fleet filter card with 20px outer padding, 12px radius, subtle border, and compact header controls.
+- [x] Replace stretched checkbox rows with naturally sized 32px filter pills that wrap within each group.
+- [x] Compact the search, sort, and result-count controls while preserving responsive access.
+- [x] Validate and publish the compact pill-based filter panel at desktop and mobile widths.
