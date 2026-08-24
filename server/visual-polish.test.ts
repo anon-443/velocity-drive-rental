@@ -267,7 +267,10 @@ describe("visual polish system", () => {
     expect(styles).toContain(".interior-search form:hover");
     expect(vehicleDetails).toContain("vehicle-journal-interior");
     expect(booking).toContain("AnimatePresence mode=\"wait\"");
-    expect(booking).toContain("ConfirmationModal");
+    expect(booking).toContain("Reservation workspace");
+    expect(booking).toContain('container py-5 sm:py-8');
+    expect(booking).toContain('mt-5 grid gap-6 xl:grid-cols-[0.78fr_1.22fr]');
+    expect(booking).toContain('mt-6 grid gap-2 sm:grid-cols-3');
     expect(booking).toContain("aria-modal=\"true\"");
     expect(booking).toContain("useReducedMotion");
     expect(vehicleDetails).toContain("Reviews should come from real trips");
