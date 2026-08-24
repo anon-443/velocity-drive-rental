@@ -203,5 +203,8 @@ describe("visual polish system", () => {
     expect(home).toContain('max-w-[72rem] text-sm leading-7 text-slate-600');
     expect(grid).toContain('max-w-[72rem] text-sm leading-7 text-slate-600');
     expect(tripDesk).toContain('max-w-[72rem] text-sm leading-7 text-slate-600');
+    expect(grid).toContain('xl:grid-cols-[300px_minmax(0,1fr)]');
+    expect(grid).toContain('filter-rail-compact');
+    expect(grid).toContain('filter-options-compact');
   });
 });

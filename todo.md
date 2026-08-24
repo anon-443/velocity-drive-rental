@@ -189,3 +189,6 @@
 - [x] Move the journey, Favorites, and fleet supporting descriptions to the left on desktop.
 - [x] Increase desktop navigation link size while retaining a balanced header layout.
 - [x] Validate compactness, left alignment, and navigation visibility at desktop and mobile widths before publishing.
+- [x] Reduce filter-rail heading, group, row, and reset-control spacing for a substantially more compact presentation.
+- [x] Preserve readable checkbox labels and mobile-friendly filter controls after compacting the rail.
+- [x] Validate the compact filter rail on desktop and mobile before publishing.
