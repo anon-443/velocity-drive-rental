@@ -210,3 +210,6 @@
 - [x] Remove the overlapping booking-flow callout and its supporting line beneath the dark booking-flow panel.
 - [x] Align vehicle-card prices left with a consistent “/day” suffix and distribute all 12 cards across the available fleet width.
 - [x] Validate and publish the streamlined contact, booking-flow, and vehicle-grid layouts at desktop and mobile widths.
+- [x] Refresh the GitHub README with a concise project overview, features, setup instructions, and live/demo links.
+- [x] Set a clear public GitHub repository description and simplify the latest commit message.
+- [x] Prepare a professional LinkedIn post describing the internship project and its key features.
