@@ -206,3 +206,7 @@
 - [x] Tighten excess space below the hero’s final line and the footer’s closing content.
 - [x] Remove the visible Made with Manus attribution from the footer area.
 - [x] Validate and publish the refined hero and footer at desktop and mobile widths.
+- [x] Remove the full contact-information block and keep the contact introduction left-aligned on one desktop line.
+- [x] Remove the overlapping booking-flow callout and its supporting line beneath the dark booking-flow panel.
+- [x] Align vehicle-card prices left with a consistent “/day” suffix and distribute all 12 cards across the available fleet width.
+- [x] Validate and publish the streamlined contact, booking-flow, and vehicle-grid layouts at desktop and mobile widths.

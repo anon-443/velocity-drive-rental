@@ -114,7 +114,8 @@ describe("visual polish system", () => {
     expect(tripDesk).toContain('py-[4.5rem] sm:py-20');
     expect(tripDesk).toContain('fleet-kicker text-slate-400');
     expect(contact).toContain('py-[4.5rem] sm:py-20');
-    expect(contact).toContain('fleet-kicker text-[#f6b256]');
+    expect(contact).toContain('lg:whitespace-nowrap');
+    expect(contact).not.toContain('Call, write, or visit');
   });
 
   it("keeps the expanded local rental workflow data-driven and routed through booking, My Drive, and demo administration", async () => {
