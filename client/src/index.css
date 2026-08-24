@@ -280,6 +280,103 @@
   html.dark .nav-link { color: #c6d2dc; }
   html.dark .fleet-banner { background: #07101a; border-color: #243a4e; }
   html.dark .fleet-card-description { color: #afbdca !important; }
+  /* Warm, high-contrast dark mode: override the light gallery palette without changing the light theme. */
+  html.dark {
+    --background: oklch(0.15 0.018 55);
+    --foreground: oklch(0.95 0.018 75);
+    --card: oklch(0.2 0.022 55);
+    --card-foreground: oklch(0.95 0.018 75);
+    --popover: oklch(0.2 0.022 55);
+    --popover-foreground: oklch(0.95 0.018 75);
+    --primary: oklch(0.79 0.115 68);
+    --primary-foreground: oklch(0.17 0.02 55);
+    --secondary: oklch(0.27 0.026 55);
+    --secondary-foreground: oklch(0.93 0.018 75);
+    --muted: oklch(0.25 0.022 55);
+    --muted-foreground: oklch(0.78 0.025 70);
+    --accent: oklch(0.79 0.115 68);
+    --accent-foreground: oklch(0.17 0.02 55);
+    --border: oklch(0.37 0.035 55);
+    --input: oklch(0.37 0.035 55);
+    --ring: oklch(0.79 0.115 68);
+  }
+  html.dark body,
+  html.dark .velocity-interior,
+  html.dark .vehicle-journal-interior { background: #17110e !important; color: #fff6e9 !important; }
+  html.dark .velocity-interior .hero-atmosphere { background: radial-gradient(circle at 72% 24%, rgba(197, 140, 85, 0.16), transparent 22rem), linear-gradient(125deg, #211711 0%, #1b120e 58%, #302117 58%, #302117 100%) !important; }
+  html.dark .velocity-interior .interior-display,
+  html.dark .velocity-interior h1,
+  html.dark .velocity-interior h2,
+  html.dark .velocity-interior h3,
+  html.dark .velocity-interior [class*="text-[#0f1e2e]"],
+  html.dark .vehicle-journal-interior h1,
+  html.dark .vehicle-journal-interior h2,
+  html.dark .vehicle-journal-interior h3 { color: #fff6e9 !important; }
+  html.dark .velocity-interior .eyebrow,
+  html.dark .velocity-interior .fleet-kicker,
+  html.dark .velocity-interior [class*="text-slate-600"],
+  html.dark .velocity-interior [class*="text-slate-500"],
+  html.dark .velocity-interior [class*="text-slate-400"],
+  html.dark .vehicle-journal-interior [class*="text-slate-600"],
+  html.dark .vehicle-journal-interior [class*="text-slate-500"] { color: #dcc8b1 !important; }
+  html.dark .velocity-interior .interior-display em,
+  html.dark .velocity-interior [class*="text-[#d97706]"],
+  html.dark .velocity-interior [class*="text-[#b45309]"],
+  html.dark .vehicle-journal-interior [class*="text-[#d97706]"],
+  html.dark .vehicle-journal-interior [class*="text-[#b45309]"] { color: #f2b66f !important; }
+  html.dark .interior-nav,
+  html.dark header { border-color: #5d4634 !important; background: rgba(27, 18, 14, 0.96) !important; }
+  html.dark .interior-nav .nav-link,
+  html.dark .nav-link { color: #f1dfc5 !important; }
+  html.dark .interior-nav .nav-link:hover,
+  html.dark .nav-link:hover { color: #fff6e9 !important; }
+  html.dark .interior-nav button[class*="border-slate"],
+  html.dark .interior-nav button[class*="bg-white"],
+  html.dark header button:not(.bg-\[\#d97706\]) { border-color: #6a503a !important; background-color: #2a1d16 !important; color: #fff6e9 !important; }
+  html.dark .velocity-interior #fleet,
+  html.dark .velocity-interior #why-velocity,
+  html.dark .velocity-interior #contact,
+  html.dark .velocity-interior #my-drive { background: #17110e !important; }
+  html.dark .velocity-interior #how-it-works { border-color: #5b4534 !important; background: #211711 !important; }
+  html.dark .velocity-interior #fleet aside,
+  html.dark .velocity-interior #fleet .fleet-card,
+  html.dark .velocity-interior #fleet input,
+  html.dark .velocity-interior #fleet label,
+  html.dark .velocity-interior #fleet .rounded-xl.border,
+  html.dark .velocity-interior #fleet .rounded-2xl.border,
+  html.dark .velocity-interior #why-velocity [class*="bg-white"],
+  html.dark .velocity-interior #contact [class*="bg-white"],
+  html.dark .vehicle-journal-interior main:has([aria-label^="Show gallery"]) aside { border-color: #5d4634 !important; background: #2a1d16 !important; box-shadow: 0 22px 54px rgba(0, 0, 0, 0.3) !important; }
+  html.dark .velocity-interior #fleet .fleet-card,
+  html.dark .velocity-interior #fleet aside { background-color: #281c16 !important; box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22) !important; }
+  html.dark .velocity-interior #fleet .fleet-card:hover { border-color: #b98b59 !important; box-shadow: 0 26px 56px rgba(0, 0, 0, 0.32) !important; }
+  html.dark .velocity-interior #fleet [class*="bg-[#eaf0f3]"],
+  html.dark .velocity-interior #fleet [class*="bg-slate-50"],
+  html.dark .velocity-interior #why-velocity [class*="bg-[#eaf0f3]"],
+  html.dark .velocity-interior .filter-group-dense { background: #35261d !important; border-color: #624935 !important; color: #fff6e9 !important; }
+  html.dark .velocity-interior .interior-search form { border-color: #624935 !important; background: #281c16 !important; box-shadow: 0 24px 54px rgba(0, 0, 0, 0.28) !important; }
+  html.dark .velocity-interior .interior-search form > div > div,
+  html.dark .velocity-interior .interior-search form button[aria-label^="Open"],
+  html.dark .velocity-interior input,
+  html.dark .velocity-interior textarea,
+  html.dark .velocity-interior select { border-color: #624935 !important; background: #2d2018 !important; color: #fff6e9 !important; }
+  html.dark .velocity-interior .interior-search form > div > div > span:first-child,
+  html.dark .velocity-interior .interior-search form button[aria-label^="Open"] { background: #3a291f !important; color: #f2c48e !important; }
+  html.dark .velocity-interior .interior-search form > div > div:hover,
+  html.dark .velocity-interior .interior-search form > div > div:focus-within { background: #38281e !important; }
+  html.dark .velocity-interior .interior-operational-bar,
+  html.dark .velocity-interior .interior-fleet-banner,
+  html.dark #site-footer { border-color: #5d4634 !important; background: #120d0a !important; }
+  html.dark .velocity-interior .interior-operational-bar .font-editorial,
+  html.dark .velocity-interior .interior-fleet-banner h2,
+  html.dark .velocity-interior .interior-fleet-banner .eyebrow,
+  html.dark .velocity-interior .interior-fleet-banner [class*="text-[#f6b256]"] { color: #ffe3bf !important; }
+  html.dark .velocity-interior #contact .mt-8.grid > div:first-child { border-color: #6a503a !important; background: #120d0a !important; }
+  html.dark .velocity-interior #contact .mt-8.grid > div:first-child h3 { color: #fff6e9 !important; }
+  html.dark .velocity-interior #contact .mt-8.grid > div:first-child a,
+  html.dark .velocity-interior #contact .mt-8.grid > div:first-child p { color: #e7d0b4 !important; }
+  html.dark .velocity-interior .fleet-card-description { color: #dfcbb4 !important; }
+  html.dark .velocity-interior .route-rule { background: linear-gradient(90deg, #f2b66f 0 56px, #5d4634 56px 100%); }
   @media (min-width: 640px) { .container { padding-left: 1.5rem; padding-right: 1.5rem; } }
   @media (min-width: 640px) { .wide-shell { padding-left: 1.5rem; padding-right: 1.5rem; } }
   @media (min-width: 1024px) { .container { max-width: none !important; padding-left: 2rem !important; padding-right: 2rem !important; } }

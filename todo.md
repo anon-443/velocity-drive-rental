@@ -220,3 +220,6 @@
 - [x] Create and verify a complete project ZIP archive for local backup and GitHub upload.
 - [x] Create and validate a reusable skill for internship-ready car-rental frontend projects.
 - [x] Provide Windows pnpm installation steps, reusable-skill usage guidance, a UI/UX and bug-fix summary, and final backup/configuration resources.
+- [x] Refine the dark-mode palette with warmer surfaces and clearly separated elevations.
+- [x] Increase dark-mode text, icon, form-control, and action contrast while preserving the light theme.
+- [x] Validate and publish the refined dark mode across desktop and mobile widths.
