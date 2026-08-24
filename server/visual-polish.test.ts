@@ -15,8 +15,8 @@ describe("visual polish system", () => {
     const styles = await readFile(new URL("../client/src/index.css", import.meta.url), "utf8");
 
     expect(styles).toContain(".container { width: 100%; max-width: none !important;");
-    expect(styles).toContain("padding-left: 2rem !important");
-    expect(styles).toContain("padding-right: 2rem !important");
+    expect(styles).toContain("padding-left: 1.5rem !important");
+    expect(styles).toContain("padding-right: 1.5rem !important");
   });
 
   it("uses a reduced-motion-aware transition layer for page navigation", async () => {
@@ -172,6 +172,8 @@ describe("visual polish system", () => {
 
     expect(inventory).toContain('"id":"bmw-m5"');
     expect(fleetSource).toContain('"bmw-m5": staticAssetPath');
+    expect(fleetSource).toContain("bmw-m5-black_0855dd1c.jpg");
+    expect(fleetSource).toContain("featuredFleetOrder");
     expect(fleetSource).toContain("717 hp system output");
     expect(grid).toContain("object-cover object-center");
     expect(grid).toContain("setLocation(`/fleet/${carId}`)");
@@ -180,6 +182,17 @@ describe("visual polish system", () => {
     expect(bootstrap).toContain("made\\s+with\\s+manus");
     expect(tripDesk).toContain("object-contain p-3");
     expect(tripDesk).toContain("View details");
+  });
+
+  it("keeps the outer spacing tighter and the card grid usable on mobile screens", async () => {
+    const [styles, grid] = await Promise.all([
+      readFile(new URL("../client/src/index.css", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/components/CarGrid.tsx", import.meta.url), "utf8"),
+    ]);
+
+    expect(styles).toContain("padding-left: 0.875rem");
+    expect(styles).toContain("@media (max-width: 639px)");
+    expect(grid).toContain("grid gap-3 sm:grid-cols-2");
   });
 
   it("removes the requested journey and FAQ sections while keeping the contact inquiry and fleet navigation focused", async () => {

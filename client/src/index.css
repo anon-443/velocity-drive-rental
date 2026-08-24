@@ -64,8 +64,8 @@
 }
 
 @layer components {
-  .container { width: 100%; max-width: none !important; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
-  .wide-shell { width: 100%; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+  .container { width: 100%; max-width: none !important; margin-left: auto; margin-right: auto; padding-left: 0.875rem; padding-right: 0.875rem; }
+  .wide-shell { width: 100%; margin-left: auto; margin-right: auto; padding-left: 0.875rem; padding-right: 0.875rem; }
   .font-editorial { font-family: "DM Serif Display", Georgia, serif; }
   .font-hero-display { font-family: "DM Serif Display", Georgia, serif; font-weight: 400; }
   /* Warm gallery system inspired by the supplied interior-design reference. */
@@ -215,7 +215,7 @@
   .fleet-card:hover .fleet-spec { transform: translateY(-2px); }
   .fleet-card:hover .fleet-action:first-child svg { transform: translateX(2px); }
   .fleet-card .fleet-action svg { transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1); }
-  #my-drive, #how-it-works, #why-velocity, #contact { padding-top: 4.5rem !important; padding-bottom: 5rem !important; }
+  #my-drive, #why-velocity, #contact { padding-top: 4.5rem !important; padding-bottom: 5rem !important; }
   .fleet-card-description { color: #666; }
   .comparison-selector > span:first-child, .comparison-row > div:first-child, .comparison-feature-row > div:first-child, .comparison-vehicle-header p:first-child, .terms-card > p:first-child, main:has([aria-label^="Show gallery"]) aside p[class*="uppercase"] { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; line-height: 1; text-transform: uppercase; }
   .comparison-journal > section:nth-child(2), main:has([aria-label^="Show gallery"]) > section:nth-child(3) { padding-top: 4.5rem; padding-bottom: 5rem; }
@@ -377,12 +377,17 @@
   html.dark .velocity-interior #contact .mt-8.grid > div:first-child p { color: #e7d0b4 !important; }
   html.dark .velocity-interior .fleet-card-description { color: #dfcbb4 !important; }
   html.dark .velocity-interior .route-rule { background: linear-gradient(90deg, #f2b66f 0 56px, #5d4634 56px 100%); }
-  @media (min-width: 640px) { .container { padding-left: 1.5rem; padding-right: 1.5rem; } }
-  @media (min-width: 640px) { .wide-shell { padding-left: 1.5rem; padding-right: 1.5rem; } }
-  @media (min-width: 1024px) { .container { max-width: none !important; padding-left: 2rem !important; padding-right: 2rem !important; } }
-  @media (min-width: 1024px) { .wide-shell { padding-left: 2rem; padding-right: 2rem; } }
-  @media (min-width: 1536px) { .container { padding-left: 2.5rem !important; padding-right: 2.5rem !important; } }
-  @media (min-width: 1536px) { .wide-shell { padding-left: 2.5rem; padding-right: 2.5rem; } }
+  @media (min-width: 640px) { .container { padding-left: 1.25rem; padding-right: 1.25rem; } }
+  @media (min-width: 640px) { .wide-shell { padding-left: 1.25rem; padding-right: 1.25rem; } }
+  @media (min-width: 1024px) { .container { max-width: none !important; padding-left: 1.5rem !important; padding-right: 1.5rem !important; } }
+  @media (min-width: 1024px) { .wide-shell { padding-left: 1.5rem; padding-right: 1.5rem; } }
+  @media (min-width: 1536px) { .container { padding-left: 1.75rem !important; padding-right: 1.75rem !important; } }
+  @media (min-width: 1536px) { .wide-shell { padding-left: 1.75rem; padding-right: 1.75rem; } }
+  @media (max-width: 639px) {
+    .fleet-card .fleet-spec { padding-top: 0.7rem; padding-bottom: 0.7rem; }
+    .fleet-card .fleet-action { min-height: 2.6rem; }
+    #fleet .relative.mt-5 > .mt-5.grid { gap: 0.75rem; }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

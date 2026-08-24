@@ -124,7 +124,7 @@ export default function CarGrid({
                 {leadCar && <LeadVehicle key={leadCar.id} car={leadCar} saved={savedCarIds.includes(leadCar.id)} onBook={onBook} onToggleSaved={onToggleSaved} onOpenDetails={openVehicle} reduceMotion={reduceMotion} />}
               </AnimatePresence>
               {comparisonCars.length > 0 && (
-                  <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-5">
+                  <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-5">
                   <AnimatePresence mode="popLayout">
                     {comparisonCars.map((car, index) => <ComparisonVehicle key={car.id} car={car} index={index} saved={savedCarIds.includes(car.id)} onBook={onBook} onToggleSaved={onToggleSaved} onOpenDetails={openVehicle} reduceMotion={reduceMotion} />)}
                   </AnimatePresence>

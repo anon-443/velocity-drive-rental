@@ -23,7 +23,7 @@ const imageAssets: Record<string, string> = {
   "mazda-cx5": staticAssetPath("/manus-storage/mazda-cx5_4af358e1.jpg"),
   "kia-ev6": staticAssetPath("/manus-storage/kia-ev6_a4cad62a.jpg"),
   "bmw-x3": staticAssetPath("/manus-storage/bmw-x3_7587a69c.jpg"),
-  "bmw-m5": staticAssetPath("/manus-storage/bmw-m5_f01f9672.jpg"),
+  "bmw-m5": staticAssetPath("/manus-storage/bmw-m5-black_0855dd1c.jpg"),
   "honda-civic": staticAssetPath("/manus-storage/honda-civic_cfd1fe7f.jpg"),
   "lexus-rx350": staticAssetPath("/manus-storage/lexus-rx350_47dd1dc9.jpg"),
   "volkswagen-tiguan": staticAssetPath("/manus-storage/volkswagen-tiguan_cca363a6.jpg"),
@@ -49,7 +49,7 @@ function unavailableWindows(index: number): UnavailableWindow[] {
 
 export const branchLocations = ["Bishkek Downtown Hub", "Manas International Airport (FRU)", "Bishkek Railway Station", "Asia Mall — South Gate", "Almaty Road — East Service Hub"];
 
-export const fleet: FleetCar[] = inventory.map((item, index) => {
+const baseFleet: FleetCar[] = inventory.map((item, index) => {
   const type = item.category as CarType;
   const image = imageAssets[item.id];
   const typeSpecs = specs[type];
@@ -60,6 +60,18 @@ export const fleet: FleetCar[] = inventory.map((item, index) => {
     ...typeSpecs, ...(vehicleSpecOverrides[item.id] ?? {}), exterior: item.colorOptions[0], colorOptions: item.colorOptions, engine: item.engine, badge: item.badge, popularity: 13 - index, features: item.features,
   };
 });
+
+const featuredFleetOrder = ["kia-sorento-hybrid", "bmw-m5"];
+
+export const fleet: FleetCar[] = [...baseFleet]
+  .sort((left, right) => {
+    const leftPosition = featuredFleetOrder.indexOf(left.id);
+    const rightPosition = featuredFleetOrder.indexOf(right.id);
+    const leftRank = leftPosition === -1 ? featuredFleetOrder.length : leftPosition;
+    const rightRank = rightPosition === -1 ? featuredFleetOrder.length : rightPosition;
+    return leftRank - rightRank;
+  })
+  .map((car, index) => ({ ...car, popularity: baseFleet.length - index }));
 
 export const fleetCategories: Array<"All" | CarType> = ["All", "SUV", "Sedan", "Electric", "Luxury"];
 export function getCarById(id: string) { return fleet.find((car) => car.id === id); }
