@@ -70,7 +70,7 @@
   .font-hero-display { font-family: "DM Serif Display", Georgia, serif; font-weight: 400; }
   /* Warm gallery system inspired by the supplied interior-design reference. */
   .interior-nav { border-color: rgba(203, 179, 149, 0.72) !important; background: rgba(251, 251, 251, 0.94) !important; box-shadow: none !important; }
-  .interior-nav .nav-link { color: #705d4c; font-size: 0.74rem; letter-spacing: 0.01em; }
+  .interior-nav .nav-link { color: #705d4c; font-size: 0.88rem; font-weight: 800; letter-spacing: 0.005em; }
   .interior-nav .nav-link:hover { color: #1f1108; }
   .interior-nav .nav-link::after { background: #946a4b; }
   .interior-nav button[class*="border-slate"], .interior-nav button[class*="bg-white"] { border-color: #e4d5c3 !important; background-color: #fbfbfb !important; color: #4e3422 !important; }
@@ -162,12 +162,14 @@
     .velocity-interior #contact .mt-12 > div:first-child h3 { font-size: clamp(2rem, 2.5vw, 2.75rem); }
   }
   /* Compact inquiry treatment: keeps the form practical rather than filling the entire wide desktop canvas. */
-  .velocity-interior #contact .mt-8.grid > form { align-self: start; max-width: 52rem; padding: 1.25rem !important; }
-  .velocity-interior #contact .mt-8.grid > form textarea { min-height: 6.5rem !important; }
+  .velocity-interior #contact .mt-8.grid > form { align-self: start; max-width: 46rem; padding: 1rem !important; }
+  .velocity-interior #contact .mt-8.grid > form textarea { min-height: 5.5rem !important; }
   .velocity-interior #contact .mt-8.grid > form label.mt-5 { margin-top: 0.875rem !important; }
   .velocity-interior #contact .mt-8.grid > form > div:last-child { margin-top: 1rem !important; }
+  .velocity-interior #contact .mt-8.grid > form > div:last-child > p { max-width: none !important; font-size: 11px; }
   @media (min-width: 1024px) {
     .velocity-interior #contact .mt-8.grid > div:first-child h3 { font-size: clamp(1.4rem, 1.7vw, 1.85rem); letter-spacing: -0.045em; }
+    .velocity-interior #contact .mt-8.grid > form > div:last-child > p { white-space: nowrap; }
     .velocity-interior #contact > .container > div:first-child > p { max-width: 72rem !important; }
     .velocity-interior #how-it-works .container > div:first-child > p { max-width: 68rem !important; }
   }

@@ -96,7 +96,7 @@ export default function CarGrid({
             </div>
             <h2 className="mt-5 max-w-xl font-editorial text-4xl leading-[0.98] tracking-[-0.055em] text-[#0f1e2e] sm:text-5xl">Find the car that fits the way you move</h2>
           </div>
-          <p className="max-w-2xl justify-self-end text-sm leading-7 text-slate-600 sm:text-[15px]">Use the filter rail to compare cabin space, vehicle type, and daily rate before choosing a better match for the journey</p>
+          <p className="max-w-[72rem] text-sm leading-7 text-slate-600 sm:text-[15px]">Use the filter rail to compare cabin space, vehicle type, and daily rate before choosing a better match for the journey</p>
         </div>
 
         <div className="route-rule mt-10" />

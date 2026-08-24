@@ -185,3 +185,7 @@
 - [x] Keep the dark contact-panel heading on one desktop line where space permits.
 - [x] Tighten the contact and journey supporting descriptions to one or two clean desktop lines with mobile-safe wrapping.
 - [x] Validate the compact inquiry form and refined text wrapping at desktop and mobile widths before publishing.
+- [x] Further compact the inquiry form and keep its browser-demo note on one desktop line.
+- [x] Move the journey, Favorites, and fleet supporting descriptions to the left on desktop.
+- [x] Increase desktop navigation link size while retaining a balanced header layout.
+- [x] Validate compactness, left alignment, and navigation visibility at desktop and mobile widths before publishing.

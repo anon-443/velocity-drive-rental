@@ -186,13 +186,22 @@ describe("visual polish system", () => {
   });
 
   it("keeps the inquiry surface compact and the requested desktop editorial lines concise", async () => {
-    const styles = await readFile(new URL("../client/src/index.css", import.meta.url), "utf8");
+    const [styles, home, grid, tripDesk] = await Promise.all([
+      readFile(new URL("../client/src/index.css", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/pages/Home.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/components/CarGrid.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/components/TripDesk.tsx", import.meta.url), "utf8"),
+    ]);
 
     expect(styles).toContain("Compact inquiry treatment");
     expect(styles).toContain("#contact .mt-8.grid > form");
-    expect(styles).toContain("max-width: 52rem");
-    expect(styles).toContain("textarea { min-height: 6.5rem");
+    expect(styles).toContain("max-width: 46rem");
+    expect(styles).toContain("textarea { min-height: 5.5rem");
     expect(styles).toContain("#contact .mt-8.grid > div:first-child h3 { white-space: nowrap");
     expect(styles).toContain("#how-it-works .container > div:first-child > p { max-width: 68rem");
+    expect(styles).toContain(".interior-nav .nav-link { color: #705d4c; font-size: 0.88rem");
+    expect(home).toContain('max-w-[72rem] text-sm leading-7 text-slate-600');
+    expect(grid).toContain('max-w-[72rem] text-sm leading-7 text-slate-600');
+    expect(tripDesk).toContain('max-w-[72rem] text-sm leading-7 text-slate-600');
   });
 });
