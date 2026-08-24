@@ -235,3 +235,4 @@
 - [x] Move “way forward” onto its own headline line, show the black BMW M5 in the upper fleet banner, and refine the phone layout again.
 - [x] Remove the optional Favorites and Reservations workspace plus its public navigation entry points while keeping required rental features intact.
 - [x] Correct fleet anchor placement, remove excess empty space, compact the fleet controls, and repair desktop and mobile page sizing and clipping.
+- [x] Compact the contact form, remove the optional operational and duplicate fleet strips, and show full landscape vehicle images without excessive zoom or cropping.

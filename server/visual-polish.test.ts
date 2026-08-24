@@ -29,7 +29,7 @@ describe("visual polish system", () => {
     expect(source).toContain("window.scrollTo");
   });
 
-  it("keeps the requested wide hero media, fleet banner, compact header, and persistent theme control in the source", async () => {
+  it("keeps the requested wide hero media, compact header, and persistent theme control without an unnecessary duplicate fleet banner", async () => {
     const [home, header, app, styles] = await Promise.all([
       readFile(new URL("../client/src/pages/Home.tsx", import.meta.url), "utf8"),
       readFile(new URL("../client/src/components/Navbar.tsx", import.meta.url), "utf8"),
@@ -38,7 +38,8 @@ describe("visual polish system", () => {
     ]);
 
     expect(home).toContain("2xl:grid-cols-[minmax(0,0.78fr)_minmax(720px,1.22fr)]");
-    expect(home).toContain("FleetBanner cars={fleet.filter((car) => visibleCarIds.includes(car.id))}");
+    expect(home).not.toContain("FleetBanner");
+    expect(home).not.toContain("OperationalBar");
     expect(header).toContain("window.scrollY > 32");
     expect(header).toContain("Use night mode");
     expect(app).toContain('ThemeProvider defaultTheme="light" switchable');
@@ -111,7 +112,7 @@ describe("visual polish system", () => {
 
     expect(vehicleDetails).toContain('py-[4.5rem] sm:py-20');
     expect(vehicleDetails).toContain('fleet-kicker text-slate-400');
-    expect(contact).toContain('py-[4.5rem] sm:py-20');
+    expect(contact).toContain('pb-12 pt-9 sm:pb-14 sm:pt-12');
     expect(contact).toContain('lg:whitespace-nowrap');
     expect(contact).not.toContain('Call, write, or visit');
   });
@@ -170,10 +171,10 @@ describe("visual polish system", () => {
     expect(fleetSource).toContain("bmw-m5-black_0855dd1c.jpg");
     expect(fleetSource).toContain("featuredFleetOrder");
     expect(fleetSource).toContain("717 hp system output");
-    expect(grid).toContain("object-cover object-center");
+    expect(grid).toContain("object-contain object-center");
     expect(grid).toContain("setLocation(`/fleet/${carId}`)");
     expect(grid).toContain("2xl:grid-cols-5");
-    expect(home).toContain("setLocation(`/fleet/${car.id}`)");
+    expect(home).not.toContain("FleetBanner");
     expect(bootstrap).toContain("made\\s+with\\s+manus");
     expect(home).not.toContain("<TripDesk");
   });
@@ -278,18 +279,15 @@ describe("visual polish system", () => {
   });
 
   it("keeps the inquiry surface compact and the requested desktop editorial lines concise", async () => {
-    const [styles, home, grid] = await Promise.all([
-      readFile(new URL("../client/src/index.css", import.meta.url), "utf8"),
+    const [contact, home, grid] = await Promise.all([
+      readFile(new URL("../client/src/components/ContactSection.tsx", import.meta.url), "utf8"),
       readFile(new URL("../client/src/pages/Home.tsx", import.meta.url), "utf8"),
       readFile(new URL("../client/src/components/CarGrid.tsx", import.meta.url), "utf8"),
     ]);
 
-    expect(styles).toContain("Compact inquiry treatment");
-    expect(styles).toContain("#contact .mt-8.grid > form");
-    expect(styles).toContain("max-width: 46rem");
-    expect(styles).toContain("textarea { min-height: 5.5rem");
-    expect(styles).toContain("#contact .mt-8.grid > div:first-child h3 { white-space: nowrap");
-    expect(styles).toContain(".interior-nav .nav-link { color: #705d4c; font-size: 0.88rem");
+    expect(contact).toContain('contact-form mt-5 max-w-[1120px]');
+    expect(contact).toContain('min-h-24');
+    expect(contact).toContain('h-10 w-full');
     expect(home).not.toContain("Three decisions, one smooth departure");
     expect(grid).not.toContain('Use the filter rail to compare cabin space');
     expect(grid).not.toContain('availabilityLabel');
@@ -301,16 +299,15 @@ describe("visual polish system", () => {
     expect(grid).toContain('h-11 w-full rounded-[10px]');
   });
 
-  it("keeps way forward on its own hero line and includes the black BMW M5 in the compact upper fleet banner", async () => {
+  it("keeps way forward on its own hero line without retaining the optional upper fleet banner", async () => {
     const [home, styles] = await Promise.all([
       readFile(new URL("../client/src/pages/Home.tsx", import.meta.url), "utf8"),
       readFile(new URL("../client/src/index.css", import.meta.url), "utf8"),
     ]);
 
     expect(home).toContain('<span className="block whitespace-nowrap">way forward</span>');
-    expect(home).toContain('car.id === "bmw-m5"');
-    expect(home).toContain('fleet-banner-cards');
-    expect(styles).toContain('.velocity-interior .fleet-banner-cards');
+    expect(home).not.toContain('fleet-banner-cards');
+    expect(home).not.toContain('OperationalBar');
     expect(styles).toContain('font-size: clamp(2.8rem, 15vw, 3.7rem)');
   });
 });
