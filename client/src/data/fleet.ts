@@ -10,12 +10,24 @@ export type FleetCar = {
   accent: string; note: string; description: string; drive: string; power: string; efficiency: string; cargo: string; exterior: string; colorOptions: string[]; engine: string; badge: string; popularity: number; features: string[];
 };
 
-const imageAssets = {
-  suv: staticAssetPath("/manus-storage/velocity-suv_f11b8d82.jpg"),
-  electric: staticAssetPath("/manus-storage/velocity-electric_62363ef1.jpg"),
-  luxury: staticAssetPath("/manus-storage/velocity-luxury_3afef11e.jpg"),
-  crossover: staticAssetPath("/manus-storage/velocity-crossover_4ab45789.jpg"),
-  hero: staticAssetPath("/manus-storage/velocity-hero_0ffdea12.jpg"),
+/**
+ * Each rendered vehicle now has its own source image. The inventory labels and
+ * photos intentionally use the same stable ID so a category-level stock photo
+ * cannot be displayed under the wrong model name.
+ */
+const imageAssets: Record<string, string> = {
+  "kia-sorento-hybrid": staticAssetPath("/manus-storage/kia-sorento-hybrid_9c1e9c28.jpg"),
+  "hyundai-ioniq-5": staticAssetPath("/manus-storage/hyundai-ioniq-5_3d058c55.jpg"),
+  "mercedes-e300": staticAssetPath("/manus-storage/mercedes-e300_dc47005f.jpg"),
+  "toyota-corolla": staticAssetPath("/manus-storage/toyota-corolla_549cc6cb.jpg"),
+  "mazda-cx5": staticAssetPath("/manus-storage/mazda-cx5_4af358e1.jpg"),
+  "kia-ev6": staticAssetPath("/manus-storage/kia-ev6_a4cad62a.jpg"),
+  "bmw-x3": staticAssetPath("/manus-storage/bmw-x3_7587a69c.jpg"),
+  "honda-civic": staticAssetPath("/manus-storage/honda-civic_cfd1fe7f.jpg"),
+  "lexus-rx350": staticAssetPath("/manus-storage/lexus-rx350_47dd1dc9.jpg"),
+  "volkswagen-tiguan": staticAssetPath("/manus-storage/volkswagen-tiguan_cca363a6.jpg"),
+  "tesla-model-3": staticAssetPath("/manus-storage/tesla-model-3_55df243b.jpg"),
+  "skoda-octavia": staticAssetPath("/manus-storage/skoda-octavia_3f4b930a.jpg"),
 };
 
 const specs: Record<CarType, Pick<FleetCar, "drive" | "power" | "efficiency" | "cargo">> = {
@@ -34,10 +46,10 @@ export const branchLocations = ["Bishkek Downtown Hub", "Manas International Air
 
 export const fleet: FleetCar[] = inventory.map((item, index) => {
   const type = item.category as CarType;
-  const image = imageAssets[item.imageKey as keyof typeof imageAssets];
+  const image = imageAssets[item.id];
   const typeSpecs = specs[type];
   return {
-    id: item.id, name: item.name, modelYear: String(item.year), type, image, gallery: [image, imageAssets.hero, imageAssets[index % 2 ? "suv" : "crossover"]],
+    id: item.id, name: item.name, modelYear: String(item.year), type, image, gallery: [image],
     rate: item.pricePerDay, weeklyRate: Math.round(item.pricePerDay * 6.2), addOns: { insurance: Math.max(14, Math.round(item.pricePerDay * 0.2)), gps: 6 }, fuel: item.fuel, transmission: item.transmission, seats: item.seats,
     available: item.available, unavailableWindows: unavailableWindows(index), accent: item.tagline, note: `${item.badge} demo vehicle with clear daily pricing and practical trip details.`, description: `${item.tagline} This is a client-side demonstration vehicle listing; availability and rates are planning estimates pending a rental team response.`,
     ...typeSpecs, exterior: item.colorOptions[0], colorOptions: item.colorOptions, engine: item.engine, badge: item.badge, popularity: 12 - index, features: item.features,

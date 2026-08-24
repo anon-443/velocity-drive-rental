@@ -227,3 +227,5 @@
 - [x] Rebuild and verify the complete project ZIP with the final dark-theme changes.
 - [x] Verify the public GitHub repository is current and provide the final repository, Pages, live-site, and archive links.
 - [x] Replace the technical latest commit title with a concise portfolio-ready project update message.
+- [x] Audit and correct every fleet image so it matches the listed vehicle make and model across cards and detail pages.
+- [x] Rewrite recent public GitHub commit metadata into concise, portfolio-ready project milestones.

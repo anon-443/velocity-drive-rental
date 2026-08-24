@@ -141,6 +141,24 @@ describe("visual polish system", () => {
     expect(admin).toContain("Admin demonstration");
   });
 
+  it("maps every vehicle label to a model-specific image and never fills detail galleries with another vehicle", async () => {
+    const [fleetSource, vehicleDetails] = await Promise.all([
+      readFile(new URL("../client/src/data/fleet.ts", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/pages/VehicleDetails.tsx", import.meta.url), "utf8"),
+    ]);
+
+    [
+      "kia-sorento-hybrid", "hyundai-ioniq-5", "mercedes-e300", "toyota-corolla",
+      "mazda-cx5", "kia-ev6", "bmw-x3", "honda-civic", "lexus-rx350",
+      "volkswagen-tiguan", "tesla-model-3", "skoda-octavia",
+    ].forEach((vehicleId) => expect(fleetSource).toContain(`\"${vehicleId}\": staticAssetPath`));
+    expect(fleetSource).toContain("image = imageAssets[item.id]");
+    expect(fleetSource).toContain("gallery: [image]");
+    expect(vehicleDetails).toContain("Vehicle exterior");
+    expect(vehicleDetails).toContain("car.gallery.length > 1");
+    expect(vehicleDetails).not.toContain("Gallery frame");
+  });
+
   it("keeps the final accessibility and interaction closures connected to the visible rental experience", async () => {
     const [home, grid, vehicleDetails, admin, visibility] = await Promise.all([
       readFile(new URL("../client/src/pages/Home.tsx", import.meta.url), "utf8"),

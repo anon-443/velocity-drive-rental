@@ -5,20 +5,37 @@ const root = process.cwd();
 const publicRoot = resolve(root, process.env.STATIC_OUTPUT_DIR || "dist/public");
 const inventory = JSON.parse(await readFile(resolve(root, "client/src/data/cars.json"), "utf8"));
 const staticImageNames = {
-  "/manus-storage/velocity-suv_f11b8d82.jpg": "/assets/velocity-suv.jpg",
-  "/manus-storage/velocity-electric_62363ef1.jpg": "/assets/velocity-electric.jpg",
-  "/manus-storage/velocity-luxury_3afef11e.jpg": "/assets/velocity-luxury.jpg",
-  "/manus-storage/velocity-crossover_4ab45789.jpg": "/assets/velocity-crossover.jpg",
+  "/manus-storage/kia-sorento-hybrid_9c1e9c28.jpg": "/assets/kia-sorento-hybrid.jpg",
+  "/manus-storage/hyundai-ioniq-5_3d058c55.jpg": "/assets/hyundai-ioniq-5.jpg",
+  "/manus-storage/mercedes-e300_dc47005f.jpg": "/assets/mercedes-e300.jpg",
+  "/manus-storage/toyota-corolla_549cc6cb.jpg": "/assets/toyota-corolla.jpg",
+  "/manus-storage/mazda-cx5_4af358e1.jpg": "/assets/mazda-cx5.jpg",
+  "/manus-storage/kia-ev6_a4cad62a.jpg": "/assets/kia-ev6.jpg",
+  "/manus-storage/bmw-x3_7587a69c.jpg": "/assets/bmw-x3.jpg",
+  "/manus-storage/honda-civic_cfd1fe7f.jpg": "/assets/honda-civic.jpg",
+  "/manus-storage/lexus-rx350_47dd1dc9.jpg": "/assets/lexus-rx350.jpg",
+  "/manus-storage/volkswagen-tiguan_cca363a6.jpg": "/assets/volkswagen-tiguan.jpg",
+  "/manus-storage/tesla-model-3_55df243b.jpg": "/assets/tesla-model-3.jpg",
+  "/manus-storage/skoda-octavia_3f4b930a.jpg": "/assets/skoda-octavia.jpg",
 };
 const isStaticPages = Boolean(process.env.STATIC_OUTPUT_DIR);
 const imageSources = {
-  suv: "/manus-storage/velocity-suv_f11b8d82.jpg",
-  electric: "/manus-storage/velocity-electric_62363ef1.jpg",
-  luxury: "/manus-storage/velocity-luxury_3afef11e.jpg",
-  crossover: "/manus-storage/velocity-crossover_4ab45789.jpg",
+  "kia-sorento-hybrid": "/manus-storage/kia-sorento-hybrid_9c1e9c28.jpg",
+  "hyundai-ioniq-5": "/manus-storage/hyundai-ioniq-5_3d058c55.jpg",
+  "mercedes-e300": "/manus-storage/mercedes-e300_dc47005f.jpg",
+  "toyota-corolla": "/manus-storage/toyota-corolla_549cc6cb.jpg",
+  "mazda-cx5": "/manus-storage/mazda-cx5_4af358e1.jpg",
+  "kia-ev6": "/manus-storage/kia-ev6_a4cad62a.jpg",
+  "bmw-x3": "/manus-storage/bmw-x3_7587a69c.jpg",
+  "honda-civic": "/manus-storage/honda-civic_cfd1fe7f.jpg",
+  "lexus-rx350": "/manus-storage/lexus-rx350_47dd1dc9.jpg",
+  "volkswagen-tiguan": "/manus-storage/volkswagen-tiguan_cca363a6.jpg",
+  "tesla-model-3": "/manus-storage/tesla-model-3_55df243b.jpg",
+  "skoda-octavia": "/manus-storage/skoda-octavia_3f4b930a.jpg",
 };
 const vehicles = inventory.map((vehicle) => {
-  const sourceImage = imageSources[vehicle.imageKey] || imageSources.crossover;
+  const sourceImage = imageSources[vehicle.id];
+  if (!sourceImage) throw new Error(`Missing model-specific image for ${vehicle.id}`);
   return { id: vehicle.id, name: vehicle.name, year: vehicle.year, type: vehicle.category, image: isStaticPages ? staticImageNames[sourceImage] || sourceImage : sourceImage, rate: vehicle.pricePerDay, description: `${vehicle.tagline} Demo rates and availability require confirmation.` };
 });
 const siteUrl = (process.env.PUBLIC_SITE_URL || "https://velodrive-rentals.me").replace(/\/$/, "");
