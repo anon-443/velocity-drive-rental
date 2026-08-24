@@ -164,3 +164,14 @@
 - [x] Recompose hero and vehicle imagery with spacious framing inspired by the reference while keeping booking controls prominent.
 - [x] Restyle key fleet, journey, and contact surfaces so the new design feels cohesive beyond the hero.
 - [x] Validate the redesigned homepage at desktop and mobile widths, including contrast, legibility, and rental-control visibility.
+- [x] Add subtle reduced-motion-safe scroll-based image reveal animations to the gallery-style vehicle surfaces.
+- [x] Restyle the vehicle-detail journal with the warm ivory, sand, taupe, and espresso visual system.
+- [x] Enhance the booking panel with clear hover, focus, and transition feedback while preserving native date-control access.
+- [x] Validate the enhanced motion, vehicle detail, and booking-panel experience at desktop and mobile widths before publishing.
+- [x] Perform a rendered 375px review of the warm vehicle journal and booking panel, including overflow and control visibility.
+- [x] Verify rendered booking-panel focus and hover feedback before closing the combined validation.
+- [x] Force and inspect the desktop booking-panel hover pseudo-state in the browser renderer before publishing.
+- [x] Keep prominent editorial headings on one line at suitable desktop widths without introducing overflow.
+- [x] Remove unnecessary terminal full stops from short visible interface sentences while preserving meaningful punctuation.
+- [x] Refine headline sizing and wrapping so the updated typography remains balanced and readable on mobile.
+- [x] Validate the final text hierarchy and copy cleanup on desktop and mobile before publishing.

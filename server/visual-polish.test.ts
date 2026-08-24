@@ -166,11 +166,16 @@ describe("visual polish system", () => {
     expect(styles).toContain("Warm gallery system inspired by the supplied interior-design reference");
     expect(styles).toContain("#4e3422");
     expect(styles).toContain("#cbb395");
+    expect(styles).toContain(".vehicle-journal-interior");
+    expect(styles).toContain("@keyframes gallery-stage");
+    expect(styles).toContain(".interior-search form:hover");
+    expect(vehicleDetails).toContain("vehicle-journal-interior");
+    expect(styles).toContain("#my-drive h2");
     expect(booking).toContain("AnimatePresence mode=\"wait\"");
     expect(booking).toContain("ConfirmationModal");
     expect(booking).toContain("aria-modal=\"true\"");
     expect(booking).toContain("useReducedMotion");
-    expect(vehicleDetails).toContain("Reviews should come from real trips.");
+    expect(vehicleDetails).toContain("Reviews should come from real trips");
     expect(vehicleDetails).toContain("No invented score");
     expect(vehicleDetails).toContain("verified booking records");
     expect(home).toContain("pt-12 sm:pt-16 lg:min-h");

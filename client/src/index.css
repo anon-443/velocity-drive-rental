@@ -111,6 +111,40 @@
   .velocity-interior #why-velocity [class*="bg-[#0f1e2e]"] { background: #4e3422 !important; }
   .velocity-interior #why-velocity [class*="bg-white"], .velocity-interior #contact [class*="bg-white"] { border-color: #e5d5c3 !important; background: #fffdfb !important; }
   .velocity-interior #why-velocity [class*="bg-[#eaf0f3]"] { background: #eadfd1 !important; color: #4e3422 !important; }
+  .vehicle-journal-interior { background: #fbfbfb !important; color: #1f1108 !important; }
+  .vehicle-journal-interior main:has([aria-label^="Show gallery"]) > section:first-child { background: radial-gradient(circle at 78% 12%, rgba(203, 179, 149, 0.35), transparent 20rem), linear-gradient(125deg, #f7f2ec 0%, #f7f2ec 63%, #eadfd1 63%) !important; }
+  .vehicle-journal-interior main:has([aria-label^="Show gallery"]) > section:first-child::after { background: #946a4b; box-shadow: 12px 0 0 rgba(148, 106, 75, 0.2), 24px 0 0 rgba(148, 106, 75, 0.1); }
+  .vehicle-journal-interior h1, .vehicle-journal-interior h2, .vehicle-journal-interior h3, .vehicle-journal-interior [class*="text-[#0f1e2e]"] { color: #1f1108 !important; }
+  .vehicle-journal-interior [class*="text-slate-600"], .vehicle-journal-interior [class*="text-slate-500"] { color: #705d4c !important; }
+  .vehicle-journal-interior [class*="border-[#d97706]"] { border-color: #946a4b !important; }
+  .vehicle-journal-interior [class*="text-[#d97706]"], .vehicle-journal-interior [class*="text-[#b45309]"] { color: #946a4b !important; }
+  .vehicle-journal-interior [class*="bg-[#eaf0f3]"], .vehicle-journal-interior [class*="bg-[#f7f8f6]"] { background-color: #f5eee6 !important; }
+  .vehicle-journal-interior main:has([aria-label^="Show gallery"]) > section:nth-child(2) { background: linear-gradient(180deg, #fffdfb 0%, #fbf7f2 100%) !important; }
+  .vehicle-journal-interior main:has([aria-label^="Show gallery"]) > section:nth-child(2) > div > div > div:first-child > div:first-child { border: 1px solid rgba(78, 52, 34, 0.16); background: #1f1108; box-shadow: 0 28px 64px rgba(78, 52, 34, 0.17); }
+  .vehicle-journal-interior main:has([aria-label^="Show gallery"]) aside { border-color: #e5d5c3 !important; background: #fffdfb !important; box-shadow: 0 24px 56px rgba(78, 52, 34, 0.1) !important; }
+  .vehicle-journal-interior main:has([aria-label^="Show gallery"]) aside button[class*="bg-[#0f1e2e]"], .vehicle-journal-interior main:has([aria-label^="Show gallery"]) button[class*="bg-[#d97706]"] { background: #4e3422 !important; color: #fbfbfb !important; }
+  .vehicle-journal-interior main:has([aria-label^="Show gallery"]) aside button[class*="border-slate"], .vehicle-journal-interior main:has([aria-label^="Show gallery"]) input { border-color: #e5d5c3 !important; background: #fffdfb !important; }
+  .vehicle-journal-interior main:has([aria-label^="Show gallery"]) > section:nth-child(3) { border-color: #e5d5c3 !important; background: #f7f2ec !important; }
+  .vehicle-journal-interior main:has([aria-label^="Show gallery"]) > section:nth-child(3) [class*="bg-white"], .vehicle-journal-interior main:has([aria-label^="Show gallery"]) > section:nth-child(4) [class*="bg-white"] { border-color: #e5d5c3 !important; background: #fffdfb !important; }
+  .velocity-interior .interior-search form { transition: transform 0.28s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.28s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.28s ease; }
+  .velocity-interior .interior-search form:hover, .velocity-interior .interior-search form:focus-within { border-color: #cbb395; box-shadow: 0 30px 66px rgba(78, 52, 34, 0.17); transform: translateY(-3px); }
+  .velocity-interior .interior-search form > div > div { transition: background-color 0.2s ease, transform 0.22s cubic-bezier(0.23, 1, 0.32, 1); }
+  .velocity-interior .interior-search form > div > div:hover, .velocity-interior .interior-search form > div > div:focus-within { background: rgba(245, 238, 230, 0.92) !important; transform: translateY(-2px); }
+  .velocity-interior .interior-search form > div > div [class*="bg-[#eaf0f3]"] { background: #eadfd1 !important; color: #4e3422 !important; }
+  .velocity-interior .interior-search form > div > button { position: relative; overflow: hidden; transition: transform 0.22s cubic-bezier(0.23, 1, 0.32, 1), background-color 0.22s ease, box-shadow 0.22s ease; }
+  .velocity-interior .interior-search form > div > button::after { position: absolute; inset: 0; content: ""; background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.22) 50%, transparent 70%); transform: translateX(-120%); transition: transform 0.55s cubic-bezier(0.23, 1, 0.32, 1); }
+  .velocity-interior .interior-search form > div > button:hover { box-shadow: 0 12px 24px rgba(78, 52, 34, 0.22); transform: translateY(-2px); }
+  .velocity-interior .interior-search form > div > button:hover::after { transform: translateX(120%); }
+  .velocity-interior #my-drive > div > div:first-child { grid-template-columns: minmax(0, 1fr) !important; gap: 1rem; }
+  .velocity-interior #my-drive > div > div:first-child > p { justify-self: start; max-width: 46rem; }
+  .velocity-interior #my-drive h2 { max-width: none !important; text-wrap: balance; }
+  @media (min-width: 900px) { .velocity-interior #my-drive h2 { white-space: nowrap; font-size: clamp(2.15rem, 3.9vw, 2.65rem); letter-spacing: -0.06em; } }
+  @media (max-width: 640px) { .velocity-interior #my-drive h2 { font-size: clamp(2.35rem, 10.5vw, 3.25rem); line-height: 0.95; } }
+  @media (prefers-reduced-motion: no-preference) {
+    .velocity-interior .interior-hero-frame { animation: gallery-stage 0.72s cubic-bezier(0.23, 1, 0.32, 1) both; }
+    .velocity-interior #fleet .fleet-card > a:first-child, .vehicle-journal-interior main:has([aria-label^="Show gallery"]) > section:nth-child(2) > div > div > div:first-child > div:first-child { animation: gallery-stage 0.64s cubic-bezier(0.23, 1, 0.32, 1) both; animation-timeline: view(); animation-range: entry 6% cover 32%; }
+  }
+  @keyframes gallery-stage { from { clip-path: inset(0 0 100% 0 round 2rem); opacity: 0.3; transform: translateY(22px) scale(0.985); } to { clip-path: inset(0 0 0 0 round 2rem); opacity: 1; transform: translateY(0) scale(1); } }
   #site-footer { border-color: #674933 !important; background: #1f1108 !important; }
   .eyebrow, .fleet-kicker { display: flex; align-items: center; gap: 0.55rem; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; line-height: 1; text-transform: uppercase; color: #64748b; }
   .eyebrow span { display: inline-block; height: 0.55rem; width: 0.55rem; background: #d97706; }
