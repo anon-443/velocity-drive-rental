@@ -10,6 +10,19 @@ import "./index.css";
 
 const queryClient = new QueryClient();
 
+const removeInjectedAttribution = () => {
+  document.querySelectorAll<HTMLElement>("a, button, div, span").forEach((element) => {
+    if (element.textContent?.trim() === "Made with Manus") {
+      const host = element.closest<HTMLElement>("a, button") ?? element;
+      host.style.setProperty("display", "none", "important");
+    }
+  });
+};
+
+const attributionObserver = new MutationObserver(removeInjectedAttribution);
+attributionObserver.observe(document.documentElement, { childList: true, subtree: true });
+removeInjectedAttribution();
+
 const redirectToLoginIfUnauthorized = (error: unknown) => {
   if (!(error instanceof TRPCClientError)) return;
   if (typeof window === "undefined") return;

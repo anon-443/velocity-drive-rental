@@ -202,3 +202,7 @@
 - [x] Replace stretched checkbox rows with naturally sized 32px filter pills that wrap within each group.
 - [x] Compact the search, sort, and result-count controls while preserving responsive access.
 - [x] Validate and publish the compact pill-based filter panel at desktop and mobile widths.
+- [x] Remove the hero headline full stop, image caption, and “considered” wording from the hero eyebrow.
+- [x] Tighten excess space below the hero’s final line and the footer’s closing content.
+- [x] Remove the visible Made with Manus attribution from the footer area.
+- [x] Validate and publish the refined hero and footer at desktop and mobile widths.
