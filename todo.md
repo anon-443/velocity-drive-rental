@@ -237,3 +237,4 @@
 - [x] Correct fleet anchor placement, remove excess empty space, compact the fleet controls, and repair desktop and mobile page sizing and clipping.
 - [x] Compact the contact form, remove the optional operational and duplicate fleet strips, and show full landscape vehicle images without excessive zoom or cropping.
 - [x] Correct Fleet and Contact anchor placement, reduce the oversized hero Find vehicles action, and keep the Contact form composition within a compact desktop view.
+- [x] Remove the hero Find vehicles box and its empty space, then tighten page spacing so content begins cleanly without unnecessary gaps.
