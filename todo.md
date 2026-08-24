@@ -223,3 +223,7 @@
 - [x] Refine the dark-mode palette with warmer surfaces and clearly separated elevations.
 - [x] Increase dark-mode text, icon, form-control, and action contrast while preserving the light theme.
 - [x] Validate and publish the refined dark mode across desktop and mobile widths.
+- [x] Review the final dark-theme contrast on desktop and mobile and confirm the refined palette is readable.
+- [x] Rebuild and verify the complete project ZIP with the final dark-theme changes.
+- [x] Verify the public GitHub repository is current and provide the final repository, Pages, live-site, and archive links.
+- [x] Replace the technical latest commit title with a concise portfolio-ready project update message.
