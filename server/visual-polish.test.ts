@@ -67,7 +67,7 @@ describe("visual polish system", () => {
     expect(styles).toContain('.fleet-card:hover .fleet-spec');
     expect(styles).toContain('animation-timeline: view()');
     expect(styles).toContain('@media (prefers-reduced-motion: no-preference)');
-    expect(fleetGrid).toContain('pb-12 pt-8 sm:pb-14 sm:pt-10');
+    expect(fleetGrid).toContain('pb-12 pt-5 sm:pb-14 sm:pt-6');
   });
 
   it("keeps the fleet filters as a compact pill-based panel with reduced search and sort controls", async () => {
@@ -110,7 +110,8 @@ describe("visual polish system", () => {
       readFile(new URL("../client/src/components/ContactSection.tsx", import.meta.url), "utf8"),
     ]);
 
-    expect(vehicleDetails).toContain('py-[4.5rem] sm:py-20');
+    expect(vehicleDetails).toContain('pb-8 pt-5 sm:pb-10 sm:pt-6');
+    expect(vehicleDetails).toContain('lg:grid-cols-[minmax(330px,0.88fr)_minmax(0,1.12fr)]');
     expect(vehicleDetails).toContain('fleet-kicker text-slate-400');
     expect(contact).toContain('pb-8 pt-5 sm:pb-10 sm:pt-6');
     expect(contact).toContain('lg:whitespace-nowrap');
@@ -153,7 +154,8 @@ describe("visual polish system", () => {
     expect(fleetSource).toContain("image = imageAssets[item.id]");
     expect(fleetSource).toContain("gallery: [image]");
     expect(vehicleDetails).toContain("Vehicle exterior");
-    expect(vehicleDetails).toContain("car.gallery.length > 1");
+    expect(vehicleDetails).toContain("car.gallery[selectedImage]");
+    expect(vehicleDetails).toContain("Vehicle journal / {car.type}");
     expect(vehicleDetails).not.toContain("Gallery frame");
   });
 

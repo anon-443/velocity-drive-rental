@@ -17,7 +17,8 @@ function scrollToSection(href: string) {
   const target = document.querySelector<HTMLElement>(href);
   if (!target) return;
   const headerHeight = document.querySelector<HTMLElement>(".interior-nav")?.offsetHeight ?? 76;
-  const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - headerHeight - 12);
+  const extraOffset = href === "#fleet" ? 40 : 12;
+  const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - headerHeight - extraOffset);
   window.scrollTo({ top, behavior: "smooth" });
 }
 

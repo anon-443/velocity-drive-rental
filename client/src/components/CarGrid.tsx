@@ -84,7 +84,7 @@ export default function CarGrid({
   };
 
   return (
-    <section id="fleet" className="scroll-mt-20 bg-[#f7f8f6] pb-12 pt-8 sm:pb-14 sm:pt-10">
+    <section id="fleet" className="scroll-mt-20 bg-[#f7f8f6] pb-12 pt-5 sm:pb-14 sm:pt-6">
       <div className="container">
         <div>
           <div className="flex items-center gap-3">
