@@ -230,6 +230,7 @@ describe("visual polish system", () => {
     expect(admin).toContain("resetVisibility");
     expect(admin).toContain("immediately affect the public fleet and banner");
     expect(visibility).toContain("velocity-drive-visible-fleet");
+    expect(visibility).toContain('featuredIds = ["bmw-m5"]');
   });
 
   it("keeps the requested hero, booking confirmation, and review-ready refinements honest and motion-safe", async () => {
@@ -292,5 +293,18 @@ describe("visual polish system", () => {
     expect(grid).toContain('sm:grid-cols-2 xl:grid-cols-4');
     expect(grid).toContain('inline-flex h-8 w-auto');
     expect(grid).toContain('h-11 w-full rounded-[10px]');
+  });
+
+  it("keeps way forward on its own hero line and includes the black BMW M5 in the compact upper fleet banner", async () => {
+    const [home, styles] = await Promise.all([
+      readFile(new URL("../client/src/pages/Home.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/index.css", import.meta.url), "utf8"),
+    ]);
+
+    expect(home).toContain('<span className="block whitespace-nowrap">way forward</span>');
+    expect(home).toContain('car.id === "bmw-m5"');
+    expect(home).toContain('fleet-banner-cards');
+    expect(styles).toContain('.velocity-interior .fleet-banner-cards');
+    expect(styles).toContain('font-size: clamp(2.8rem, 15vw, 3.7rem)');
   });
 });

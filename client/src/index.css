@@ -384,6 +384,14 @@
   @media (min-width: 1536px) { .container { padding-left: 1.75rem !important; padding-right: 1.75rem !important; } }
   @media (min-width: 1536px) { .wide-shell { padding-left: 1.75rem; padding-right: 1.75rem; } }
   @media (max-width: 639px) {
+    .velocity-interior .interior-hero { padding-top: 2rem !important; }
+    .velocity-interior .interior-display { font-size: clamp(2.8rem, 15vw, 3.7rem) !important; line-height: 0.94 !important; }
+    .velocity-interior .interior-hero-media { min-height: 0 !important; margin-top: 0.25rem; }
+    .velocity-interior .interior-hero-frame { min-height: 300px !important; border-radius: 2rem 2rem 1.25rem 1.25rem !important; }
+    .velocity-interior .interior-search { transform: translateY(1rem) !important; }
+    .velocity-interior .fleet-banner-cards { gap: 0.5rem; }
+    .velocity-interior .fleet-banner-cards button { gap: 0.65rem; padding: 0.65rem; }
+    .velocity-interior .fleet-banner-cards img { height: 3.25rem; width: 4.75rem; }
     .fleet-card .fleet-spec { padding-top: 0.7rem; padding-bottom: 0.7rem; }
     .fleet-card .fleet-action { min-height: 2.6rem; }
     #fleet .relative.mt-5 > .mt-5.grid { gap: 0.75rem; }
