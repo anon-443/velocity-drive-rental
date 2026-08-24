@@ -19,6 +19,7 @@ const assets = [
   ["mazda-cx5.jpg", "/manus-storage/mazda-cx5_4af358e1.jpg"],
   ["kia-ev6.jpg", "/manus-storage/kia-ev6_a4cad62a.jpg"],
   ["bmw-x3.jpg", "/manus-storage/bmw-x3_7587a69c.jpg"],
+  ["bmw-m5.jpg", "/manus-storage/bmw-m5_f01f9672.jpg"],
   ["honda-civic.jpg", "/manus-storage/honda-civic_cfd1fe7f.jpg"],
   ["lexus-rx350.jpg", "/manus-storage/lexus-rx350_47dd1dc9.jpg"],
   ["volkswagen-tiguan.jpg", "/manus-storage/volkswagen-tiguan_cca363a6.jpg"],

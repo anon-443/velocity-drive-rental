@@ -10,18 +10,23 @@ import "./index.css";
 
 const queryClient = new QueryClient();
 
+const attributionLabel = /made\s+with\s+manus/i;
 const removeInjectedAttribution = () => {
-  document.querySelectorAll<HTMLElement>("a, button, div, span").forEach((element) => {
-    if (element.textContent?.trim() === "Made with Manus") {
-      const host = element.closest<HTMLElement>("a, button") ?? element;
-      host.style.setProperty("display", "none", "important");
-    }
+  document.querySelectorAll<HTMLElement>("a, button, div, span, [aria-label], [title], [data-manus], manus-badge").forEach((element) => {
+    const visibleText = element.textContent?.trim() ?? "";
+    const accessibleText = `${element.getAttribute("aria-label") ?? ""} ${element.getAttribute("title") ?? ""}`;
+    if (!attributionLabel.test(visibleText) && !attributionLabel.test(accessibleText)) return;
+    const host = element.closest<HTMLElement>("a, button, [role='button'], [data-manus], manus-badge") ?? element;
+    host.style.setProperty("display", "none", "important");
+    host.setAttribute("aria-hidden", "true");
   });
 };
 
 const attributionObserver = new MutationObserver(removeInjectedAttribution);
 attributionObserver.observe(document.documentElement, { childList: true, subtree: true });
 removeInjectedAttribution();
+window.setTimeout(removeInjectedAttribution, 0);
+window.setTimeout(removeInjectedAttribution, 500);
 
 const redirectToLoginIfUnauthorized = (error: unknown) => {
   if (!(error instanceof TRPCClientError)) return;

@@ -23,6 +23,7 @@ const imageAssets: Record<string, string> = {
   "mazda-cx5": staticAssetPath("/manus-storage/mazda-cx5_4af358e1.jpg"),
   "kia-ev6": staticAssetPath("/manus-storage/kia-ev6_a4cad62a.jpg"),
   "bmw-x3": staticAssetPath("/manus-storage/bmw-x3_7587a69c.jpg"),
+  "bmw-m5": staticAssetPath("/manus-storage/bmw-m5_f01f9672.jpg"),
   "honda-civic": staticAssetPath("/manus-storage/honda-civic_cfd1fe7f.jpg"),
   "lexus-rx350": staticAssetPath("/manus-storage/lexus-rx350_47dd1dc9.jpg"),
   "volkswagen-tiguan": staticAssetPath("/manus-storage/volkswagen-tiguan_cca363a6.jpg"),
@@ -35,6 +36,10 @@ const specs: Record<CarType, Pick<FleetCar, "drive" | "power" | "efficiency" | "
   Sedan: { drive: "Front-wheel drive", power: "169 hp", efficiency: "Up to 35 mpg", cargo: "13.5 cu ft trunk" },
   Electric: { drive: "Rear-wheel drive", power: "225 hp", efficiency: "Up to 303 mi range", cargo: "27 cu ft rear cargo" },
   Luxury: { drive: "All-wheel drive", power: "255 hp", efficiency: "Turbo efficiency", cargo: "13 cu ft trunk" },
+};
+
+const vehicleSpecOverrides: Record<string, Partial<Pick<FleetCar, "drive" | "power" | "efficiency" | "cargo">>> = {
+  "bmw-m5": { drive: "M xDrive all-wheel drive", power: "717 hp system output", efficiency: "Up to 42 mi electric range", cargo: "16.5 cu ft trunk" },
 };
 
 function unavailableWindows(index: number): UnavailableWindow[] {
@@ -52,7 +57,7 @@ export const fleet: FleetCar[] = inventory.map((item, index) => {
     id: item.id, name: item.name, modelYear: String(item.year), type, image, gallery: [image],
     rate: item.pricePerDay, weeklyRate: Math.round(item.pricePerDay * 6.2), addOns: { insurance: Math.max(14, Math.round(item.pricePerDay * 0.2)), gps: 6 }, fuel: item.fuel, transmission: item.transmission, seats: item.seats,
     available: item.available, unavailableWindows: unavailableWindows(index), accent: item.tagline, note: `${item.badge} demo vehicle with clear daily pricing and practical trip details.`, description: `${item.tagline} This is a client-side demonstration vehicle listing; availability and rates are planning estimates pending a rental team response.`,
-    ...typeSpecs, exterior: item.colorOptions[0], colorOptions: item.colorOptions, engine: item.engine, badge: item.badge, popularity: 12 - index, features: item.features,
+    ...typeSpecs, ...(vehicleSpecOverrides[item.id] ?? {}), exterior: item.colorOptions[0], colorOptions: item.colorOptions, engine: item.engine, badge: item.badge, popularity: 13 - index, features: item.features,
   };
 });
 

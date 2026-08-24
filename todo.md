@@ -229,3 +229,4 @@
 - [x] Replace the technical latest commit title with a concise portfolio-ready project update message.
 - [x] Audit and correct every fleet image so it matches the listed vehicle make and model across cards and detail pages.
 - [x] Rewrite recent public GitHub commit metadata into concise, portfolio-ready project milestones.
+- [x] Add a BMW M5, ensure all vehicle cards open their detail pages reliably, preserve full vehicle imagery, reduce card size, and remove any visible injected attribution badge.

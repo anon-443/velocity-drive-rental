@@ -56,9 +56,8 @@ describe("visual polish system", () => {
 
     expect(fleetGrid).toContain('text-[44px]');
     expect(fleetGrid).toContain('grid-cols-[1fr_1.35fr_1fr]');
-    expect(fleetGrid).toContain('h-[250px]');
-    expect(fleetGrid).toContain('text-[23px]');
-    expect(fleetGrid).toContain('text-[22px]');
+    expect(fleetGrid).toContain('h-48');
+    expect(fleetGrid).toContain('text-[21px]');
     expect(fleetGrid).toContain("useReducedMotion");
     expect(home).toContain('py-[4.5rem] sm:py-20');
     expect(styles).toContain('.eyebrow, .fleet-kicker');
@@ -157,6 +156,28 @@ describe("visual polish system", () => {
     expect(vehicleDetails).toContain("Vehicle exterior");
     expect(vehicleDetails).toContain("car.gallery.length > 1");
     expect(vehicleDetails).not.toContain("Gallery frame");
+  });
+
+  it("keeps the BMW M5, compact full-vehicle card framing, and reliable fleet-detail paths in the public experience", async () => {
+    const [inventory, fleetSource, grid, home, bootstrap, tripDesk] = await Promise.all([
+      readFile(new URL("../client/src/data/cars.json", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/data/fleet.ts", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/components/CarGrid.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/pages/Home.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/main.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/components/TripDesk.tsx", import.meta.url), "utf8"),
+    ]);
+
+    expect(inventory).toContain('"id":"bmw-m5"');
+    expect(fleetSource).toContain('"bmw-m5": staticAssetPath');
+    expect(fleetSource).toContain("717 hp system output");
+    expect(grid).toContain("object-contain p-3");
+    expect(grid).toContain("setLocation(`/fleet/${carId}`)");
+    expect(grid).toContain("2xl:grid-cols-5");
+    expect(home).toContain("setLocation(`/fleet/${car.id}`)");
+    expect(bootstrap).toContain("made\\s+with\\s+manus");
+    expect(tripDesk).toContain("object-contain p-3");
+    expect(tripDesk).toContain("View details");
   });
 
   it("keeps the final accessibility and interaction closures connected to the visible rental experience", async () => {
