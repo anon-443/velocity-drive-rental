@@ -68,6 +68,19 @@ describe("visual polish system", () => {
     expect(fleetGrid).toContain('py-[4.5rem] sm:py-20');
   });
 
+  it("keeps the fleet filters as a compact pill-based panel with reduced search and sort controls", async () => {
+    const source = await readFile(new URL("../client/src/components/CarGrid.tsx", import.meta.url), "utf8");
+
+    expect(source).toContain('aria-label="Fleet filters"');
+    expect(source).toContain('rounded-xl border border-[#E8E0D5] bg-white p-5');
+    expect(source).toContain('sm:grid-cols-2 xl:grid-cols-4');
+    expect(source).toContain('flex flex-wrap gap-2');
+    expect(source).toContain('inline-flex h-8 w-auto');
+    expect(source).toContain('h-11 w-full rounded-[10px]');
+    expect(source).toContain('h-10 w-full items-center gap-2 rounded-[10px]');
+    expect(source).toContain('text-[13px] font-medium text-slate-500');
+  });
+
   it("extends the roadbook visual treatment from the hero into fleet cards and vehicle journals", async () => {
     const source = await readFile(new URL("../client/src/index.css", import.meta.url), "utf8");
 
