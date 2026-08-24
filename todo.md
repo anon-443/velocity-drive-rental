@@ -234,3 +234,4 @@
 - [x] Add a black BMW M5 near the top of the fleet, tighten outer page spacing, and optimize the revised fleet experience for mobile screens.
 - [x] Move “way forward” onto its own headline line, show the black BMW M5 in the upper fleet banner, and refine the phone layout again.
 - [x] Remove the optional Favorites and Reservations workspace plus its public navigation entry points while keeping required rental features intact.
+- [x] Correct fleet anchor placement, remove excess empty space, compact the fleet controls, and repair desktop and mobile page sizing and clipping.
