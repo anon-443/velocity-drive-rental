@@ -22,7 +22,6 @@ type CarGridProps = {
   passengerBand: PassengerBand;
   fuelFilter: FuelFilter;
   savedCarIds: string[];
-  availabilityLabel: string;
   totalCars: number;
   isFiltering: boolean;
   onSearchChange: (value: string) => void;
@@ -57,7 +56,6 @@ export default function CarGrid({
   passengerBand,
   fuelFilter,
   savedCarIds,
-  availabilityLabel,
   totalCars,
   isFiltering,
   onSearchChange,
@@ -87,25 +85,16 @@ export default function CarGrid({
   return (
     <section id="fleet" className="scroll-mt-24 bg-[#f7f8f6] py-[4.5rem] sm:py-20">
       <div className="container">
-        <div className="grid items-end gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <div className="flex items-center gap-3">
-              <p className="eyebrow"><span /> The fleet</p>
-              <span className="h-px w-8 bg-slate-300" />
-              <span className="fleet-kicker text-slate-400">01 / vehicle journal</span>
-            </div>
-            <h2 className="mt-5 max-w-xl font-editorial text-4xl leading-[0.98] tracking-[-0.055em] text-[#0f1e2e] sm:text-5xl">Find the car that fits the way you move</h2>
+        <div>
+          <div className="flex items-center gap-3">
+            <p className="eyebrow"><span /> The fleet</p>
+            <span className="h-px w-8 bg-slate-300" />
+            <span className="fleet-kicker text-slate-400">01 / vehicle journal</span>
           </div>
-          <p className="max-w-[72rem] text-sm leading-7 text-slate-600 sm:text-[15px]">Use the filter rail to compare cabin space, vehicle type, and daily rate before choosing a better match for the journey</p>
+          <h2 className="mt-4 max-w-xl font-editorial text-4xl leading-[0.98] tracking-[-0.055em] text-[#0f1e2e] sm:text-5xl">Find the car that fits the way you move</h2>
         </div>
 
-        <div className="route-rule mt-10" />
-        <div className="mt-5 flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-xs font-bold text-slate-600">
-          <CalendarCheck2 className="h-4 w-4 shrink-0 text-[#d97706]" />
-          {availabilityLabel}
-        </div>
-
-        <div className="mt-7 space-y-5">
+        <div className="mt-6 space-y-5">
           <FilterSidebar selectedCategory={selectedCategory} priceBand={priceBand} passengerBand={passengerBand} fuelFilter={fuelFilter} hasActiveFilters={hasActiveFilters} onCategoryChange={onCategoryChange} onPriceBandChange={onPriceBandChange} onPassengerBandChange={onPassengerBandChange} onFuelFilterChange={onFuelFilterChange} onClear={onClearFilters} />
           <div className="min-w-0">
             <div className="flex flex-col gap-4 2xl:flex-row 2xl:items-center 2xl:justify-between">

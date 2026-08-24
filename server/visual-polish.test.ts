@@ -201,7 +201,9 @@ describe("visual polish system", () => {
     expect(styles).toContain("#how-it-works .container > div:first-child > p { max-width: 68rem");
     expect(styles).toContain(".interior-nav .nav-link { color: #705d4c; font-size: 0.88rem");
     expect(home).toContain('max-w-[72rem] text-sm leading-7 text-slate-600');
-    expect(grid).toContain('max-w-[72rem] text-sm leading-7 text-slate-600');
+    expect(grid).not.toContain('Use the filter rail to compare cabin space');
+    expect(grid).not.toContain('availabilityLabel');
+    expect(grid).toContain('mt-6 space-y-5');
     expect(tripDesk).toContain('max-w-[72rem] text-sm leading-7 text-slate-600');
     expect(grid).toContain('filter-bar-dense');
     expect(grid).toContain('filter-groups-dense');

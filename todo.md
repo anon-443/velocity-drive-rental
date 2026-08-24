@@ -195,3 +195,6 @@
 - [x] Replace the still oversized full-width filter rail with a denser grouped filter interface on desktop.
 - [x] Preserve clear, reachable, and overflow-free mobile filtering controls in the redesigned compact interface.
 - [x] Validate the revised compact filter interface on desktop and mobile, then publish it.
+- [x] Remove the unnecessary availability notice shown above the compact fleet filters.
+- [x] Tighten the resulting fleet-header spacing without affecting the filter controls.
+- [x] Validate and publish the streamlined fleet header on desktop and mobile.
