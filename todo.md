@@ -218,3 +218,5 @@
 - [x] Verify the public GitHub repository and GitHub Pages deployment, then provide the final project links.
 - [x] Create a safe local environment template that contains no real credentials.
 - [x] Create and verify a complete project ZIP archive for local backup and GitHub upload.
+- [x] Create and validate a reusable skill for internship-ready car-rental frontend projects.
+- [x] Provide Windows pnpm installation steps, reusable-skill usage guidance, a UI/UX and bug-fix summary, and final backup/configuration resources.
