@@ -233,3 +233,4 @@
 - [x] Remove vehicle-card side gaps without cropping the car, open each detail action at the top of the matching page, and remove the selected journey and FAQ sections plus their navigation links.
 - [x] Add a black BMW M5 near the top of the fleet, tighten outer page spacing, and optimize the revised fleet experience for mobile screens.
 - [x] Move “way forward” onto its own headline line, show the black BMW M5 in the upper fleet banner, and refine the phone layout again.
+- [x] Remove the optional Favorites and Reservations workspace plus its public navigation entry points while keeping required rental features intact.

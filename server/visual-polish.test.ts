@@ -103,29 +103,25 @@ describe("visual polish system", () => {
     expect(styles).toContain(".terms-rail");
   });
 
-  it("uses the shared 72–80px section rhythm and shared eyebrow system across remaining primary routes", async () => {
-    const [vehicleDetails, tripDesk, contact] = await Promise.all([
+  it("uses the shared 72–80px section rhythm and shared eyebrow system across remaining public routes", async () => {
+    const [vehicleDetails, contact] = await Promise.all([
       readFile(new URL("../client/src/pages/VehicleDetails.tsx", import.meta.url), "utf8"),
-      readFile(new URL("../client/src/components/TripDesk.tsx", import.meta.url), "utf8"),
       readFile(new URL("../client/src/components/ContactSection.tsx", import.meta.url), "utf8"),
     ]);
 
     expect(vehicleDetails).toContain('py-[4.5rem] sm:py-20');
     expect(vehicleDetails).toContain('fleet-kicker text-slate-400');
-    expect(tripDesk).toContain('py-[4.5rem] sm:py-20');
-    expect(tripDesk).toContain('fleet-kicker text-slate-400');
     expect(contact).toContain('py-[4.5rem] sm:py-20');
     expect(contact).toContain('lg:whitespace-nowrap');
     expect(contact).not.toContain('Call, write, or visit');
   });
 
-  it("keeps the expanded local rental workflow data-driven and routed through booking, My Drive, and demo administration", async () => {
-    const [inventory, fleetSource, app, booking, myDrive, admin] = await Promise.all([
+  it("keeps the required local rental workflow data-driven through booking and demo administration", async () => {
+    const [inventory, fleetSource, app, booking, admin] = await Promise.all([
       readFile(new URL("../client/src/data/cars.json", import.meta.url), "utf8"),
       readFile(new URL("../client/src/data/fleet.ts", import.meta.url), "utf8"),
       readFile(new URL("../client/src/App.tsx", import.meta.url), "utf8"),
       readFile(new URL("../client/src/pages/BookingPage.tsx", import.meta.url), "utf8"),
-      readFile(new URL("../client/src/pages/MyDrivePage.tsx", import.meta.url), "utf8"),
       readFile(new URL("../client/src/pages/AdminPage.tsx", import.meta.url), "utf8"),
     ]);
 
@@ -133,12 +129,12 @@ describe("visual polish system", () => {
     expect(fleetSource).toContain("weeklyRate");
     expect(fleetSource).toContain("unavailableWindows");
     expect(app).toContain('path="/book"');
-    expect(app).toContain('path="/my-drive"');
+    expect(app).not.toContain('path="/my-drive"');
     expect(app).toContain('path="/admin"');
     expect(booking).toContain("useForm<BookingFormValues>");
     expect(booking).toContain("canvas-confetti");
     expect(booking).toContain("browser-local request reference");
-    expect(myDrive).toContain("Cancel request");
+    expect(booking).not.toContain("View My Drive");
     expect(admin).toContain("Admin demonstration");
   });
 
@@ -161,13 +157,12 @@ describe("visual polish system", () => {
   });
 
   it("keeps the BMW M5, compact full-vehicle card framing, and reliable fleet-detail paths in the public experience", async () => {
-    const [inventory, fleetSource, grid, home, bootstrap, tripDesk] = await Promise.all([
+    const [inventory, fleetSource, grid, home, bootstrap] = await Promise.all([
       readFile(new URL("../client/src/data/cars.json", import.meta.url), "utf8"),
       readFile(new URL("../client/src/data/fleet.ts", import.meta.url), "utf8"),
       readFile(new URL("../client/src/components/CarGrid.tsx", import.meta.url), "utf8"),
       readFile(new URL("../client/src/pages/Home.tsx", import.meta.url), "utf8"),
       readFile(new URL("../client/src/main.tsx", import.meta.url), "utf8"),
-      readFile(new URL("../client/src/components/TripDesk.tsx", import.meta.url), "utf8"),
     ]);
 
     expect(inventory).toContain('"id":"bmw-m5"');
@@ -180,8 +175,22 @@ describe("visual polish system", () => {
     expect(grid).toContain("2xl:grid-cols-5");
     expect(home).toContain("setLocation(`/fleet/${car.id}`)");
     expect(bootstrap).toContain("made\\s+with\\s+manus");
-    expect(tripDesk).toContain("object-contain p-3");
-    expect(tripDesk).toContain("View details");
+    expect(home).not.toContain("<TripDesk");
+  });
+
+  it("removes the optional saved workspace and My Drive navigation from the public internship experience", async () => {
+    const [app, header, home, booking] = await Promise.all([
+      readFile(new URL("../client/src/App.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/components/Navbar.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/pages/Home.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/pages/BookingPage.tsx", import.meta.url), "utf8"),
+    ]);
+
+    expect(app).not.toContain("MyDrivePage");
+    expect(header).not.toContain('href: "/my-drive"');
+    expect(header).not.toContain("My drive");
+    expect(home).not.toContain("TripDesk");
+    expect(booking).not.toContain("onViewDrive");
   });
 
   it("keeps the outer spacing tighter and the card grid usable on mobile screens", async () => {
@@ -254,7 +263,6 @@ describe("visual polish system", () => {
     expect(styles).toContain("@keyframes gallery-stage");
     expect(styles).toContain(".interior-search form:hover");
     expect(vehicleDetails).toContain("vehicle-journal-interior");
-    expect(styles).toContain("#my-drive h2");
     expect(booking).toContain("AnimatePresence mode=\"wait\"");
     expect(booking).toContain("ConfirmationModal");
     expect(booking).toContain("aria-modal=\"true\"");
@@ -266,15 +274,14 @@ describe("visual polish system", () => {
     expect(vehicleDetails).toContain('sm:grid-cols-3');
     expect(booking).toContain('fixed inset-0 z-50 flex items-center justify-center');
     expect(booking).toContain('w-full max-w-2xl');
-    expect(booking).toContain('flex flex-wrap gap-3');
+    expect(booking).toContain('mt-8"><button onClick={onClose}');
   });
 
   it("keeps the inquiry surface compact and the requested desktop editorial lines concise", async () => {
-    const [styles, home, grid, tripDesk] = await Promise.all([
+    const [styles, home, grid] = await Promise.all([
       readFile(new URL("../client/src/index.css", import.meta.url), "utf8"),
       readFile(new URL("../client/src/pages/Home.tsx", import.meta.url), "utf8"),
       readFile(new URL("../client/src/components/CarGrid.tsx", import.meta.url), "utf8"),
-      readFile(new URL("../client/src/components/TripDesk.tsx", import.meta.url), "utf8"),
     ]);
 
     expect(styles).toContain("Compact inquiry treatment");
@@ -287,7 +294,6 @@ describe("visual polish system", () => {
     expect(grid).not.toContain('Use the filter rail to compare cabin space');
     expect(grid).not.toContain('availabilityLabel');
     expect(grid).toContain('mt-6 space-y-4');
-    expect(tripDesk).toContain('max-w-[72rem] text-sm leading-7 text-slate-600');
     expect(grid).toContain('aria-label="Fleet filters"');
     expect(grid).toContain('rounded-xl border border-[#E8E0D5] bg-white p-5');
     expect(grid).toContain('sm:grid-cols-2 xl:grid-cols-4');

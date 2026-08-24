@@ -10,7 +10,6 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import HeroSearch, { type QuickSearchCriteria } from "@/components/HeroSearch";
 import Navbar from "@/components/Navbar";
-import TripDesk from "@/components/TripDesk";
 import { fleet, isCarAvailableForDates, type CarType, type FleetCar } from "@/data/fleet";
 import type { TripRecord } from "@/lib/velocityStore";
 import { useBookings } from "@/lib/useBookings";
@@ -37,7 +36,7 @@ export default function Home() {
   const [selectedCar, setSelectedCar] = useState<FleetCar | null>(null);
   const [rentalCriteria, setRentalCriteria] = useState<QuickSearchCriteria>({ location: "Bishkek Downtown Hub", pickupDate: "", returnDate: "", carType: "All" });
   const { savedCarIds, toggleFavorite, isSynced: areFavoritesSynced } = useFavorites();
-  const { bookings, addBooking, clearBookings } = useBookings();
+  const { addBooking } = useBookings();
   const { visibleCarIds } = useFleetVisibility();
   useEffect(() => {
     if (!hasInitializedFilters.current) {
@@ -56,7 +55,6 @@ export default function Home() {
   const handleQuickSearch = (criteria: QuickSearchCriteria) => { setRentalCriteria(criteria); setSelectedCategory(criteria.carType); document.querySelector("#fleet")?.scrollIntoView({ behavior: "smooth", block: "start" }); };
   const handleToggleSaved = (carId: string) => { const car = fleet.find((entry) => entry.id === carId); const removing = savedCarIds.includes(carId); toggleFavorite(carId); if (car) toast.success(removing ? `${car.name} removed from Favorites.` : `${car.name} added to Favorites.`); };
   const handleBookingComplete = (booking: TripRecord) => addBooking(booking);
-  const savedCars = fleet.filter((car) => savedCarIds.includes(car.id));
   const clearFleetFilters = () => { setSearchTerm(""); setSelectedCategory("All"); setSortBy("featured"); setPriceBand("all"); setPassengerBand("all"); setFuelFilter("all"); };
   return <div id="home" className="velocity-interior min-h-screen overflow-x-hidden bg-[#f7f8f6] text-[#0f1e2e]"><Navbar /><main>
     <section className="hero-atmosphere interior-hero relative overflow-hidden bg-[#eaf0f3] pb-4 pt-12 sm:pt-16 lg:min-h-[calc(100svh-76px)] lg:pb-8 lg:pt-4 xl:pt-5"><div className="absolute right-0 top-0 hidden h-full w-[42%] bg-white/45 lg:block" /><div className="wide-shell relative z-10"><div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(500px,0.9fr)] lg:gap-12 xl:gap-16 2xl:grid-cols-[minmax(0,0.78fr)_minmax(720px,1.22fr)] 2xl:gap-10">
@@ -66,7 +64,6 @@ export default function Home() {
     <OperationalBar />
     <FleetBanner cars={fleet.filter((car) => visibleCarIds.includes(car.id))} />
     <CarGrid cars={filteredFleet} totalCars={visibleCarIds.length} searchTerm={searchTerm} selectedCategory={selectedCategory} sortBy={sortBy} priceBand={priceBand} passengerBand={passengerBand} fuelFilter={fuelFilter} savedCarIds={savedCarIds} isFiltering={isFiltering} onSearchChange={setSearchTerm} onCategoryChange={setSelectedCategory} onSortChange={setSortBy} onPriceBandChange={setPriceBand} onPassengerBandChange={setPassengerBand} onFuelFilterChange={setFuelFilter} onClearFilters={clearFleetFilters} onBook={setSelectedCar} onToggleSaved={handleToggleSaved} />
-    <TripDesk savedCars={savedCars} bookings={bookings} onBook={setSelectedCar} onRemoveSaved={handleToggleSaved} onClearBookings={clearBookings} areFavoritesSynced={areFavoritesSynced} />
     <section id="why-velocity" className="scroll-mt-24 bg-[#f7f8f6] py-[4.5rem] sm:py-20"><div className="container"><div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-center"><div><div className="rounded-[30px] bg-[#0f1e2e] p-7 text-white sm:p-10"><p className="fleet-kicker text-[#f6b256]">03 / Made for the details</p><h2 className="mt-5 max-w-md font-editorial text-5xl leading-[0.94] tracking-[-0.06em] sm:text-6xl">Less guesswork, more of the road ahead</h2><p className="mt-7 max-w-md text-sm leading-7 text-slate-300">This interface makes each important detail legible before the booking request: the car, the cost, the dates, and the practical additions.</p></div></div><div className="grid gap-4 sm:grid-cols-2"><Benefit icon={<CircleDollarSign />} title="Transparent pricing" text="The daily rate and selected add-ons are recalculated in the reservation view." /><Benefit icon={<Clock3 />} title="Support-minded" text="Contact details and dates stay together, ready for an availability follow-up." /><Benefit icon={<ShieldCheck />} title="Clear before commit" text="Validation highlights the missing details before a request can be submitted." /><Benefit icon={<BadgeCheck />} title="Designed to adapt" text="The layout and controls resize cleanly from a small phone to a wide desktop." /></div></div></div></section>
     <ContactSection />
   </main><Footer /><BookingModal car={selectedCar} onClose={() => setSelectedCar(null)} onBookingComplete={handleBookingComplete} /></div>;
