@@ -1,0 +1,18 @@
+# Safe local configuration template
+#
+# This file intentionally contains NO real credentials.
+# On your own computer, copy the lines you need into a private .env file.
+# Do not upload or commit that .env file to GitHub.
+
+VITE_STATIC_DEMO=true
+PUBLIC_SITE_URL=https://velodrive-rentals.me
+
+# Optional authenticated-server configuration.
+# Leave these blank for the public static demo.
+VITE_APP_ID=
+JWT_SECRET=
+DATABASE_URL=
+OAUTH_SERVER_URL=
+OWNER_OPEN_ID=
+BUILT_IN_FORGE_API_URL=
+BUILT_IN_FORGE_API_KEY=

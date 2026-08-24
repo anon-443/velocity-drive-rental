@@ -216,3 +216,5 @@
 - [x] Remove the requested LinkedIn post document from the public repository.
 - [x] Audit tracked files for secrets, credentials, private configuration, and unnecessary sensitive content; remove or redact any findings safely.
 - [x] Verify the public GitHub repository and GitHub Pages deployment, then provide the final project links.
+- [x] Create a safe local environment template that contains no real credentials.
+- [x] Create and verify a complete project ZIP archive for local backup and GitHub upload.
