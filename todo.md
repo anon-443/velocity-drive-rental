@@ -175,3 +175,9 @@
 - [x] Remove unnecessary terminal full stops from short visible interface sentences while preserving meaningful punctuation.
 - [x] Refine headline sizing and wrapping so the updated typography remains balanced and readable on mobile.
 - [x] Validate the final text hierarchy and copy cleanup on desktop and mobile before publishing.
+- [x] Reduce the hero headline scale and remove its italic treatment while retaining a strong editorial hierarchy.
+- [x] Restore adequate contrast and visibility for the affected icon controls.
+- [x] Keep the requested rental-notes, contact, journey, and fleet headings on one desktop line where space permits.
+- [x] Compact the contact information panel, remove excess empty space, and correct its text contrast.
+- [x] Improve the dark fleet-section typography color contrast for clear reading.
+- [x] Verify the requested text, icon, panel, and color corrections at desktop and mobile widths before publishing.

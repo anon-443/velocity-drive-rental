@@ -135,6 +135,32 @@
   .velocity-interior .interior-search form > div > button::after { position: absolute; inset: 0; content: ""; background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.22) 50%, transparent 70%); transform: translateX(-120%); transition: transform 0.55s cubic-bezier(0.23, 1, 0.32, 1); }
   .velocity-interior .interior-search form > div > button:hover { box-shadow: 0 12px 24px rgba(78, 52, 34, 0.22); transform: translateY(-2px); }
   .velocity-interior .interior-search form > div > button:hover::after { transform: translateX(120%); }
+  /* Final clarity pass: smaller non-italic hero type, high-contrast controls, and compact editorial rows. */
+  .velocity-interior .interior-display { font-size: clamp(2.8rem, 7.4vw, 4.1rem) !important; font-style: normal; line-height: 0.95; }
+  .velocity-interior .interior-display em { font-style: normal; font-weight: 400 !important; }
+  .velocity-interior .interior-search form > div > div > span:first-child { background: #eadfd1 !important; color: #4e3422 !important; opacity: 1; }
+  .velocity-interior .interior-search form > div > div > span:first-child svg, .velocity-interior .interior-search form button[aria-label^="Open"] svg { color: #4e3422 !important; stroke-width: 2.35; }
+  .velocity-interior .interior-search form button[aria-label^="Open"] { border-color: #cbb395 !important; background: #fffdfb !important; color: #4e3422 !important; opacity: 1; }
+  .velocity-interior #contact .mt-8.grid > div:first-child { align-self: start; border: 1px solid rgba(203, 179, 149, 0.35); background: #1f1108 !important; padding: 1.5rem !important; }
+  .velocity-interior #contact .mt-8.grid > div:first-child h3 { color: #fffdfb !important; font-size: clamp(1.7rem, 2.3vw, 2.45rem); line-height: 0.98; }
+  .velocity-interior #contact .mt-8.grid > div:first-child a, .velocity-interior #contact .mt-8.grid > div:first-child p { color: #eadfd1 !important; }
+  .velocity-interior #contact .mt-8.grid > div:first-child [class*="text-[#f6b256]"] { color: #f6c98e !important; }
+  .velocity-interior #contact .mt-8.grid > div:first-child [class*="bg-white"] { background: #fffdfb !important; color: #4e3422 !important; }
+  .velocity-interior .interior-fleet-banner h2 { color: #fff4e7 !important; }
+  .velocity-interior .interior-fleet-banner button span > span:first-child { color: #fffdfb !important; }
+  .velocity-interior .interior-fleet-banner button span > span:last-child { color: #e7cdb1 !important; }
+  #site-footer a[aria-label^="Open"] { border-color: rgba(246, 201, 142, 0.62) !important; background: rgba(203, 179, 149, 0.12); color: #fff4e7 !important; }
+  #site-footer a[aria-label^="Open"] svg { display: block; color: currentColor; opacity: 1; stroke-width: 2.3; }
+  @media (min-width: 1024px) {
+    .velocity-interior .interior-display { font-size: clamp(3.8rem, 4vw, 5rem) !important; }
+    .velocity-interior #fleet > .container > div:first-child, .velocity-interior #how-it-works .container > div:first-child, .velocity-interior #contact > .container > div:first-child { grid-template-columns: minmax(0, 1fr) !important; gap: 1rem; }
+    .velocity-interior #fleet > .container > div:first-child > p, .velocity-interior #how-it-works .container > div:first-child > p, .velocity-interior #contact > .container > div:first-child > p { justify-self: start; max-width: 52rem; }
+    .velocity-interior #fleet h2, .velocity-interior #how-it-works h2, .velocity-interior #contact > .container > div:first-child h2, .velocity-interior #contact .mt-12 > div:first-child h3 { max-width: none !important; white-space: nowrap; }
+    .velocity-interior #fleet h2 { font-size: clamp(2.25rem, 2.7vw, 3rem); }
+    .velocity-interior #how-it-works h2, .velocity-interior #contact > .container > div:first-child h2 { font-size: clamp(2.25rem, 2.85vw, 3.25rem); }
+    .velocity-interior #contact .mt-12 { grid-template-columns: minmax(0, 1fr) !important; gap: 1.5rem; }
+    .velocity-interior #contact .mt-12 > div:first-child h3 { font-size: clamp(2rem, 2.5vw, 2.75rem); }
+  }
   .velocity-interior #my-drive > div > div:first-child { grid-template-columns: minmax(0, 1fr) !important; gap: 1rem; }
   .velocity-interior #my-drive > div > div:first-child > p { justify-self: start; max-width: 46rem; }
   .velocity-interior #my-drive h2 { max-width: none !important; text-wrap: balance; }
