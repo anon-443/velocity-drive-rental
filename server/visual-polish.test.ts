@@ -25,6 +25,8 @@ describe("visual polish system", () => {
     expect(source).toContain("useReducedMotion");
     expect(source).toContain('mode="wait"');
     expect(source).toContain("route-progress");
+    expect(source).toContain('location.startsWith("/fleet/")');
+    expect(source).toContain("window.scrollTo");
   });
 
   it("keeps the requested wide hero media, fleet banner, compact header, and persistent theme control in the source", async () => {
@@ -171,13 +173,28 @@ describe("visual polish system", () => {
     expect(inventory).toContain('"id":"bmw-m5"');
     expect(fleetSource).toContain('"bmw-m5": staticAssetPath');
     expect(fleetSource).toContain("717 hp system output");
-    expect(grid).toContain("object-contain p-3");
+    expect(grid).toContain("object-cover object-center");
     expect(grid).toContain("setLocation(`/fleet/${carId}`)");
     expect(grid).toContain("2xl:grid-cols-5");
     expect(home).toContain("setLocation(`/fleet/${car.id}`)");
     expect(bootstrap).toContain("made\\s+with\\s+manus");
     expect(tripDesk).toContain("object-contain p-3");
     expect(tripDesk).toContain("View details");
+  });
+
+  it("removes the requested journey and FAQ sections while keeping the contact inquiry and fleet navigation focused", async () => {
+    const [home, header, contact] = await Promise.all([
+      readFile(new URL("../client/src/pages/Home.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/components/Navbar.tsx", import.meta.url), "utf8"),
+      readFile(new URL("../client/src/components/ContactSection.tsx", import.meta.url), "utf8"),
+    ]);
+
+    expect(home).not.toContain('id="how-it-works"');
+    expect(home).not.toContain("Three decisions, one smooth departure");
+    expect(header).not.toContain("How it works");
+    expect(contact).not.toContain("Rental notes");
+    expect(contact).not.toContain("A few answers before you ask");
+    expect(contact).toContain("Send inquiry");
   });
 
   it("keeps the final accessibility and interaction closures connected to the visible rental experience", async () => {
@@ -251,9 +268,8 @@ describe("visual polish system", () => {
     expect(styles).toContain("max-width: 46rem");
     expect(styles).toContain("textarea { min-height: 5.5rem");
     expect(styles).toContain("#contact .mt-8.grid > div:first-child h3 { white-space: nowrap");
-    expect(styles).toContain("#how-it-works .container > div:first-child > p { max-width: 68rem");
     expect(styles).toContain(".interior-nav .nav-link { color: #705d4c; font-size: 0.88rem");
-    expect(home).toContain('max-w-[72rem] text-sm leading-7 text-slate-600');
+    expect(home).not.toContain("Three decisions, one smooth departure");
     expect(grid).not.toContain('Use the filter rail to compare cabin space');
     expect(grid).not.toContain('availabilityLabel');
     expect(grid).toContain('mt-6 space-y-4');

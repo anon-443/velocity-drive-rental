@@ -230,3 +230,4 @@
 - [x] Audit and correct every fleet image so it matches the listed vehicle make and model across cards and detail pages.
 - [x] Rewrite recent public GitHub commit metadata into concise, portfolio-ready project milestones.
 - [x] Add a BMW M5, ensure all vehicle cards open their detail pages reliably, preserve full vehicle imagery, reduce card size, and remove any visible injected attribution badge.
+- [x] Remove vehicle-card side gaps without cropping the car, open each detail action at the top of the matching page, and remove the selected journey and FAQ sections plus their navigation links.

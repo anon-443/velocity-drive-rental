@@ -1,5 +1,6 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
+import { useEffect } from "react";
 import { useLocation } from "wouter";
 
 type RouteTransitionProps = {
@@ -11,6 +12,10 @@ export default function RouteTransition({ children }: RouteTransitionProps) {
   const [location] = useLocation();
   const reduceMotion = useReducedMotion();
   const transition = reduceMotion ? { duration: 0 } : { duration: 0.28, ease: [0.23, 1, 0.32, 1] as const };
+
+  useEffect(() => {
+    if (location.startsWith("/fleet/")) window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [location]);
 
   return (
     <AnimatePresence initial={false} mode="wait">

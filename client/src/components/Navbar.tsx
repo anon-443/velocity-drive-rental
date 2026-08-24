@@ -12,7 +12,7 @@ import { startLogin } from "@/const";
 import { isStaticDemo } from "@/lib/staticDemo";
 import { useTheme } from "@/contexts/ThemeContext";
 
-const navItems = [{ label: "Home", href: "#home" }, { label: "Fleet", href: "#fleet" }, { label: "My drive", href: "/my-drive" }, { label: "How it works", href: "#how-it-works" }, { label: "Why Velocity", href: "#why-velocity" }, { label: "Contact", href: "#contact" }];
+const navItems = [{ label: "Home", href: "#home" }, { label: "Fleet", href: "#fleet" }, { label: "My drive", href: "/my-drive" }, { label: "Why Velocity", href: "#why-velocity" }, { label: "Contact", href: "#contact" }];
 function scrollToSection(href: string) { document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" }); }
 
 export default function Navbar() {
