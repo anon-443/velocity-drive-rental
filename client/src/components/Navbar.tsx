@@ -12,12 +12,12 @@ import { startLogin } from "@/const";
 import { isStaticDemo } from "@/lib/staticDemo";
 import { useTheme } from "@/contexts/ThemeContext";
 
-const navItems = [{ label: "Home", href: "#home" }, { label: "Fleet", href: "#fleet" }, { label: "Why Velocity", href: "#why-velocity" }, { label: "Contact", href: "#contact" }];
+const navItems = [{ label: "Home", href: "#home" }, { label: "Fleet", href: "#fleet-start" }, { label: "Why Velocity", href: "#why-velocity" }, { label: "Contact", href: "#contact" }];
 function scrollToSection(href: string) {
   const target = document.querySelector<HTMLElement>(href);
   if (!target) return;
   const headerHeight = document.querySelector<HTMLElement>(".interior-nav")?.offsetHeight ?? 76;
-  const extraOffset = href === "#fleet" ? 40 : 12;
+  const extraOffset = href === "#fleet-start" ? 0 : 12;
   const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - headerHeight - extraOffset);
   window.scrollTo({ top, behavior: "smooth" });
 }

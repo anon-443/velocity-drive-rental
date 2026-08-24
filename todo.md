@@ -239,3 +239,4 @@
 - [x] Correct Fleet and Contact anchor placement, reduce the oversized hero Find vehicles action, and keep the Contact form composition within a compact desktop view.
 - [x] Remove the hero Find vehicles box and its empty space, then tighten page spacing so content begins cleanly without unnecessary gaps.
 - [x] Remove remaining hero search bleed at the Fleet destination and show every vehicle-detail header as a compact image-and-summary layout.
+- [x] Make Fleet navigation land at a dedicated target after the hero search panel so no preceding controls remain visible.

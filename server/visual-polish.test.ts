@@ -291,7 +291,9 @@ describe("visual polish system", () => {
     expect(contact).toContain('min-h-20');
     expect(contact).toContain('h-9 w-full');
     expect(contact).toContain('pb-8 pt-5 sm:pb-10 sm:pt-6');
-    expect(home).toContain('const scrollToFleet');
+    expect(home).toContain("const scrollToFleet");
+    expect(home).toContain('id="fleet-start"');
+    expect(home).toContain('querySelector<HTMLElement>("#fleet-start")');
     expect(home).not.toContain('scrollIntoView({ behavior: "smooth", block: "start" })');
     expect(home).not.toContain("Three decisions, one smooth departure");
     expect(grid).not.toContain('Use the filter rail to compare cabin space');
