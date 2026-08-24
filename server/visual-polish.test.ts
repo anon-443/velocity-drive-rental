@@ -216,11 +216,12 @@ describe("visual polish system", () => {
     expect(home).toContain('max-w-[72rem] text-sm leading-7 text-slate-600');
     expect(grid).not.toContain('Use the filter rail to compare cabin space');
     expect(grid).not.toContain('availabilityLabel');
-    expect(grid).toContain('mt-6 space-y-5');
+    expect(grid).toContain('mt-6 space-y-4');
     expect(tripDesk).toContain('max-w-[72rem] text-sm leading-7 text-slate-600');
-    expect(grid).toContain('filter-bar-dense');
-    expect(grid).toContain('filter-groups-dense');
-    expect(grid).toContain('xl:grid-cols-4');
-    expect(styles).toContain('Dense filter bar');
+    expect(grid).toContain('aria-label="Fleet filters"');
+    expect(grid).toContain('rounded-xl border border-[#E8E0D5] bg-white p-5');
+    expect(grid).toContain('sm:grid-cols-2 xl:grid-cols-4');
+    expect(grid).toContain('inline-flex h-8 w-auto');
+    expect(grid).toContain('h-11 w-full rounded-[10px]');
   });
 });
