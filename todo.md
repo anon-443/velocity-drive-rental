@@ -236,3 +236,4 @@
 - [x] Remove the optional Favorites and Reservations workspace plus its public navigation entry points while keeping required rental features intact.
 - [x] Correct fleet anchor placement, remove excess empty space, compact the fleet controls, and repair desktop and mobile page sizing and clipping.
 - [x] Compact the contact form, remove the optional operational and duplicate fleet strips, and show full landscape vehicle images without excessive zoom or cropping.
+- [x] Correct Fleet and Contact anchor placement, reduce the oversized hero Find vehicles action, and keep the Contact form composition within a compact desktop view.

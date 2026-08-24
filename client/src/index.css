@@ -215,7 +215,7 @@
   .fleet-card:hover .fleet-spec { transform: translateY(-2px); }
   .fleet-card:hover .fleet-action:first-child svg { transform: translateX(2px); }
   .fleet-card .fleet-action svg { transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1); }
-  #my-drive, #why-velocity, #contact { padding-top: 4.5rem !important; padding-bottom: 5rem !important; }
+  #my-drive, #why-velocity { padding-top: 4.5rem !important; padding-bottom: 5rem !important; }
   .fleet-card-description { color: #666; }
   .comparison-selector > span:first-child, .comparison-row > div:first-child, .comparison-feature-row > div:first-child, .comparison-vehicle-header p:first-child, .terms-card > p:first-child, main:has([aria-label^="Show gallery"]) aside p[class*="uppercase"] { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; line-height: 1; text-transform: uppercase; }
   .comparison-journal > section:nth-child(2), main:has([aria-label^="Show gallery"]) > section:nth-child(3) { padding-top: 4.5rem; padding-bottom: 5rem; }

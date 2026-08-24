@@ -8,7 +8,9 @@ describe("hero search desktop layout", () => {
     expect(source).toContain("md:grid-cols-2");
     expect(source).toContain("minmax(250px,1.18fr)");
     expect(source).toContain("minmax(218px,1fr)");
-    expect(source).toContain("minmax(190px,202px)");
+    expect(source).toContain("minmax(156px,172px)");
+    expect(source).toContain("md:col-span-2 md:w-[188px]");
+    expect(source).toContain("xl:col-span-1 xl:m-1 xl:min-h-0 xl:w-auto");
     expect(source).toContain("whitespace-nowrap");
     expect(source).not.toContain("lg:grid-cols-[");
   });

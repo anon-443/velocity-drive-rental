@@ -112,7 +112,7 @@ describe("visual polish system", () => {
 
     expect(vehicleDetails).toContain('py-[4.5rem] sm:py-20');
     expect(vehicleDetails).toContain('fleet-kicker text-slate-400');
-    expect(contact).toContain('pb-12 pt-9 sm:pb-14 sm:pt-12');
+    expect(contact).toContain('pb-8 pt-5 sm:pb-10 sm:pt-6');
     expect(contact).toContain('lg:whitespace-nowrap');
     expect(contact).not.toContain('Call, write, or visit');
   });
@@ -285,9 +285,12 @@ describe("visual polish system", () => {
       readFile(new URL("../client/src/components/CarGrid.tsx", import.meta.url), "utf8"),
     ]);
 
-    expect(contact).toContain('contact-form mt-5 max-w-[1120px]');
-    expect(contact).toContain('min-h-24');
-    expect(contact).toContain('h-10 w-full');
+    expect(contact).toContain('contact-form mt-4 max-w-[1120px]');
+    expect(contact).toContain('min-h-20');
+    expect(contact).toContain('h-9 w-full');
+    expect(contact).toContain('pb-8 pt-5 sm:pb-10 sm:pt-6');
+    expect(home).toContain('const scrollToFleet');
+    expect(home).not.toContain('scrollIntoView({ behavior: "smooth", block: "start" })');
     expect(home).not.toContain("Three decisions, one smooth departure");
     expect(grid).not.toContain('Use the filter rail to compare cabin space');
     expect(grid).not.toContain('availabilityLabel');
